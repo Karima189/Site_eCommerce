@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block body %}
+
+	<header>
+		<h1>World of Fashion</h1>
+		<!--<div class="recherche">
+						            <input type="text" id="searchInput" placeholder="Tapez votre produit">
+						            <div id="searchResults"></div>
+						        </div>-->
+
+
+		<div id="searchResults"></div>
+
+
+		<div class="barre">
+			<div class="icone">
+				<a class="seConnecter" href="">Se Connecter</a>
+				<a class="inscription" href="">Inscription</a>
+				<i class="fa-solid fa-user"></i>
+			</div>
+
+			<div class="icone">
+				<a id="panierLink" href="">Panier</a>
+				<i class="fa-solid fa-cart-shopping"></i>
+			</div>
+
+			<div class="icone">
+				<a href="">Contact</a>
+				<i class="fa-solid fa-envelope"></i>
+			</div>
+		</div>
+
+	</header>
+{% endblock %}

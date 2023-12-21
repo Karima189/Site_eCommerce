@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello VetementsController!
+{%
+endblock %}
+{% block body %}
+	{% include "navbar/navbar.html.twig" %}
+	<div class="example-wrapper userForm">
+		<h4>Formulaire d'Ajout d'un Produit! ✅</h4>
+		{{ form_start(produit) }}
+		<div class="mb-1">
+			<div>
+				{{ form_row(produit.image) }}
+			</div>
+			<div>
+				{{ form_row(produit.description) }}
+			</div>
+			<div>
+				{{ form_row(produit.taille) }}
+			</div>
+			<div>
+				{{ form_row(produit.couleur) }}
+			</div>
+			<div>
+				{{ form_row(produit.descriptionDetaille) }}
+			</div>
+			<div>
+				{{ form_row(produit.prix) }}
+			</div>
+			<div>
+				{{ form_row(produit.category) }}
+			</div>
+			<div>
+				{{ form_row(produit.submit) }}
+			</div>
+			{{ form_end(produit) }}
+		</div>
+		{% if form_errors(produit) %}
+			<div class="alert alert-danger">
+				{{ form_errors(produit) }}
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}

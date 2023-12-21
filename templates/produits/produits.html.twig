@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProduitsController!
+{% endblock %}
+
+{% block body %}
+	{% include "home/index.html.twig" %}
+
+	<div class="liste_produits">
+		{% for produit in produits %}
+			<div>
+				<div>
+					<img src="{{asset('img/' ~ produit.image)}}" alt="{{produit.description}}" width="400" height="400">
+				</div>
+				<h2 style="width:300px;">{{produit.description}}</h2>
+				<div style="margin-bottom:20px;">
+					<button type="submit" name="add_to_cart">Ajouter au Panier</button>
+					<i class="fa-solid fa-cart-shopping"></i>
+				</div>
+				<a href="details_vetement.php?id=<?= $vetement['id_vetement']; ?>" class="voir_detail">Voir Plus de détails sur ce produit</a>
+
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

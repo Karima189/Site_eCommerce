@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block body %}
+	{% include "navbar/navbar.html.twig" %}
+	<nav>
+		<ul>
+			<li>
+				<a href="{{path('produits_par_categorie', {categoryId: 1})}}">Vetements</a>
+			</li>
+			<div><img src="{{ asset('img/robe_logo.jpg') }}" alt=""></div>
+			<li>
+				<a href="{{path('produits_par_categorie', {categoryId: 2})}}">Maquillage</a>
+			</li>
+			<div><img src="{{ asset('img/makeup_logo.avif') }}" alt=""></div>
+			<li>
+				<a href="{{path('produits_par_categorie', {categoryId: 3})}}">Bijoux</a>
+			</li>
+			<div><img src="{{ asset('img/bijoux_logo.jpg') }}" alt=""></div>
+			<li>
+				<a href="{{path('produits_par_categorie', {categoryId: 4})}}">Montres</a>
+			</li>
+			<div><img src="{{ asset('img/montre_logo.jpg') }}" alt=""></div>
+		</ul>
+	</nav>
+{% endblock %}
