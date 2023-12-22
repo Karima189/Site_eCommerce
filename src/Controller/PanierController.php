@@ -16,7 +16,7 @@ class PanierController extends AbstractController
         // Récupérer le panier depuis la session
         $panier = $session->get('panier', []);
 
-        return $this->render('panier/affichage_panier.html.twig', [
+        return $this->render('panier/afficher_panier.html.twig', [
             'panier' => $panier,
         ]);
     }
@@ -28,18 +28,22 @@ class PanierController extends AbstractController
         $panier = $session->get('panier', []);
 
         // Rechercher l'index du produit dans le panier
-        $index = array_search(['id' => $id], array_column($panier, 'id'));
+        foreach ($panier as $index => $produit) {
+            if ($produit['id'] === $id) {
+                // Supprimer le produit du panier
+                unset($panier[$index]);
+                // Réindexer le tableau après la suppression
+                $panier = array_values($panier);
+                // Mettre à jour le panier dans la session
+                $session->set('panier', $panier);
 
-        // Si le produit est trouvé, le supprimer du panier
-        if ($index !== false) {
-            unset($panier[$index]);
-            // Réindexer le tableau après la suppression
-            $panier = array_values($panier);
-            // Mettre à jour le panier dans la session
-            $session->set('panier', $panier);
+                // Rediriger vers la page du panier
+                return $this->redirectToRoute('afficher_panier');
+            }
         }
 
-        // Rediriger vers la page du panier
+        // Si le produit n'est pas trouvé, rediriger vers la page du panier
         return $this->redirectToRoute('afficher_panier');
     }
+
 }

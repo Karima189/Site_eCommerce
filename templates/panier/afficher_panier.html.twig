@@ -12,10 +12,11 @@
 			{% for item in panier %}
 				<li>
 					<img src="{{ asset('img/' ~ item.image) }}" alt="{{ item.description }}" width="50" height="50">
-					{{ item.description }}
-					-
-					{{ item.prix }}
-					€
+					<div >{{ item.description }}</div>
+
+					<h3>Prix:{{ item.prix }} €</h3>
+
+
 					<a href="{{ path('supprimer_du_panier', {'id': item.id}) }}">Supprimer</a>
 
 				</li>
