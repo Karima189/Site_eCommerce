@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du Produit -
+	{{ produit.description }}
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="block_detail">
+		<div>
+			<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}" width="700" height="500">
+		</div>
+		<h2 class="description_product">{{ produit.description }}</h2>
+		<p class="description_detaille">{{ produit.descriptionDetaille }}</p>
+		<p>Couleur :
+			{{ produit.couleur }}</p>
+		<p>Taille :
+			{{ produit.taille }}</p>
+		<p>Prix :
+			{{ produit.prix }}</p>
+
+
+	</div>
+
+
+{% endblock %}

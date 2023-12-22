@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier
+{% endblock %}
+
+{% block body %}
+	<h1>Panier</h1>
+	{% if panier is empty %}
+		<p>Votre panier est vide.</p>
+	{% else %}
+		<ul>
+			{% for item in panier %}
+				<li>
+					<img src="{{ asset('img/' ~ item.image) }}" alt="{{ item.description }}" width="50" height="50">
+					{{ item.description }}
+					-
+					{{ item.prix }}
+					€
+					<a href="{{ path('supprimer_du_panier', {'id': item.id}) }}">Supprimer</a>
+
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+{% endblock %}
