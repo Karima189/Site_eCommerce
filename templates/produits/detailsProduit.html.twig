@@ -13,15 +13,17 @@
 		</div>
 		<h2 class="description_product">{{ produit.description }}</h2>
 		<p class="description_detaille">{{ produit.descriptionDetaille }}</p>
-		<p>Couleur :
+		<h4>
+			<span>Couleur :</span>
 			{{ produit.couleur }}</p>
-		<p>Taille :
+		<h4>
+			<span>Taille :</span>
 			{{ produit.taille }}</p>
-		<p>Prix :
-			{{ produit.prix }}</p>
+		<h4>
+			<span>Prix :</span>
+		</h4>
+
+		{{ produit.prix }}</h4>
 
 
-	</div>
-
-
-{% endblock %}
+</div>{% endblock %}

@@ -10,7 +10,7 @@
 			<li>
 				<a href="{{path('produits_par_categorie', {categoryId: 1})}}">Vetements</a>
 			</li>
-			<div><img src="{{ asset('img/robe_logo.jpg') }}" alt=""></div>
+			<div><img src="{{ asset('img/logo.png') }}" alt=""></div>
 			<li>
 				<a href="{{path('produits_par_categorie', {categoryId: 2})}}">Maquillage</a>
 			</li>
@@ -25,4 +25,44 @@
 			<div><img src="{{ asset('img/montre_logo.jpg') }}" alt=""></div>
 		</ul>
 	</nav>
+
+	{% if app.request.attributes.get('_route') == 'app_home' %}
+		<div class="liste_produits">
+			{% for produit in produits %}
+				<div>
+					<div>
+						<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}" width="400" height="400">
+					</div>
+					<h2 style="width:300px;">{{ produit.description }}</h2>
+				</div>
+			{% endfor %}
+		</div>
+
+		{% if vetements is not empty %}
+			<div id="vetements-carousel" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-inner">
+					{% for vetement in vetements %}
+						<div class="carousel-item {% if loop.first %}active{% endif %}">
+							<img src="{{ asset('img/' ~ vetement.image) }}" alt="{{ vetement.description }}" class="d-block w-100">
+							<div class="carousel-caption d-none d-md-block">
+								<h5>{{ vetement.description }}</h5>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#vetements-carousel" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Précédent</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#vetements-carousel" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Suivant</span>
+				</button>
+			</div>
+		{% else %}
+			<p>Aucun vêtement à afficher pour le moment.</p>
+		{% endif %}
+
+	{% endif %}
+
 {% endblock %}

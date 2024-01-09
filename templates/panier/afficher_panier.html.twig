@@ -10,9 +10,9 @@
 	{% else %}
 		<ul>
 			{% for item in panier %}
-				<li>
-					<img src="{{ asset('img/' ~ item.image) }}" alt="{{ item.description }}" width="50" height="50">
-					<div >{{ item.description }}</div>
+				<li class="liste_panier">
+					<img src="{{ asset('img/' ~ item.image) }}" alt="{{ item.description }}" width="200" height="200">
+					<h3>{{ item.description }}</h3>
 
 					<h3>Prix:{{ item.prix }} €</h3>
 

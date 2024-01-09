@@ -53,4 +53,5 @@ class ProduitsController extends AbstractController
         // Rediriger vers la page précédente ou une autre page
         return $this->redirectToRoute('produits_par_categorie', ['categoryId' => $produit->getCategory()->getId()]);
     }
+
 }
