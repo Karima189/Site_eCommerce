@@ -24,6 +24,78 @@
 		</h4>
 
 		{{ produit.prix }}</h4>
+   
+
+<div class="livraison">
+	<h1>Expédition Rapide à France
+	</h1>
+	<div class="expedition">
+		<h4>
+			<i class="fa-solid fa-truck"></i>
+			Livraison standard gratuite dès 49€ d'achat
+		</h4>
+	</div>
+	<h1>Notre Livraison</h1>
+	<div>
+		<table>
+			<tr>
+				<th>Mode de livraison</th>
+				<th>Temps de Livraison</th>
+				<th>Frais de livraison</th>
+
+			</tr>
+			<tr>
+				<td>Livraison En Point Relais</td>
+				<td>7-10 Jours Ouvrés</td>
+				<td>3.5€</td>
+			</tr>
+			<tr>
+				<td>Livraison Standard</td>
+				<td>7-11 Jours Ouvrés</td>
+				<td>4€</td>
+			</tr>
+			<tr>
+				<td>Livraison Express</td>
+				<td>5-8 Jours Ouvrés</td>
+				<td>6.90€</td>
+			</tr>
+
+		</table>
+	</div>
+	<h1 class="custom-title" onclick="toggleText()">Politique de Retour</h1>
+	<div id="hiddenText">
+		<p>Les retours peuvent être effectués pendant 45 jours après la date d’achat.
+		</p>
+		<p>
+			Politique de retour :</p>
+		<p>
+			1. Les articles doivent être renvoyés dans les 45 jours après la date d’achat.
+			<br>
+			2. Les articles doivent être renvoyés dans leur emballage d’origine et en parfait état.</p>
+	</div>
+	<script>
+	 function toggleText() {
+    var hiddenText = document.getElementById("hiddenText");
+
+    if (hiddenText.style.display === "none") {
+      hiddenText.style.display = "block";
+    } else {
+      hiddenText.style.display = "none";
+    }
+  }
+
+  document.addEventListener("click", function (event) {
+    var isClickInside = document
+      .getElementById("hiddenText")
+      .contains(event.target);
+    var isTitleClick = event.target.classList.contains("custom-title");
+
+    if (!isClickInside && !isTitleClick) {
+      document.getElementById("hiddenText").style.display = "none";
+    }
+  });
+	</script>
+</div>
 
 
 </div>{% endblock %}
