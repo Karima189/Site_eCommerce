@@ -6,42 +6,38 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Users;
+use App\Form\InscriptionFormType;
 use App\Form\RegistrationFormType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/inscription', name: 'inscription')]
-    public function register(Request $request, UsersPasswordEncoderInterface $passwordEncoder): Response
+     #[Route('/user', name: 'app_user')]
+    public function index(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $hasherPass): Response
     {
         $user = new Users();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(InscriptionFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Encodez le mot de passe
-            $user->setPassword(
-                $passwordEncoder->encodePassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
 
-            // Enregistrez l'utilisateur en base de données
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $hashedPassword = $hasherPass->hashPassword($user, $user->getPassword());
+            $user->setPassword($hashedPassword);
 
-            // Redirigez l'utilisateur vers une page de confirmation ou autre
+            $em->persist($user);
+            $em->flush();
+            
             return $this->redirectToRoute('app_login');
         }
-
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
+        return $this->render('registration/index.html.twig', [
+            'controller_name' => 'Inscrivez-vous !',
+            'user' => $form->createView()
         ]);
     }
 }
