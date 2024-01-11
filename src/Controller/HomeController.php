@@ -24,11 +24,27 @@ class HomeController extends AbstractController
 
         // Récupérer les produits de la catégorie=1 par leurs identifiants
         $vetements = $produitRepository->findBy(['id' => $vetementIds, 'category' =>  $categoryIdVetements]);
+
+        $bijouxIds = [12, 13, 14];
+        $categoryBijoux = 3;
+        $bijoux = $produitRepository->findBy(['id' => $bijouxIds , 'category' =>  $categoryBijoux]);
+
+        $montresIdsPremiere = [34, 45];
+        $categoryMontres = 4;
+        $montres1 = $produitRepository->findBy(['id' => $montresIdsPremiere, 'category' =>  $categoryMontres]);
+
+        $montresIdsDeuxieme = [48, 40];
+        $categoryMontres2 = 4;
+        $montres2 = $produitRepository->findBy(['id' => $montresIdsDeuxieme, 'category' =>  $categoryMontres2]);
         // Afficher la liste des produits dans le template Twig
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'produits' => $produits,
             'vetements' => $vetements,
+            'bijoux' => $bijoux,
+            'montres1' => $montres1,
+            'montres2' => $montres2,
+
         ]);
     }
 
