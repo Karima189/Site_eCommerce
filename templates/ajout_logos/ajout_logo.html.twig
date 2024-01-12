@@ -1,0 +1,19 @@
+{# templates/ajout_logo/ajoutlogo.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un logo
+{% endblock %}
+
+{% block body %}
+	<h1>Ajouter un logo</h1>
+
+	{{ form_start(logo) }}
+	{{ form_row(logo.image_logo) }}
+	{{ form_row(logo.description_logo) }}
+
+	<button type="submit">Ajouter le logo</button>
+	{{ form_end(logo) }}
+{% endblock %}
+
+
