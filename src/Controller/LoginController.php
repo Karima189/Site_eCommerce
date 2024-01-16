@@ -18,6 +18,13 @@ $error = $authenticationUtils->getLastAuthenticationError();
 // Dernier nom d'utilisateur saisi par l'utilisateur
 $lastUsername = $authenticationUtils->getLastUsername();
 
+ // Si l'utilisateur est connecté, redirigez-le vers l'index du dossier home
+ if ($this->getUser()) {
+    return $this->redirectToRoute('app_home');
+}
+
+
+
 return $this->render('login/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
 }
 

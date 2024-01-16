@@ -1,8 +1,6 @@
 <?php
-
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Entity\Users;
 use App\Form\UserFormType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,27 +12,28 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class RegistrationController extends AbstractController
 {
-#[Route('/register', name: 'app_register')]
-public function register(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $hasherPass): Response
-{
-    
-$user = new Users();
-$form = $this->createForm(UserFormType::class, $user);
-$form->handleRequest($request);
-$plaintext = $user->getPassword();
+    #[Route('/register', name: 'app_register')]
+    public function register(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $hasherPass): Response
+    {
 
-if ($form->isSubmitted() && $form->isValid()) {
-$hashedPassword = $hasherPass->hashPassword($user,$plaintext );
-$user->setPassword($hashedPassword);
+        $user = new Users();
+        $form = $this->createForm(UserFormType::class, $user);
+        $form->handleRequest($request);
+        $plaintext = $user->getPassword();
 
-$em->persist($user);
-$em->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $hashedPassword = $hasherPass->hashPassword($user, $plaintext);
+            $user->setPassword($hashedPassword);
 
-return $this->redirectToRoute('app_register');
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute('app_home');
+        }
+
+        return $this->render('registration/register.html.twig', [
+            'user' => $form->createView(),
+        ]);
+    }
 }
 
-return $this->render('registration/register.html.twig', [
-'user' => $form->createView(),
-]);
-}
-}

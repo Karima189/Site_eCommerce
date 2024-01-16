@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\LogosRepository;
 use App\Repository\ProduitRepository;
+use App\Repository\CarouselFrontRepository;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
     #[Route('/home', name: 'app_home')]
-    public function index(ProduitRepository $produitRepository , LogosRepository $logosRepository): Response
+    public function index(ProduitRepository $produitRepository , LogosRepository $logosRepository, CarouselFrontRepository $carouselFrontRepository): Response
     {
         
         // Identifiants spécifiques des 4 produits que vous souhaitez afficher
@@ -41,6 +42,7 @@ class HomeController extends AbstractController
         $montres2 = $produitRepository->findBy(['id' => $montresIdsDeuxieme, 'category' =>  $categoryMontres2]);
         
         $logos = $logosRepository->findAll();
+        $carouselImages = $carouselFrontRepository->findAll();
     
 
        
@@ -53,6 +55,7 @@ class HomeController extends AbstractController
             'montres1' => $montres1,
             'montres2' => $montres2,
             'logos' => $logos,
+            'carouselImages' => $carouselImages,
 
         ]);
     }

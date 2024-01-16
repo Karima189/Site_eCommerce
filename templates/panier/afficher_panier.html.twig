@@ -12,9 +12,17 @@
 			{% for item in panier %}
 				<li class="liste_panier">
 					<img src="{{ asset('img/' ~ item.image) }}" alt="{{ item.description }}" width="200" height="200">
-					<h3>{{ item.description }}</h3>
+					<h4>{{ item.description }}</h4>
 
-					<h3>Prix:{{ item.prix }} €</h3>
+					  <!-- Prix initial -->
+                    <h4>Prix:<span  id="prix{{item.id}}">{{ item.prix }}</span>€</h4>
+
+                     <!-- Ajout du champ de quantité -->
+                    <label for="quantity{{ item.id }}">Quantité:</label>
+                    <input style="width:250px; background-color:pink;" type="number" id="quantity{{ item.id }}" name="quantity{{ item.id }}" min="1" value="1" data-id="{{ item.id }}" class="quantity-input">
+
+                    <!-- Mise à jour du prix en fonction de la quantité -->
+                    <h4>Total: <span id="total{{ item.id }}">{{ item.prix }}</span> €</h4>
 
 
 					<a href="{{ path('supprimer_du_panier', {'id': item.id}) }}">Supprimer</a>
@@ -23,4 +31,27 @@
 			{% endfor %}
 		</ul>
 	{% endif %}
+
+       <script>
+        // Script JavaScript pour mettre à jour le total en fonction de la quantité
+        document.addEventListener('DOMContentLoaded', function () {
+            var quantityInputs = document.querySelectorAll('.quantity-input');
+
+            quantityInputs.forEach(function (input) {
+                input.addEventListener('change', function () {
+                    var itemId = input.getAttribute('data-id');
+                    var itemPrice = parseFloat(document.querySelector('#total' + itemId).innerText);
+                    var prixUnitaire = parseFloat(document.querySelector('#prix' + itemId).innerText);
+                    var quantity = parseInt(input.value);
+                    var total = prixUnitaire * quantity;
+
+                    // Mettre à jour le total affiché
+                    document.querySelector('#total' + itemId).innerText = total;
+                });
+            });
+        });
+    </script>
+
+	
+
 {% endblock %}

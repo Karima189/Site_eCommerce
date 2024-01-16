@@ -13,12 +13,11 @@
 					<img src="{{asset('img/' ~ produit.image)}}" alt="{{produit.description}}" width="400" height="400">
 				</div>
 				<h2 style="width:300px;">{{produit.description}}</h2>
-				<div style="margin-bottom:20px;">
+				<div style=";">
 					<a href="{{ path('ajouter_au_panier', {'id': produit.id}) }}" class="ajouter_au_panier">Ajouter au Panier</a>
-
 					<i class="fa-solid fa-cart-shopping"></i>
 				</div>
-				<a href="{{ path('afficher_produit', {'id': produit.id}) }}" class="voir_detail">Voir Plus de détails sur ce produit</a>
+			<a href="{{ path('afficher_produit', {'id': produit.id}) }}" class="voir_detail">Voir Plus de détails sur ce produit</a>
 			</div>
 		{% endfor %}
 	</div>

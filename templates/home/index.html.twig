@@ -28,6 +28,7 @@
 
 
 	{% if app.request.attributes.get('_route') == 'app_home' %}
+		<h3>Notre séléction Make Up</h3>
 		<div class="liste_produits">
 			{% for produit in produits %}
 				<div class="makeup_liste">
@@ -68,6 +69,7 @@
 
 
 		</div>
+		<h3>Nos Promotions de Coffrets Bijoux </h3>
 		<div class="d-flex justify-content-around" class="promo-bijoux">
 
 
@@ -87,6 +89,7 @@
 			{% endfor %}
 
 		</div>
+		<h3>Nos Montres Incontournables à prix Raisonnable </h3>
 
 		<div class="d-flex justify-content-around" class="block_watch">
 
