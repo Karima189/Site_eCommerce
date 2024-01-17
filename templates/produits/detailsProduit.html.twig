@@ -24,7 +24,11 @@
 			{{ produit.prix }} €</h4>
 		</h4>
 
-		
+		 <form action="{{ path('commander_produit', {'id': produit.id}) }}" method="post">
+            <input type="submit" value="Commander">
+        </form>
+
+	</div>
    
 
 <div class="livraison">
