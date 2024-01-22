@@ -1,0 +1,31 @@
+{# templates/user/user_list.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Utilisateurs{% endblock %}
+
+{% block body %}
+    <h1>Liste des Utilisateurs</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom d'utilisateur</th>
+                <th>Email</th>
+                <!-- Ajoutez d'autres colonnes en fonction de votre modèle User -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.prenom }}</td>
+                    <td>{{ user.email }}</td>
+                    <!-- Ajoutez d'autres colonnes en fonction de votre modèle User -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

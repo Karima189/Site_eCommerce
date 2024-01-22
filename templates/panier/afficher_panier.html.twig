@@ -8,21 +8,21 @@
 	{% if panier is empty %}
 		<p>Votre panier est vide.</p>
 	{% else %}
-		<ul>
+		<ul class="ul_panier">
 			{% for item in panier %}
 				<li class="liste_panier">
 					<img src="{{ asset('img/' ~ item.image) }}" alt="{{ item.description }}" width="200" height="200">
 					<h4>{{ item.description }}</h4>
 
 					  <!-- Prix initial -->
-                    <h4>Prix:<span  id="prix{{item.id}}">{{ item.prix }}</span>€</h4>
+                    <h4 class="sousTitres-panier">Prix:<span  id="prix{{item.id}}">{{ item.prix }} €</span></h4>
 
                      <!-- Ajout du champ de quantité -->
-                    <label for="quantity{{ item.id }}">Quantité:</label>
+                    <label for="quantity{{ item.id }}"class="sousTitres-panier">Quantité:</label>
                     <input style="width:250px; background-color:pink;" type="number" id="quantity{{ item.id }}" name="quantity{{ item.id }}" min="1" value="1" data-id="{{ item.id }}" class="quantity-input">
 
                     <!-- Mise à jour du prix en fonction de la quantité -->
-                    <h4>Total: <span id="total{{ item.id }}">{{ item.prix }}</span> €</h4>
+                    <h4 class="sousTitres-panier">Total: <span id="total{{ item.id }}">{{ item.prix }} €</span> </h4>
 
 
 					<a href="{{ path('supprimer_du_panier', {'id': item.id}) }}">Supprimer</a>

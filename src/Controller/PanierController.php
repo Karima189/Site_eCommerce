@@ -46,4 +46,7 @@ class PanierController extends AbstractController
         return $this->redirectToRoute('afficher_panier');
     }
 
+    
+
+  
 }

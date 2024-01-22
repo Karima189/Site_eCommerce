@@ -55,10 +55,4 @@ class ProduitsController extends AbstractController
         return $this->redirectToRoute('produits_par_categorie', ['categoryId' => $produit->getCategory()->getId()]);
     }
     
-    
-   
-
-    
-
-
 }

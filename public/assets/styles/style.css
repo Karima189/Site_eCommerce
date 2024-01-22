@@ -1,9 +1,16 @@
+
 header {
   display: flex;
   background-color: rgb(255, 216, 223);
   width: 100%;
   height: 150px;
   justify-content: space-around;
+}
+header h1 {
+  margin-top: 34px;
+  font-family: 'Lemon', serif;
+  font-weight: bold;
+  color: rgb(91, 10, 131);
 }
 
 .invisible{
@@ -12,36 +19,14 @@ header {
 .invisible2{
   width: 50px;
 }
-
-.recherche {
+.barre {
   display: flex;
-  justify-content: center;
-  margin-top: 30px;
-}
-header h1 {
-  margin-top: 34px;
-  font-family: 'Lemon', serif;
-  font-weight: bold;
-  color: rgb(91, 10, 131);
-}
-a > i {
-  position: absolute;
-  left: 15px;
-  top: 7px;
-}
-input {
-  padding: 8px;
-  width: 400px;
-  border-radius: 15px;
+  margin-top: 15px;
 }
 .icone {
   display: flex;
   margin-left: 30px;
   margin-top: 10px;
-}
-.barre {
-  display: flex;
-  margin-top: 15px;
 }
 .seConnecter {
   margin-right: 10px;
@@ -59,6 +44,24 @@ input {
   text-decoration: none;
   color: purple;
 }
+
+.recherche {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+a > i {
+  position: absolute;
+  left: 15px;
+  top: 7px;
+}
+input {
+  padding: 8px;
+  width: 400px;
+  border-radius: 15px;
+}
+
 .icone i {
   margin-top: 23px;
   margin-left: 10px;
@@ -75,21 +78,40 @@ a {
 i {
   font-size: 20px;
 }
-li {
-  list-style-type: none;
-  padding: 20px;
-}
 ul {
   display: flex;
   align-items: center;
   margin-top: 30px;
 }
+li {
+  list-style-type: none;
+  padding: 20px;
+}
+
 ul img {
   width: 150px;
   height: 100px;
 }
 li a {
   font-size: 25px;
+}
+.listeProduits{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 1500px;
+  margin: auto;
+}
+
+h3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  color: crimson;
+  font-family: "Dancing Script", cursive;
+  font-weight: bold;
+  font-size: 40px;
+  
 }
 .voir_detail{
  
@@ -100,54 +122,7 @@ li a {
   font-size: 25px;
   color: rgb(109, 7, 84);
 }
-.maquillage img {
-  width: 254px;
-  height: 170px;
-  border-radius: 15px;
-  margin-left: 15px;
-}
-.maquillage {
-  width: 300px;
-  height: 280px;
-  border: 2px solid rgb(103, 68, 107);
-  margin-left: 20px;
-  border-radius: 15px;
-    position: relative;
-    
 
-}
-
-.liste_images {
-  width: 100%;
-  height: 100%;
-}
-.description_boucle {
-  font-weight: bold;
-}
-.liste_clothes {
-  display: flex;
-  width: 1300px;
-  margin: auto;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.liste_clothes p {
-  width: 250px;
-}
-
-.liste_images_div {
-  width: 300px;
-  height: 300px;
-}
-
-.liste_vetements {
-  display: flex;
-  margin: 20px 0;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 500px;
-}
 .liste_produits {
   display: flex;
   flex-wrap: wrap;
@@ -155,36 +130,28 @@ li a {
   width: 1900px;
   margin: auto;
 }
-.listeProduits{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 1500px;
-  margin: auto;
+
+.makeup_liste {
+  border: 2px solid purple;
+  padding: 10px;
+  border-radius: 15px;
+  transition: transform 0.2s ease; /* Effet de transition au survol */
+}
+.makeup_liste:hover {
+  transform: scale(1.1); /* Échelle augmentée au survol */
 }
 
-.livraison {
+.carousel-inner {
+  width: 500px;
+  height: 700px;
+  margin-top: 40px;
+}
+.ecritureCarousel {
+  color: rgb(56, 19, 165);
+  font-family: "Dancing Script", cursive;
   text-align: center;
-  border: 4px solid rgb(103, 68, 107);
-  border-radius: 25px;
-  margin: auto;
-  width: 900px;
-}
-.livraison table,
-th,
-td,
-tr {
-  border: 1px solid black;
-  border-collapse: collapse;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 25px;
-  padding: 10px;
-}
-th {
-  color: darkred;
-}
-table {
-  margin: auto;
+  font-weight: bold;
+  width: 500px;
 }
 .coffre1 {
   position: relative;
@@ -214,101 +181,6 @@ table {
   text-align: center;
   font-weight: bold;
 }
-.expedition i {
-  color: blue;
-  font-size: 25px;
-}
-.expedition h4 {
-  margin-left: 30px;
-  font-size: 25px;
-  color: darkred;
-  text-align: center;
-}
-
-#hiddenText {
-  display: none;
-  margin-top: 10px;
-  font-weight: bold;
-  font-size: 30px;
-  width: 600px;
-  margin: auto;
-}
-.block_detail {
-  width: 50%;
-  margin: auto;
-}
-.block_detail h4{
-  margin-left: -30px;
-}
-
-.block_detail span {
-  color: rgb(94, 26, 26);
-  font-weight: bold;
-  
-}
-.block_detail img{
-  margin-left: 12%;
-}
-.description_detaille {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 28px;
-  width: 1200px;
-  margin-left: -30px;
- 
- 
-}
-.description_product {
-  color: rgba(114, 27, 91, 0.877);
-  text-align: center;
-  
-}
-.liste_panier img {
-  width: 350px;
-  height: 350px;
-}
-.liste_panier h4 {
-  width: 300px;
-}
-h3 {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 20px;
-  color: crimson;
-  font-family: "Dancing Script", cursive;
-  font-weight: bold;
-  font-size: 40px;
-  
-}
-.liste_panier a {
-  border: 1px solid red;
-  color: black;
-  padding: 5px;
-  background-color: rgb(159, 39, 39);
-  font-size: 20px;
-  margin-top: 20px;
-}
-.carousel-inner {
-  width: 500px;
-  height: 700px;
-  margin-top: 40px;
-}
-.makeup_liste {
-  border: 2px solid purple;
-  padding: 10px;
-  border-radius: 15px;
-  transition: transform 0.2s ease; /* Effet de transition au survol */
-}
-.makeup_liste:hover {
-  transform: scale(1.1); /* Échelle augmentée au survol */
-}
-.ecritureCarousel {
-  color: rgb(56, 19, 165);
-  font-family: "Dancing Script", cursive;
-  text-align: center;
-  font-weight: bold;
-  width: 500px;
-}
 .montresAcceuil {
   border: 3px solid purple;
   border-radius: 15px;
@@ -329,12 +201,139 @@ h3 {
   width: 400px;
   height: 400px;
 }
+.block_detail {
+  width: 50%;
+  margin: auto;
+}
+.block_detail h4{
+  margin-left: -30px;
+}
+
+.block_detail span {
+  color:  rgba(98, 43, 72, 0.745);
+  font-weight: bold;
+  font-size: 28px;
+  
+}
+.block_detail img{
+  margin-left: 12%;
+}
+.description_detaille {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 28px;
+  width: 1200px;
+  margin-left: -30px;
+  text-align: justify;
+  
+}
+.Description_description_detaille{
+  margin-left: -30px;
+  border: 2px solid palevioletred;
+  width: 200px;
+  color: rgba(98, 43, 72, 0.745);
+  border-radius: 15px;
+  padding: 8px;
+}
+.description_product {
+  color: rgba(114, 27, 91, 0.877);
+  text-align: center;
+  
+}
+
+.livraison {
+  text-align: center;
+  border: 4px solid rgb(103, 68, 107);
+  border-radius: 25px;
+  margin: auto;
+  width: 900px;
+}
+.livraison table,
+th,
+td,
+tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  padding: 10px;
+}
+th {
+  color: darkred;
+}
+table {
+  margin: auto;
+}
+
+.expedition i {
+  color: blue;
+  font-size: 25px;
+}
+.expedition h4 {
+  margin-left: 30px;
+  font-size: 25px;
+  color: darkred;
+  text-align: center;
+}
+
+#hiddenText {
+  display: none;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 30px;
+  width: 600px;
+  margin: auto;
+}
+
+.ul_panier {
+  flex-wrap: wrap;
+}
+
+.liste_panier img {
+  width: 350px;
+  height: 350px;
+  
+}
+.liste_panier{
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: 15px;
+ min-height: 640px;
+}
+.sousTitres-panier{
+  font-size: 20px;
+  color: blue;
+  font-weight: bold;
+}
+.liste_panier span{
+  color: black;
+}
+
+.liste_panier h4 {
+  width: 300px;
+}
+.liste_panier a {
+  border: 1px solid red;
+  color: black;
+  padding: 5px;
+  background-color: rgb(159, 39, 39);
+  font-size: 20px;
+  margin-top: 20px;
+}
+.quantity-input{
+  height: 35px;
+  width: 20px;
+  border-radius: 15px;
+}
+
+
+
 .block_footer img{
   width: 200px;
   height: 200px;
 
 }
-        .block_footer2{
+ .block_footer2{
   background-color: black;
   color: white;
   font-family:Arial, Helvetica, sans-serif;
@@ -342,7 +341,7 @@ h3 {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  
+  margin-top: 25px;
 
   
 }
@@ -371,3 +370,70 @@ h3 {
 .partie_finale h1{
   color: white;
 }
+hr{
+ width: 1200px;
+ font-size: 15px;
+}
+
+
+
+
+
+
+
+/* .maquillage img {
+  width: 254px;
+  height: 170px;
+  border-radius: 15px;
+  margin-left: 15px;
+}
+.maquillage {
+  width: 300px;
+  height: 280px;
+  border: 2px solid rgb(103, 68, 107);
+  margin-left: 20px;
+  border-radius: 15px;
+    position: relative;
+    
+
+} */
+
+/* .liste_images {
+  width: 100%;
+  height: 100%;
+}
+.description_boucle {
+  font-weight: bold;
+}
+.liste_clothes {
+  display: flex;
+  width: 1300px;
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.liste_clothes p {
+  width: 250px;
+}
+
+.liste_images_div {
+  width: 300px;
+  height: 300px;
+}
+
+.liste_vetements {
+  display: flex;
+  margin: 20px 0;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 500px;
+} */
+
+
+
+
+
+
+
+

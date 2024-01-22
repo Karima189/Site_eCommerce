@@ -12,9 +12,12 @@
 			<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}" width="700" height="500">
 		</div>
 		<h2 class="description_product">{{ produit.description }}</h2>
+		<hr>
+		<h2 class="Description_description_detaille">Description:</h2>
 		<p class="description_detaille">{{ produit.descriptionDetaille }}</p>
+		<hr>
 		<h4>
-			<span>Couleur :</span>
+			<span >Couleur :</span>
 			{{ produit.couleur }}</p>
 		<h4>
 			<span>Taille :</span>
@@ -24,9 +27,7 @@
 			{{ produit.prix }} €</h4>
 		</h4>
 
-		 <form action="{{ path('commander_produit', {'id': produit.id}) }}" method="post">
-            <input type="submit" value="Commander">
-        </form>
+		
 
 	</div>
    
@@ -40,7 +41,7 @@
 			Livraison standard gratuite dès 49€ d'achat
 		</h4>
 	</div>
-	<h1>Notre Livraison</h1>
+	<h1 style="color:darkblue;">Notre Livraison</h1>
 	<div>
 		<table>
 			<tr>
@@ -67,11 +68,11 @@
 
 		</table>
 	</div>
-	<h1 class="custom-title" onclick="toggleText()">Politique de Retour</h1>
+	<h1 class="custom-title" onclick="toggleText()" style="color:darkblue;">Politique de Retour</h1>
 	<div id="hiddenText">
 		<p>Les retours peuvent être effectués pendant 45 jours après la date d’achat.
 		</p>
-		<p>
+		<p style="color:darkblue;">
 			Politique de retour :</p>
 		<p>
 			1. Les articles doivent être renvoyés dans les 45 jours après la date d’achat.
@@ -80,13 +81,13 @@
 	</div>
 	<script>
 	 function toggleText() {
-    var hiddenText = document.getElementById("hiddenText");
+     var hiddenText = document.getElementById("hiddenText");
 
-    if (hiddenText.style.display === "none") {
+     if (hiddenText.style.display === "none") {
       hiddenText.style.display = "block";
-    } else {
+     } else {
       hiddenText.style.display = "none";
-    }
+     }
   }
 
   document.addEventListener("click", function (event) {
