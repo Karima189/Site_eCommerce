@@ -9,7 +9,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class LoginController extends AbstractController
 {
-#[Route('/login', name: 'app_login')]
+#[Route('/loginold', name: 'app_loginold')]
 public function login(AuthenticationUtils $authenticationUtils): Response
 {
 // Récupérer l'erreur de la session, s'il y en a une
