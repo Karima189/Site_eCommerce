@@ -1,39 +1,85 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello HomeController!
-{% endblock %}
-
-{% block body %}
-
-	<header>
-	<img src="{{ asset('img/logo_img2.png') }}" alt="">
-		<h1>Chic Mademoiselle</h1>
-		<div class="invisible">  </div>
-		
-
-
-		<div id="searchResults"></div>
-
-
-		<div class="barre">
-			<div class="icone">
-				<a class="seConnecter" href="{{path('app_login')}}">Se Connecter</a>
-				<a class="inscription" href="{{path('app_register')}}">Inscription</a>
+<header>
+	{# <img src="{{ asset('img/logo_img2.png') }}" alt="">
+			<h1>Chic Mademoiselle</h1>
+			<div class="invisible">  </div>
+			
+	
+	
+			<div id="searchResults"></div>
+			<div class="barre">
+				<div class="icone">
 				<i class="fa-solid fa-user"></i>
+					<a class="seConnecter" href="{{path('app_login')}}">Se Connecter</a> <br>
+					<a class="inscription" href="{{path('app_register')}}">Inscription</a>
+					
+				</div>
+	
+				<div class="icone">
+					<a id="panierLink" href="{{ path('afficher_panier') }}">Panier</a>
+	
+					<i class="fa-solid fa-cart-shopping"></i>
+				</div>
+	
+				<div class="icone">
+					<a href="{{ path('contact_show') }}">Contact</a>
+					<i class="fa-solid fa-envelope"></i>
+				</div>
 			</div>
+			<div class="invisible2">  </div> #}
+	<nav class="navbar navbar-expand-lg container-fluid">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="">
+				<img src="{{ asset('img/logo_img2.png') }}" alt="" width="180" height="180"></a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarScroll">
+				<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+					<li class="nav-item">
+						<a class="titre_site nav-link active " aria-current="page" href="#">
+							Chic Mademoiselle
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('afficher_panier') }}">
+							Panier
+						</a>
+					</li>
+					<i class="fa-solid fa-cart-shopping"></i>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="{{ path('app_login') }}" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Se Connecter
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+							<li>
+								<a class="dropdown-item active" href="{{ path('app_register') }}">
+									Inscription
+								</a>
+							</li>
+							<li>
+								<a class="dropdown-item active" href="{{ path('app_login') }}">
+									Connexion
+								</a>
+							</li>
+						</ul>
+					</li>
+					<i class="fa-solid fa-user"></i>
+					<li class="nav-item">
+						<a class="nav-link " href="#" tabindex="-1" aria-disabled="true">
+							Contact
+						</a>
+					</li>
+					<i class="fa-solid fa-envelope"></i>
+				</ul>
+				<form class="d-flex">
+					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success" type="submit">
+						Search
 
-			<div class="icone">
-				<a id="panierLink" href="{{ path('afficher_panier') }}">Panier</a>
 
-				<i class="fa-solid fa-cart-shopping"></i>
-			</div>
-
-			<div class="icone">
-				<a href="">Contact</a>
-				<i class="fa-solid fa-envelope"></i>
+					</button>
+				</form>
 			</div>
 		</div>
-		<div class="invisible2">  </div>
-
-	</header>
-{% endblock %}
+	</nav>
+</header>

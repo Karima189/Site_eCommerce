@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Users;
+use App\Entity\User;
 use App\Entity\Produit;
 use App\Entity\Categories;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +22,7 @@ class DashboardController extends AbstractDashboardController
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
         $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
-        return $this->redirect($adminUrlGenerator->setController(UsersCrudController::class)->generateUrl());
+        return $this->redirect($adminUrlGenerator->setController(UserCrudController::class)->generateUrl());
 
         // Option 2. You can make your dashboard redirect to different pages depending on the user
         //
@@ -47,6 +47,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Categories', 'fas fa-list', Categories::class);
         yield MenuItem::linkToCrud('Produits', 'fas fa-list', Produit::class);
-        yield MenuItem::linkToCrud('Users', 'fas fa-list', Users::class);
+        yield MenuItem::linkToCrud('Users', 'fas fa-list', User::class);
     }
 }

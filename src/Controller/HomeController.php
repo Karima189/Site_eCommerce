@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'app_home')]
+    #[Route('/', name: 'app_home')]
     public function index(ProduitRepository $produitRepository , LogosRepository $logosRepository, CarouselFrontRepository $carouselFrontRepository): Response
     {
         
@@ -23,7 +23,7 @@ class HomeController extends AbstractController
         $categoryId = 2;
         $produits = $produitRepository->findBy(['id' => $productIdsToDisplay, 'category' => $categoryId]);
         // Identifiants spécifiques des produits de la catégorie=1 que vous souhaitez afficher dans le carousel
-        $vetementIds = [63,53,57];
+        $vetementIds = [63,50,64];
         $categoryIdVetements=1;
 
         // Récupérer les produits de la catégorie=1 par leurs identifiants
