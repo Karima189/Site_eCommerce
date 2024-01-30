@@ -10,9 +10,14 @@ header {
   font-family: 'Lemon', serif;
   font-weight: bold;
   color: rgb(91, 10, 131) !important;
+  font-size: 40px !important;
 }
-
-.invisible{
+.inscription ,.connexion{
+  background-color: pink !important;
+  color: black !important;
+  border-radius: 15px !important;
+}
+/* .invisible{
   width: 350px;
 }
 .invisible2{
@@ -41,14 +46,44 @@ header {
 .inscription {
   display: none;
   margin-top: 5px; /* Espace entre les deux liens */
-  text-decoration: none;
-  color: purple;
+  
+/* } */ 
+
+.details_body {
+  background-color:rgb(207, 185, 210);
+
+  
+}
+.phrase_produits{
+  font-family: "Dancing Script", cursive;
+  font-weight: bolder;
+  text-align: center;
+  margin: auto;
+  /* background-color: rgb(239, 210, 215); */
+  height: 70px;
+  width: 1000px;
+}
+.supprimer_panier{
+  margin-top: 40px;
+}
+.panier_vide{
+  font-family: "Dancing Script", cursive;
+  font-weight: bold;
+  text-align: center;
+  font-size: 40px;
+  color: black;
+
 }
 
 .recherche {
   display: flex;
   justify-content: center;
   margin-top: 30px;
+}
+.nav-liens{
+  color: purple !important;
+  font-weight: bold;
+  font-size: 23px;
 }
 
 a > i {
@@ -202,7 +237,7 @@ h3 {
   height: 400px;
 }
 .block_detail {
-  width: 50%;
+  width: 55%;
   margin: auto;
 }
 .block_detail h4{
@@ -217,6 +252,7 @@ h3 {
 }
 .block_detail img{
   margin-left: 12%;
+  margin-top: 40px;
 }
 .description_detaille {
   font-family: Arial, Helvetica, sans-serif;

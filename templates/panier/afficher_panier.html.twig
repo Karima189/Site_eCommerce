@@ -4,9 +4,9 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Panier</h1>
+	<h1 style="margin:40px;color:darkred;">Votre Panier</h1>
 	{% if panier is empty %}
-		<p>Votre panier est vide.</p>
+		<h2 class="panier_vide">Votre panier est vide...Pensez à <a href="{{path('produits_par_categorie', {categoryId: 1})}}" class="panier_vide">continuer vos achats: </a></h2>
 	{% else %}
 		<ul class="ul_panier">
 			{% for item in panier %}
@@ -25,7 +25,7 @@
                     <h4 class="sousTitres-panier">Total: <span id="total{{ item.id }}">{{ item.prix }} €</span> </h4>
 
 
-					<a href="{{ path('supprimer_du_panier', {'id': item.id}) }}">Supprimer</a>
+					<a href="{{ path('supprimer_du_panier', {'id': item.id}) }}" class="supprimer_panier">Supprimer</a>
 
 				</li>
 			{% endfor %}

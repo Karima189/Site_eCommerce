@@ -18,11 +18,30 @@ class ProduitsController extends AbstractController
         // Récupérer les produits avec category_id = 1
         $produits = $produitRepository->findBy(['category' => $categoryId]);
 
+        switch($categoryId){
+            case '1' :
+                $phrase = 'Chez Nous vous trouvez un large choix de vetements pour un look exellent et attirant!';
+                break;
+            case '2' :
+                $phrase = 'Vous trouverez un large choix de Make Up pour une beauté impréssionnante !
+                ';
+                break;
+            case '3' : 
+                $phrase = 'Une large gamme de bijoux pour une beauté incontournable';
+                break;
+            case '4' : 
+                $phrase = ' Des Montres Raffinées et Luxes spécialements pour Vous !';
+                break;
+            default: 
+                $phrase = null;
+        }
+
         // dd($produits);
 
         // Afficher la liste des produits dans le template Twig
         return $this->render('produits/produits.html.twig', [
             'produits' => $produits,
+            'test' => $phrase
         ]);
     }
 

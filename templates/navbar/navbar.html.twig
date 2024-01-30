@@ -29,35 +29,30 @@
 	<nav class="navbar navbar-expand-lg container-fluid">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="">
-				<img src="{{ asset('img/logo_img2.png') }}" alt="" width="180" height="180"></a>
+				<img src="{{ asset('img/logo_img2.png') }}" alt="" width="180" height="150"></a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarScroll">
+			<div class="collapse navbar-collapse mb-4" id="navbarScroll">
 				<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 					<li class="nav-item">
-						<a class="titre_site nav-link active " aria-current="page" href="#">
+						<a class="titre_site nav-link active " aria-current="page" href="{{ path('app_home') }}">
 							Chic Mademoiselle
 						</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('afficher_panier') }}">
-							Panier
-						</a>
-					</li>
-					<i class="fa-solid fa-cart-shopping"></i>
+					
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="{{ path('app_login') }}" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<a class="nav-link dropdown-toggle nav-liens" href="{{ path('app_login') }}" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Se Connecter
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
 							<li>
-								<a class="dropdown-item active" href="{{ path('app_register') }}">
+								<a class="dropdown-item active inscription " href="{{ path('app_register') }}">
 									Inscription
 								</a>
 							</li>
 							<li>
-								<a class="dropdown-item active" href="{{ path('app_login') }}">
+								<a class="dropdown-item active connexion" href="{{ path('app_login') }}">
 									Connexion
 								</a>
 							</li>
@@ -65,7 +60,13 @@
 					</li>
 					<i class="fa-solid fa-user"></i>
 					<li class="nav-item">
-						<a class="nav-link " href="#" tabindex="-1" aria-disabled="true">
+						<a class="nav-link nav-liens " href="{{ path('afficher_panier') }}">
+							Panier
+						</a>
+					</li>
+					<i class="fa-solid fa-cart-shopping"></i>
+					<li class="nav-item">
+						<a class="nav-link nav-liens " href="#" tabindex="-1" aria-disabled="true">
 							Contact
 						</a>
 					</li>
