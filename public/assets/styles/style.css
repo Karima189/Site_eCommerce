@@ -133,7 +133,7 @@ li a {
 .listeProduits{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 1500px;
   margin: auto;
 }
