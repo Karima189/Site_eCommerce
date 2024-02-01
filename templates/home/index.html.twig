@@ -4,28 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<nav>
-		<ul>
-			<li>
-				<a href="{{path('produits_par_categorie', {categoryId: 1})}}">Vetements</a>
-			</li>
-			<div><img src="{{ asset('img/logo.png') }}" alt=""></div>
-			<li>
-				<a href="{{path('produits_par_categorie', {categoryId: 2})}}">Maquillage</a>
-			</li>
-			<div><img src="{{ asset('img/logo_maquillage.png') }}" alt=""></div>
-			<li>
-				<a href="{{path('produits_par_categorie', {categoryId: 3})}}">Bijoux</a>
-			</li>
-			<div><img src="{{ asset('img/bague_logo.png') }}" alt=""></div>
-			<li>
-				<a href="{{path('produits_par_categorie', {categoryId: 4})}}">Montres</a>
-			</li>
-			<div><img src="{{ asset('img/montres_logo.png') }}" alt=""></div>
-		</ul>
-	</nav>
-
-
+	
 	{% if app.request.attributes.get('_route') == 'app_home' %}
 		<h3>Notre séléction Make Up</h3>
 		<div class="liste_produits">

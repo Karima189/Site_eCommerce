@@ -1,4 +1,5 @@
 <header>
+{% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
 	{# <img src="{{ asset('img/logo_img2.png') }}" alt="">
 			<h1>Chic Mademoiselle</h1>
 			<div class="invisible">  </div>
@@ -71,6 +72,17 @@
 						</a>
 					</li>
 					<i class="fa-solid fa-envelope"></i>
+					<li class="nav-item">
+						<a class="nav-link nav-liens" href="{{ path('afficher_panier') }}">
+							Panier
+							{% if currentPath == "/" %}
+								<div id="nombre"></div>
+							{% else %}
+								<div id="nombr"></div>
+							{% endif %}
+						</a>
+					</li>
+					<i class="fa-solid fa-cart-shopping"></i>
 				</ul>
 				<form class="d-flex">
 					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -84,3 +96,23 @@
 		</div>
 	</nav>
 </header>
+<nav>
+	<ul>
+		<li>
+			<a href="{{path('produits_par_categorie', {categoryId: 1})}}">Vetements</a>
+		</li>
+		<div><img src="{{ asset('img/logo.png') }}" alt=""></div>
+		<li>
+			<a href="{{path('produits_par_categorie', {categoryId: 2})}}">Maquillage</a>
+		</li>
+		<div><img src="{{ asset('img/logo_maquillage.png') }}" alt=""></div>
+		<li>
+			<a href="{{path('produits_par_categorie', {categoryId: 3})}}">Bijoux</a>
+		</li>
+		<div><img src="{{ asset('img/bijoux_logo.png') }}" alt=""></div>
+		<li>
+			<a href="{{path('produits_par_categorie', {categoryId: 4})}}">Montres</a>
+		</li>
+		<div><img src="{{ asset('img/montres_logo.png') }}" alt=""></div>
+	</ul>
+</nav>

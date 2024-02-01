@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\TailleProduit;
 use App\Entity\User;
 use App\Entity\Produit;
 use App\Entity\Categories;

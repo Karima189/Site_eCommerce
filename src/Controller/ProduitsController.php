@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Produit;
+use App\Entity\TailleProduit;
 use App\Repository\ProduitRepository;
+use App\Repository\TailleProduitRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,21 +20,21 @@ class ProduitsController extends AbstractController
         // Récupérer les produits avec category_id = 1
         $produits = $produitRepository->findBy(['category' => $categoryId]);
 
-        switch($categoryId){
-            case '1' :
+        switch ($categoryId) {
+            case '1':
                 $phrase = 'Chez Nous vous trouvez un large choix de vetements pour un look exellent et attirant!';
                 break;
-            case '2' :
+            case '2':
                 $phrase = 'Vous trouverez un large choix de Make Up pour une beauté impréssionnante !
                 ';
                 break;
-            case '3' : 
+            case '3':
                 $phrase = 'Une large gamme de bijoux pour une beauté incontournable';
                 break;
-            case '4' : 
+            case '4':
                 $phrase = ' Des Montres Raffinées et Luxes spécialements pour Vous !';
                 break;
-            default: 
+            default:
                 $phrase = null;
         }
 
@@ -46,10 +48,36 @@ class ProduitsController extends AbstractController
     }
 
     #[Route('/produit/{id}', name: 'afficher_produit')]
-    public function afficherProduit(Produit $produit): Response
+    public function afficherProduit(Produit $produit, TailleProduitRepository $tailleProduit): Response
     {
+        $categorie = $produit->getCategory();
+        // dd($categorie);
+        $nomProduit = strtolower($produit->getDescription());
+
+        // On déclare les variables null pour éviter les erreurs dans les endroits où on en a pas besoin (exemple, maquillage);
+        $nomTaille = null;
+        $tabTaille = null;
+
+        // Si le produit contient l'un des mots clés dans sa description, alors il rentre dans cette condition et rempli LE tableau tabTaille en fonction du produit et ajoute le style de taille (cm,mm) également en fonction du nom.
+        if (str_contains($nomProduit, 'bague')) {
+            $tabTaille = ['44', '46', '48', '50', '52', '54', '56', '58', '60', '62', '64'];
+            $nomTaille = "mm";
+        } else if (str_contains($nomProduit, 'collier')) {
+            $tabTaille = ['35', '40', '45', '50', '55', '60'];
+            $nomTaille = 'cm';
+        } else if (str_contains($nomProduit, 'bracelet') || $categorie->getId() == 4) {
+            $tabTaille = ['14', '15', '16', '17', '18'];
+            $nomTaille = 'cm';
+        } else if ($categorie->getId() == 1) {
+            $tabTaille = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+        }
+
+
+
         return $this->render('produits/detailsProduit.html.twig', [
             'produit' => $produit,
+            'nomTaille' => $nomTaille,
+            'tabTaille' => $tabTaille
         ]);
     }
 
@@ -73,5 +101,34 @@ class ProduitsController extends AbstractController
         // Rediriger vers la page précédente ou une autre page
         return $this->redirectToRoute('produits_par_categorie', ['categoryId' => $produit->getCategory()->getId()]);
     }
-    
+
+    #[Route('/ajout-panier/{id}', name: 'ajout_panier')]
+    public function ajoutPanier($id, ProduitRepository $pr, SessionInterface $session, Request $rq): Response
+    {
+        $quantite = $rq->query->get("qte", 1) ?: 1;
+        $produit = $pr->find($id);
+        $panier = $session->get("panier", []); // on récupère ce qu'il y a dans le panier en session
+
+        $produitDejaDansPanier = false;
+        foreach ($panier as $indice => $ligne) {
+            if ($produit->getId() == $ligne["produit"]->getId()) {
+                $panier[$indice]["quantite"] += $quantite;
+                $produitDejaDansPanier = true;
+                break;  // pour sortir de la boucle foreach
+            }
+        }
+        if (!$produitDejaDansPanier) {
+            $panier[] = ["quantite" => $quantite, "produit" => $produit];  // on ajoute une ligne au panier => $panier est un array d'array
+        }
+
+
+        $session->set("panier", $panier);
+
+        $nb = 0;
+        foreach ($panier as $ligne) {
+            $nb += $ligne["quantite"];
+        }
+        return $this->json($nb);
+    }
+
 }

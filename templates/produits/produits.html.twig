@@ -29,31 +29,60 @@
 				</div>
 				<a href="{{ path('afficher_produit', {'id': produit.id}) }}" class="voir_detail">
 					Voir Plus de détails sur ce produit
-
-
 				</a>
+				           
+				<input name="qte" type="number" value="1"  id="field{{ produit.id }}">
+				<button class="btn btn-warning" id="form{{ produit.id }}">
+					<i class="fa fa-cart-arrow-down"></i>
+				</button> 
 			</div>
+			<script>
+				window.addEventListener("load", () => {
+					//console.log($("#field{{ produit.id }} [name='qte']").val());
+					$("#form{{ produit.id }}").on("click",(evtSubmit) => {
+						evtSubmit.preventDefault();
+						$.ajax({
+							url: "{{ path('ajout_panier', {id: produit.id}) }}",
+							data: "qte=" + 1,
+							type: 'POST',
+							dataType: "json",
+							success: (data) => {
+								$("#nombre").html(data);
+								console.log("nb produits dans le panier = " + data);
+							},
+							error: (jqXHR,status, error) => {
+								console.log("ERREUR AJAX" , status,error);
+							}
+						});
+					});
+				});
+			</script>
 		{% endfor %}
 	</div>
 </div>
 <script>
 	document.addEventListener("DOMContentLoaded", function () {
-var recherche = document.getElementById("searchInput");
-var articleNames = document.querySelectorAll("h2");
+		var recherche = document.getElementById("searchInput");
+		var articleNames = document.querySelectorAll("h2");
 
-recherche.addEventListener("input", function () {
-var searchTerm = recherche.value.toLowerCase();
+		recherche.addEventListener("input", function () {
+			var searchTerm = recherche.value.toLowerCase();
 
-articleNames.forEach(function (articleName) {
-var articleTitreName = articleName.textContent.toLowerCase();
-if (articleTitreName.includes(searchTerm)) {
-articleName.parentElement.style.display = "block";
-console.log('oui');
-} else {
-console.log('non');
-articleName.parentElement.style.display = "none";
-}
-});
-});
-});
+			articleNames.forEach(function (articleName) {
+			var articleTitreName = articleName.textContent.toLowerCase();
+			if (articleTitreName.includes(searchTerm)) {
+					articleName.parentElement.style.display = "block";
+					console.log('oui');
+				} else {
+					console.log('non');
+					articleName.parentElement.style.display = "none";
+				}
+			});
+		});
+	});
 </script>{% endblock %}
+
+{% block javascripts %}
+  
+
+{% endblock %}

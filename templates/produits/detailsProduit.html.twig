@@ -28,10 +28,19 @@
 				{{ produit.couleur }}
 			</h4>
 			<h4>
-				<span>
-					Taille :
-				</span>
-				{{ produit.taille }}
+				{% if produit.category.id != 2 %}
+					<span>
+						Taille :
+					</span>
+					<select>
+						{% for taille in tabTaille %}
+							<option>
+								{{taille}}
+								{{nomTaille}}
+							</option>
+						{% endfor %}
+					</select>
+				{% endif %}
 			</h4>
 			<h4>
 				<span>
