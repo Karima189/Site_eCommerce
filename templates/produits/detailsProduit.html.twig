@@ -32,14 +32,15 @@
 					<span>
 						Taille :
 					</span>
-					<select>
+					<div class="taille_utilisateur">
 						{% for taille in tabTaille %}
-							<option>
-								{{taille}}
+							<div class="taille_solo" onclick="toggleCheckbox(this)">
+								<input type="checkbox" name="tailles[]" value="{{ taille }}" style="display: none" ;>
+								{{ taille }}
 								{{nomTaille}}
-							</option>
+							</div>
 						{% endfor %}
-					</select>
+					</div>
 				{% endif %}
 			</h4>
 			<h4>
@@ -152,5 +153,17 @@ if (! isClickInside && ! isTitleClick) {
 document.getElementById("hiddenText").style.display = "none";
 }
 });
+
+function toggleCheckbox(element) {
+var checkbox = element.querySelector('input[type="checkbox"]');
+checkbox.checked = ! checkbox.checked;//elle est egale à false si on clique elle devient true, et inversement
+
+// Ajoutez ou supprimez la classe 'checked' pour styliser visuellement
+if (checkbox.checked) {
+element.classList.add('checked');
+} else {
+element.classList.remove('checked');
+}
+}
 	</script>
 </div></div>{% endblock %}
