@@ -57,6 +57,21 @@ header {
 
 
 }
+.bouton_home{
+  justify-content: center;
+  display: flex;
+  font-size: 28px;
+  color: rgb(126, 6, 96);
+  border: 1px solid black;
+  margin-top: 20px;
+
+
+}
+.bouton_home:hover{
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
 
 .phrase_produits {
   font-family: "Dancing Script", cursive;
@@ -92,6 +107,14 @@ header {
 .taille_solo.checked{
   background-color: black;
   color: white;
+}
+.carousel_front{
+  width: 100% !important;
+  height: 1000px ;
+}
+
+.carousel-item,.carousel_front img {
+  height: 100%;
 }
 
 .supprimer_panier {
@@ -207,6 +230,7 @@ h3 {
   justify-content: space-around;
   width: 1900px;
   margin: auto;
+  height: 620px;
 }
 
 .makeup_liste {
@@ -239,6 +263,10 @@ h3 {
 .coffre1 {
   position: relative;
   margin-left: 15px;
+ 
+}
+.coffre1 img {
+  margin-top:35px !important;
 }
 
 .promo1 {
@@ -246,7 +274,7 @@ h3 {
   left: 20px;
   top: 0px;
   background-color: darkmagenta;
-  width: 200px;
+  width: 250px;
   height: 35px;
   color: white;
   padding: 5px;
@@ -258,7 +286,7 @@ h3 {
   position: absolute;
   left: 20px;
   top: 50px;
-  width: 70px;
+  width: 83px;
   height: 35px;
   color: white;
   padding: 5px;
