@@ -1,32 +1,32 @@
 <header>
-{% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+	{% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
 	{# <img src="{{ asset('img/logo_img2.png') }}" alt="">
-			<h1>Chic Mademoiselle</h1>
-			<div class="invisible">  </div>
-			
-	
-	
-			<div id="searchResults"></div>
-			<div class="barre">
-				<div class="icone">
-				<i class="fa-solid fa-user"></i>
-					<a class="seConnecter" href="{{path('app_login')}}">Se Connecter</a> <br>
-					<a class="inscription" href="{{path('app_register')}}">Inscription</a>
-					
+				<h1>Chic Mademoiselle</h1>
+				<div class="invisible">  </div>
+				
+		
+		
+				<div id="searchResults"></div>
+				<div class="barre">
+					<div class="icone">
+					<i class="fa-solid fa-user"></i>
+						<a class="seConnecter" href="{{path('app_login')}}">Se Connecter</a> <br>
+						<a class="inscription" href="{{path('app_register')}}">Inscription</a>
+						
+					</div>
+		
+					<div class="icone">
+						<a id="panierLink" href="{{ path('afficher_panier') }}">Panier</a>
+		
+						<i class="fa-solid fa-cart-shopping"></i>
+					</div>
+		
+					<div class="icone">
+						<a href="{{ path('contact_show') }}">Contact</a>
+						<i class="fa-solid fa-envelope"></i>
+					</div>
 				</div>
-	
-				<div class="icone">
-					<a id="panierLink" href="{{ path('afficher_panier') }}">Panier</a>
-	
-					<i class="fa-solid fa-cart-shopping"></i>
-				</div>
-	
-				<div class="icone">
-					<a href="{{ path('contact_show') }}">Contact</a>
-					<i class="fa-solid fa-envelope"></i>
-				</div>
-			</div>
-			<div class="invisible2">  </div> #}
+				<div class="invisible2">  </div> #}
 	<nav class="navbar navbar-expand-lg container-fluid">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="">
@@ -41,7 +41,7 @@
 							Chic Mademoiselle
 						</a>
 					</li>
-					
+
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle nav-liens" href="{{ path('app_login') }}" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Se Connecter
@@ -66,23 +66,24 @@
 						</a>
 					</li>
 					<i class="fa-solid fa-cart-shopping"></i>
+					<span id="nombre">{{app.session.get('nbArticles','')}}</span>
 					<li class="nav-item">
 						<a class="nav-link nav-liens " href="#" tabindex="-1" aria-disabled="true">
 							Contact
 						</a>
 					</li>
 					<i class="fa-solid fa-envelope"></i>
-					<li class="nav-item">
-						<a class="nav-link nav-liens" href="{{ path('afficher_panier') }}">
-							Panier
-							{% if currentPath == "/" %}
-								<div id="nombre"></div>
-							{% else %}
-								<div id="nombr"></div>
-							{% endif %}
-						</a>
-					</li>
-					<i class="fa-solid fa-cart-shopping"></i>
+					{# <li class="nav-item">
+											<a class="nav-link nav-liens" href="{{ path('afficher_panier') }}">
+												Panier
+												{% if currentPath == "/" %}
+													<div id="nombre"></div>
+												{% else %}
+													<div id="nombr"></div>
+												{% endif %}
+											</a>
+										</li>
+										<i class="fa-solid fa-cart-shopping"></i> #}
 				</ul>
 				<form class="d-flex">
 					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

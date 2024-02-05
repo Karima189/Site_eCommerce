@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ProduitsController extends AbstractController
 {
@@ -82,7 +83,7 @@ class ProduitsController extends AbstractController
     }
 
     #[Route('/ajouter-au-panier/{id}', name: 'ajouter_au_panier')]
-    public function ajouterAuPanier(Produit $produit, SessionInterface $session): Response
+    public function ajouterAuPanier(Produit $produit, SessionInterface $session): JsonResponse
     {
         // Récupérer le panier actuel depuis la session
         $panier = $session->get('panier', []);
@@ -98,37 +99,45 @@ class ProduitsController extends AbstractController
         // Mettre à jour le panier dans la session
         $session->set('panier', $panier);
 
+        $nbArticles = count($session->get('panier'));
+
+        $session->set('nbArticles', $nbArticles);
+
         // Rediriger vers la page précédente ou une autre page
-        return $this->redirectToRoute('produits_par_categorie', ['categoryId' => $produit->getCategory()->getId()]);
+        $response = new JsonResponse(['nbArticles' => $nbArticles]);
+
+        return $response;
     }
 
-    #[Route('/ajout-panier/{id}', name: 'ajout_panier')]
-    public function ajoutPanier($id, ProduitRepository $pr, SessionInterface $session, Request $rq): Response
-    {
-        $quantite = $rq->query->get("qte", 1) ?: 1;
-        $produit = $pr->find($id);
-        $panier = $session->get("panier", []); // on récupère ce qu'il y a dans le panier en session
+    // Code de Mitra:
 
-        $produitDejaDansPanier = false;
-        foreach ($panier as $indice => $ligne) {
-            if ($produit->getId() == $ligne["produit"]->getId()) {
-                $panier[$indice]["quantite"] += $quantite;
-                $produitDejaDansPanier = true;
-                break;  // pour sortir de la boucle foreach
-            }
-        }
-        if (!$produitDejaDansPanier) {
-            $panier[] = ["quantite" => $quantite, "produit" => $produit];  // on ajoute une ligne au panier => $panier est un array d'array
-        }
+    // #[Route('/ajout-panier/{id}', name: 'ajout_panier')]
+    // public function ajoutPanier($id, ProduitRepository $pr, SessionInterface $session, Request $rq): Response
+    // {
+    //     $quantite = $rq->query->get("qte", 1) ?: 1;
+    //     $produit = $pr->find($id);
+    //     $panier = $session->get("panier", []); // on récupère ce qu'il y a dans le panier en session
+
+    //     $produitDejaDansPanier = false;
+    //     foreach ($panier as $indice => $ligne) {
+    //         if ($produit->getId() == $ligne["produit"]->getId()) {
+    //             $panier[$indice]["quantite"] += $quantite;
+    //             $produitDejaDansPanier = true;
+    //             break;  // pour sortir de la boucle foreach
+    //         }
+    //     }
+    //     if (!$produitDejaDansPanier) {
+    //         $panier[] = ["quantite" => $quantite, "produit" => $produit];  // on ajoute une ligne au panier => $panier est un array d'array
+    //     }
 
 
-        $session->set("panier", $panier);
+    //     $session->set("panier", $panier);
 
-        $nb = 0;
-        foreach ($panier as $ligne) {
-            $nb += $ligne["quantite"];
-        }
-        return $this->json($nb);
-    }
+    //     $nb = 0;
+    //     foreach ($panier as $ligne) {
+    //         $nb += $ligne["quantite"];
+    //     }
+    //     return $this->json($nb);
+    // }
 
 }

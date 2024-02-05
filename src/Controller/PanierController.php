@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,7 +12,7 @@ class PanierController extends AbstractController
 {
     //pour ajouter des produits au panier
     #[Route('/panier', name: 'afficher_panier')]
-    public function afficherPanier(SessionInterface $session): Response
+    public function afficherPanier(SessionInterface $session, ProduitRepository $produitRepository): Response
     {
         // Récupérer le panier depuis la session
         $panier = $session->get('panier', []);
@@ -36,7 +37,8 @@ class PanierController extends AbstractController
                 $panier = array_values($panier);
                 // Mettre à jour le panier dans la session
                 $session->set('panier', $panier);
-
+                $nbArticles = count($panier);
+                $session->set('nbArticles', $nbArticles);
                 // Rediriger vers la page du panier
                 return $this->redirectToRoute('afficher_panier');
             }
