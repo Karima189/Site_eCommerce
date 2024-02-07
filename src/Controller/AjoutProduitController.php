@@ -44,7 +44,7 @@ class AjoutProduitController extends AbstractController
             $produit->setDescription($description);
             $produit->setPrix($prix);
             $produit->setDescriptionDetaille($descriptionDetaillee);
-
+ 
             $categoryId = $form->get('category')->getData();
             $category = $categoriesRepository->find($categoryId);
             $produit->setCategory($category);

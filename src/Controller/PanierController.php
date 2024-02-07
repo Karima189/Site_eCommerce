@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Repository\ProduitRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+
 
 class PanierController extends AbstractController
 {
@@ -47,8 +49,23 @@ class PanierController extends AbstractController
         // Si le produit n'est pas trouvé, rediriger vers la page du panier
         return $this->redirectToRoute('afficher_panier');
     }
+    // pour vider le panier
+    #[Route('/vider-panier', name: 'vider_panier')]
+    public function viderPanier(SessionInterface $session): Response
+    {
+        // Vider le panier en supprimant la clé 'panier' de la session
+        $session->remove('panier');
+        $session->remove('nbArticles');
 
-    
+        // Rediriger vers la page du panier (ou une autre page)
+        $response = new Response(json_encode(['success' => true]));
+        $response->headers->set('Content-Type', 'application/json');
 
-  
+        return $response;
+    }
+
+
+
+
+
 }

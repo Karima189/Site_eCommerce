@@ -117,9 +117,34 @@ header {
   height: 100%;
 }
 
+.ajout_panier_details{
+  margin-left: -30px;
+  border: 1px solid palevioletred;
+  width: 280px;
+  border-radius: 15px;
+  padding: 6px;
+  margin-bottom: 35px;
+}
+.ajout_panier_details:hover{
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  color: white;
+}
+
 .supprimer_panier {
   margin-top: 40px;
 }
+.vider_panier{
+  width: 140px;
+  height: 60px;
+  margin-right: 40px;
+  color: black;
+  background-color: darkred;
+  font-weight: bold;
+  
+}
+
 
 .panier_vide {
   font-family: "Dancing Script", cursive;
@@ -128,6 +153,10 @@ header {
   font-size: 40px;
   color: black;
 
+}
+.debut_panier{
+  display: flex;
+  justify-content: space-between;
 }
 
 .recherche {
@@ -218,10 +247,19 @@ h3 {
   font-size: 25px;
   color: rgb(109, 7, 84);
 }
-
 .ajouter_au_panier {
   font-size: 25px;
   color: rgb(109, 7, 84);
+  margin-left: 20px;
+}
+
+.ajouter_au_panier_details {
+  font-size: 25px;
+  color: rgb(109, 7, 84);
+  margin-left: 20px;
+}
+.ajouter_au_panier_details:hover{
+  color: white;
 }
 
 .liste_produits {

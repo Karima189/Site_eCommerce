@@ -44,7 +44,7 @@ class ProduitsController extends AbstractController
         // Afficher la liste des produits dans le template Twig
         return $this->render('produits/produits.html.twig', [
             'produits' => $produits,
-            'test' => $phrase
+            'phrase' => $phrase
         ]);
     }
 
