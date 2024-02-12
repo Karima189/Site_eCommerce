@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+
 	<div class="debut_panier">
 		<h1 style="margin:40px;color:darkred;">Votre Panier</h1>
 		<div class="invisible_panier"></div>
@@ -17,35 +18,67 @@
 			</a>
 		</h2>
 	{% else %}
-		<ul class="ul_panier">
-			{% for item in panier %}
-				<li class="liste_panier">
-					<img src="{{ asset('img/' ~ item.image) }}" alt="{{ item.description }}" width="200" height="200">
-					<h4>{{ item.description }}</h4>
+		<div class="structure_panier">
+			<ul class="ul_panier">
+				{% for item in panier %}
+					<li
+						class="liste_panier">
+						<!-- Ajouter une case à cocher -->
+						<input type="checkbox" class="product-checkbox" name="selected_products[]" value="{{ item.id }}" onchange="updateTotal()">
 
-					<!-- Prix initial -->
-					<h4 class="sousTitres-panier">Prix:<span id="prix{{item.id}}">{{ item.prix }}
-							€</span>
-					</h4>
+						<img src="{{ asset('img/' ~ item.image) }}" alt="{{ item.description }}" width="200" height="200">
+						<h4>{{ item.description }}</h4>
 
-					<!-- Ajout du champ de quantité -->
-					<label for="quantity{{ item.id }}" class="sousTitres-panier">Quantité:</label>
-					<input
-					style="width:250px; background-color:pink;" type="number" id="quantity{{ item.id }}" name="quantity{{ item.id }}" min="1" value="1" data-id="{{ item.id }}" class="quantity-input">
+						<!-- Prix initial -->
+						<h4 class="sousTitres-panier">Prix:<span id="prix{{item.id}}">{{ item.prix }}
+								€</span>
+						</h4>
 
-					<!-- Mise à jour du prix en fonction de la quantité -->
-					<h4 class="sousTitres-panier">Total:
-						<span id="total{{ item.id }}">{{ item.prix }}
-							€</span>
-					</h4>
+						<!-- Ajout du champ de quantité -->
+						<label for="quantity{{ item.id }}" class="sousTitres-panier">Quantité:</label>
+						<input
+						style="width:250px; background-color:pink;" type="number" id="quantity{{ item.id }}" name="quantity{{ item.id }}" min="1" value="1" data-id="{{ item.id }}" class="quantity-input">
+
+						<!-- Mise à jour du prix en fonction de la quantité -->
+						<h4 class="sousTitres-panier">Total:
+							<span id="total{{ item.id }}">{{ item.prix }}
+								€</span>
+						</h4>
 
 
-					<a href="{{ path('supprimer_du_panier', {'id': item.id}) }}" class="supprimer_panier">Supprimer</a>
+						<a href="{{ path('supprimer_du_panier', {'id': item.id}) }}" class="supprimer_panier">Supprimer</a>
 
-				</li>
-			{% endfor %}
-		</ul>
+					</li>
+				{% endfor %}
+
+
+			</ul>
+
+			<div>
+
+
+				<div>
+					<label for="livraison">Type de Livraison :</label>
+				</div>
+
+				<select id="livraison" name="livraison" onchange="updateTotal()" class="livraison_panier_select">
+					<option value="point_relais" data-prix="3.5">Livraison en Point Relais: 3.5 €</option>
+					<option value="standard" data-prix="4">Livraison Standard: 4 €</option>
+					<option value="express" data-prix="6.90">Livraison Express : 6.90 €</option>
+				</select>
+
+				<!-- Bouton pour calculer le total des produits sélectionnés -->
+				<div style="visibility: hidden;">
+					<button type="button" onclick="calculerTotal()">Total:</button>
+				</div>
+				<hr class="hr_panier">
+				<h2 id="total-prix"></h2>
+
+			</div>
+		</div>
+
 	{% endif %}
+
 
 	<script>
 		// Script JavaScript pour mettre à jour le total en fonction de la quantité
@@ -62,6 +95,8 @@ var total = prixUnitaire * quantity;
 
 // Mettre à jour le total affiché
 document.querySelector('#total' + itemId).innerText = total;
+// Mettre à jour le total général
+updateTotal();
 });
 });
 });
@@ -78,6 +113,26 @@ error: function (jqXHR, status, error) {
 console.log('Erreur AJAX', status, error);
 }
 });
+}
+
+// Fonction pour mettre à jour le total lorsque les cases à cocher ou les quantités changent
+function updateTotal() {
+var totalPrix = 0;
+var checkboxes = document.querySelectorAll('.product-checkbox:checked');
+var livraisonSelect = document.getElementById('livraison');
+var prixLivraison = parseFloat(livraisonSelect.options[livraisonSelect.selectedIndex].getAttribute('data-prix'));
+
+checkboxes.forEach(function (checkbox) {
+var itemId = checkbox.value;
+var prixUnitaire = parseFloat(document.querySelector('#prix' + itemId).innerText);
+var quantity = parseInt(document.querySelector('#quantity' + itemId).value);
+totalPrix += prixUnitaire * quantity;
+});
+
+// Ajouter le prix de livraison au total
+totalPrix += prixLivraison;
+
+document.getElementById('total-prix').innerText = "Total: " + totalPrix.toFixed(2) + " €";
 }
 	</script>
 

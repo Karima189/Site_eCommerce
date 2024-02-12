@@ -51,7 +51,26 @@ header {
   margin-top: 5px; /* Espace entre les deux liens */
 
 /* } */
-
+#total-prix{
+  text-align: center;
+  margin-top: 30px;
+}
+.hr_panier{
+  width: 400px;
+  height: 3px;
+   border-width: 3px;
+}
+.product-checkbox{
+  width: 30px;
+  position: absolute;
+  top:10;
+ 
+}
+.livraison_panier_select{
+  width: 300px;
+  padding: 5px;
+  border: 4px solid pink;
+}
 .details_body {
   background-color: rgb(207, 185, 210);
 
@@ -449,20 +468,32 @@ table {
 }
 
 .ul_panier {
-  flex-wrap: wrap;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-around;
+ width: 1000px;
+
 }
 
 .liste_panier img {
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
 
+}
+.structure_panier{
+  display: flex;
+  justify-content: space-around;
 }
 
 .liste_panier {
   border: 1px solid black;
   border-radius: 15px;
-  margin: 15px;
-  min-height: 640px;
+  /* margin: 15px; */
+  min-height: 380px;
+  position:relative;
+  display: block;
+  margin-bottom: 20px; 
+
 }
 
 .sousTitres-panier {
