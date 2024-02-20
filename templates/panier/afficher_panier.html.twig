@@ -27,11 +27,16 @@
 						<input type="checkbox" class="product-checkbox" name="selected_products[]" value="{{ item.id }}" onchange="updateTotal()">
 
 						<img src="{{ asset('img/' ~ item.image) }}" alt="{{ item.description }}" width="200" height="200">
-						<h4>{{ item.description }}</h4>
+						<h4 class="descriptionArticle">{{ item.description }}</h4>
+
+						<h4 class="sousTitres-panier">
+							Taille :
+							<span class="tailles">{{item.taille}}</span>
+						</h4>
 
 						<!-- Prix initial -->
-						<h4 class="sousTitres-panier">Prix:<span id="prix{{item.id}}">{{ item.prix }}
-								€</span>
+						<h4 class="sousTitres-panier">Prix:<span id="prix{{item.id}}" class="item-prix">{{ item.prix }}
+							</span>€
 						</h4>
 
 						<!-- Ajout du champ de quantité -->
@@ -54,11 +59,13 @@
 
 			</ul>
 
-			<div>
+			<div class="infos_panier">
+
+				<div class="espace_livraison"></div>
 
 
 				<div>
-					<label for="livraison">Type de Livraison :</label>
+					<label class="livraison_label">Type de Livraison :</label>
 				</div>
 
 				<select id="livraison" name="livraison" onchange="updateTotal()" class="livraison_panier_select">
@@ -74,67 +81,12 @@
 				<hr class="hr_panier">
 				<h2 id="total-prix"></h2>
 
+				<button class="bouton_commande" id="passer_commande">Passer Ma Commande</button>
+
+
 			</div>
 		</div>
 
 	{% endif %}
-
-
-	<script>
-		// Script JavaScript pour mettre à jour le total en fonction de la quantité
-document.addEventListener('DOMContentLoaded', function () {
-var quantityInputs = document.querySelectorAll('.quantity-input');
-
-quantityInputs.forEach(function (input) {
-input.addEventListener('change', function () {
-var itemId = input.getAttribute('data-id');
-var itemPrice = parseFloat(document.querySelector('#total' + itemId).innerText);
-var prixUnitaire = parseFloat(document.querySelector('#prix' + itemId).innerText);
-var quantity = parseInt(input.value);
-var total = prixUnitaire * quantity;
-
-// Mettre à jour le total affiché
-document.querySelector('#total' + itemId).innerText = total;
-// Mettre à jour le total général
-updateTotal();
-});
-});
-});
-
-// pour vider le panier
-function viderPanier() { // Utiliser une requête AJAX pour appeler la route de vidage du panier
-$.ajax({
-url: '{{ path('vider_panier') }}',
-dataType: 'json',
-success: function (data) { // Mettre à jour l'affichage du panier ou rediriger vers une autre page si nécessaire
-window.location.reload(); // Recharger la page actuelle
-},
-error: function (jqXHR, status, error) {
-console.log('Erreur AJAX', status, error);
-}
-});
-}
-
-// Fonction pour mettre à jour le total lorsque les cases à cocher ou les quantités changent
-function updateTotal() {
-var totalPrix = 0;
-var checkboxes = document.querySelectorAll('.product-checkbox:checked');
-var livraisonSelect = document.getElementById('livraison');
-var prixLivraison = parseFloat(livraisonSelect.options[livraisonSelect.selectedIndex].getAttribute('data-prix'));
-
-checkboxes.forEach(function (checkbox) {
-var itemId = checkbox.value;
-var prixUnitaire = parseFloat(document.querySelector('#prix' + itemId).innerText);
-var quantity = parseInt(document.querySelector('#quantity' + itemId).value);
-totalPrix += prixUnitaire * quantity;
-});
-
-// Ajouter le prix de livraison au total
-totalPrix += prixLivraison;
-
-document.getElementById('total-prix').innerText = "Total: " + totalPrix.toFixed(2) + " €";
-}
-	</script>
-
 
 {% endblock %}

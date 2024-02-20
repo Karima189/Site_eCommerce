@@ -3,23 +3,36 @@
 namespace App\Controller;
 
 use App\Entity\Produit;
-use App\Entity\TailleProduit;
+use Pagerfanta\Pagerfanta;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
 use App\Repository\ProduitRepository;
 use App\Repository\TailleProduitRepository;
+use Pagerfanta\Adapter\ArrayAdapter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ProduitsController extends AbstractController
 {
     #[Route('/produits/categorie/{categoryId}', name: 'produits_par_categorie')]
-    public function produitsParCategorie(ProduitRepository $produitRepository, int $categoryId): Response
+    public function produitsParCategorie(ProduitRepository $produitRepository, Request $request, int $categoryId): Response
     {
         // Récupérer les produits avec category_id = 1
-        $produits = $produitRepository->findBy(['category' => $categoryId]);
+        $produitsQuery = $produitRepository->findBy(['category' => $categoryId]);
+
+        $adapter = new ArrayAdapter($produitsQuery);
+        $produits = new Pagerfanta($adapter);
+
+        // Définir le nombre d'éléments par page
+        $produits->setMaxPerPage(15);
+
+        // Récupérer la page demandée depuis la requête
+        $currentPage = $request->query->get('page', 1);
+
+        $produits->setCurrentPage($currentPage);
 
         switch ($categoryId) {
             case '1':
@@ -44,7 +57,8 @@ class ProduitsController extends AbstractController
         // Afficher la liste des produits dans le template Twig
         return $this->render('produits/produits.html.twig', [
             'produits' => $produits,
-            'phrase' => $phrase
+            'phrase' => $phrase,
+            'categoryId' => $categoryId
         ]);
     }
 
@@ -83,18 +97,27 @@ class ProduitsController extends AbstractController
     }
 
     #[Route('/ajouter-au-panier/{id}', name: 'ajouter_au_panier')]
-    public function ajouterAuPanier(Produit $produit, SessionInterface $session): JsonResponse
+    public function ajouterAuPanier(Produit $produit, SessionInterface $session, Request $request): JsonResponse
     {
         // Récupérer le panier actuel depuis la session
         $panier = $session->get('panier', []);
 
+        $params = $request->query->all();
+
+        $tailles = $params['taille'] ?? [];
+
         // Ajouter le produit au panier
-        $panier[] = [
-            'id' => $produit->getId(),
-            'image' => $produit->getImage(),
-            'description' => $produit->getDescription(),
-            'prix' => $produit->getPrix(),
-        ];
+        if (is_array($tailles)) {
+            foreach ($tailles as $taille) {
+                $panier[] = [
+                    'id' => $produit->getId(),
+                    'image' => $produit->getImage(),
+                    'description' => $produit->getDescription(),
+                    'prix' => $produit->getPrix(),
+                    'taille' => $taille
+                ];
+            }
+        }
 
         // Mettre à jour le panier dans la session
         $session->set('panier', $panier);
