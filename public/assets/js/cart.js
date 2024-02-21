@@ -50,45 +50,63 @@ $(document).ready(function () {
 
 
 });
-var articlesSelectionnes = [];
-function cochageCommande() {
-    $('.product-checkbox input[type=\'checkbox\']').on('change', function () {
-        // Réinitialiser le tableau des articles sélectionnés
-        articlesSelectionnes = [];
-        console.log('test');
-        // Parcourir toutes les cases à cocher
-        $('.product-checkbox input[type=\'checkbox\']:checked').each(function () {
-            // Récupérer les informations de l'article associé à la case cochée
-            var img = $(this).closest('.product-checkbox').find('img').attr('src');
-            var taille = $(this).closest('.product-checkbox').find('.tailles').text();
-            var nom = $(this).closest('.product-checkbox').find('.descriptionArticle').text();
-            var quantity = $(this).closest('.product-checkbox').find('.quantity-input').val();
-            var total = $('#total-prix').text();
-            var livraison = $('#livraison').val();
-            var prix = $(this).closest('.product-checkbox').find('.item-prix').text();
 
-            // Ajouter les informations de l'article au tableau des articles sélectionnés
-            articlesSelectionnes.push({
-                img: img,
-                taille: taille,
-                nom: nom,
-                quantity: quantity,
-                total: total,
-                livraison: livraison,
-                prix: prix
-            });
+
+// Fonction pour mettre à jour le total lorsque les cases à cocher ou les quantités changent
+function updateTotal() {
+    var totalPrix = 0;
+    var checkboxes = document.querySelectorAll('.product-checkbox:checked');
+    var livraisonSelect = document.getElementById('livraison');
+    var prixLivraison = parseFloat(livraisonSelect.options[livraisonSelect.selectedIndex].getAttribute('data-prix'));
+
+    articlesEnvoyes = [];
+
+    checkboxes.forEach(function (checkbox) {
+        var id = checkbox.value;
+        var itemId = checkbox.getAttribute('data-taille');
+        var prixUnitaire = parseFloat(document.querySelector('#prix' + itemId).innerText);
+        var quantity = parseInt(document.querySelector('#quantity' + itemId).value);
+        var totalArticle = prixUnitaire * quantity; // Calculer le total de chaque article
+        var taille = document.getElementById('taille' + id).textContent;
+
+        totalPrix += totalArticle; // Ajouter le total de l'article au totalPrix
+
+        // Ajouter les informations de l'article à la liste
+        articlesEnvoyes.push({
+            id: id,
+            quantity: quantity,
+            prixUnitaire: prixUnitaire,
+            prixTotalProduit: totalArticle,
+            taille : taille
         });
+    });
+
+    // Ajouter le prix de livraison au total
+    totalPrix += prixLivraison;
+
+    articlesEnvoyes.push({
+        totalPrix: totalPrix
     })
+
+    document.getElementById('total-prix').innerText = "Total: " + totalPrix.toFixed(2) + " €";
+}
+
+
+function getArticlesInfos() {
+    return JSON.stringify(articlesEnvoyes);
+}
+$(document).ready(function () {
 
     // Gestionnaire d'événement pour le bouton "Passer Ma Commande"
     $('#passer_commande').on('click', function () {
         // Envoyer les données des articles sélectionnés via une requête AJAX
-
+        var articlesSelectionnes = getArticlesInfos();
+        console.log(articlesSelectionnes);
         $.ajax({
-            url: 'votre_url_de_traitement',
+            url: '/commande/recap',
             type: 'POST', // ou 'GET' selon votre besoin
             contentType: 'application/json',
-            data: JSON.stringify(articlesSelectionnes),
+            data: articlesSelectionnes,
             success: function (response) {
                 // Traiter la réponse si nécessaire
             },
@@ -98,29 +116,7 @@ function cochageCommande() {
         });
     });
 
-};
-
-// Fonction pour mettre à jour le total lorsque les cases à cocher ou les quantités changent
-function updateTotal() {
-    var totalPrix = 0;
-    var checkboxes = document.querySelectorAll('.product-checkbox:checked');
-    var livraisonSelect = document.getElementById('livraison');
-    var prixLivraison = parseFloat(livraisonSelect.options[livraisonSelect.selectedIndex].getAttribute('data-prix'));
-
-    checkboxes.forEach(function (checkbox) {
-        var itemId = checkbox.value;
-        var prixUnitaire = parseFloat(document.querySelector('#prix' + itemId).innerText);
-        var quantity = parseInt(document.querySelector('#quantity' + itemId).value);
-        totalPrix += prixUnitaire * quantity;
-    });
-
-    // Ajouter le prix de livraison au total
-    totalPrix += prixLivraison;
-
-    document.getElementById('total-prix').innerText = "Total: " + totalPrix.toFixed(2) + " €";
-    cochageCommande();
-}
-
+})
 function viderPanier() { // Utiliser une requête AJAX pour appeler la route de vidage du panier
     $.ajax({
         url: '/vider-panier',

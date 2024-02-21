@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma commande - Zest de Charme{% endblock %}
+
+{% block body %}
+<h2>Mon récapitulatif</h2>
+<div class="row">
+    {% for i in infos %}
+        <h2>{{i.taille}}</h2>
+    {% endfor %}
+</div>
+
+{% endblock %}

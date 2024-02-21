@@ -24,29 +24,29 @@
 					<li
 						class="liste_panier">
 						<!-- Ajouter une case à cocher -->
-						<input type="checkbox" class="product-checkbox" name="selected_products[]" value="{{ item.id }}" onchange="updateTotal()">
+						<input type="checkbox" class="product-checkbox" name="selected_products[]" value="{{ item.id }}" data-taille="{{item.id}}{{item.taille}}" onchange="updateTotal()">
 
 						<img src="{{ asset('img/' ~ item.image) }}" alt="{{ item.description }}" width="200" height="200">
 						<h4 class="descriptionArticle">{{ item.description }}</h4>
 
 						<h4 class="sousTitres-panier">
 							Taille :
-							<span class="tailles">{{item.taille}}</span>
+							<span class="tailles" id="taille{{item.id}}">{{item.taille}}</span>
 						</h4>
 
 						<!-- Prix initial -->
-						<h4 class="sousTitres-panier">Prix:<span id="prix{{item.id}}" class="item-prix">{{ item.prix }}
+						<h4 class="sousTitres-panier">Prix:<span id="prix{{item.id}}{{item.taille}}" class="item-prix">{{ item.prix }}
 							</span>€
 						</h4>
 
 						<!-- Ajout du champ de quantité -->
 						<label for="quantity{{ item.id }}" class="sousTitres-panier">Quantité:</label>
 						<input
-						style="width:250px; background-color:pink;" type="number" id="quantity{{ item.id }}" name="quantity{{ item.id }}" min="1" value="1" data-id="{{ item.id }}" class="quantity-input">
+						style="width:250px; background-color:pink;" type="number" id="quantity{{ item.id }}{{item.taille}}" name="quantity{{ item.id }}" min="1" value="1" data-id="{{ item.id }}{{item.taille}}" class="quantity-input">
 
 						<!-- Mise à jour du prix en fonction de la quantité -->
 						<h4 class="sousTitres-panier">Total:
-							<span id="total{{ item.id }}">{{ item.prix }}
+							<span id="total{{ item.id }}{{item.taille}}">{{ item.prix }}
 								€</span>
 						</h4>
 

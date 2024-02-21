@@ -18,7 +18,7 @@ class PanierController extends AbstractController
     {
         // Récupérer le panier depuis la session
         $panier = $session->get('panier', []);
-
+        // dd($panier);
         return $this->render('panier/afficher_panier.html.twig', [
             'panier' => $panier,
         ]);
