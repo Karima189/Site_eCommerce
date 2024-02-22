@@ -19,46 +19,48 @@
 				<h2 style="width:400px;">
 					{{ produit.description }}
 				</h2>
-				<div style="">
-					<a href='' data-id={{produit.id}} class="ajouter_au_panier">
-						Ajouter au Panier
-					</a>
-					<i class="fa-solid fa-cart-shopping"></i>
-				</div>
+				{% if produit.category.id == 2 %}
+					<div style="">
+						<a href='' data-id={{produit.id}} class="ajouter_au_panier">
+							Ajouter au Panier
+						</a>
+						<i class="fa-solid fa-cart-shopping"></i>
+					</div>
+				{% endif %}
 				<a href="{{ path('afficher_produit', {'id': produit.id}) }}" class="voir_detail">
 					Voir Plus de détails sur ce produit
 				</a>
 
 				{# <input name="qte" type="number" value="1"  id="field{{ produit.id }}">
-																																				<button class="btn btn-warning" id="form{{ produit.id }}"													<i class="fa fa-cart-arrow-down"></i>
-																																				</button>  #}
+																																								<button class="btn btn-warning" id="form{{ produit.id }}"													<i class="fa fa-cart-arrow-down"></i>
+																																								</button>  #}
 			</div>
 			{# Mitra #}
 			{# <script>
-																window.addEventListener("load", () => {
-																//console.log($("#field{{ produit.id }} [name='qte']").val());
-																//console.log($("#field{{ produit.id }} [name='qte']").val());
-																$("#form{{ produit.id }}").on("click",(evtSubmit) => {
-																	evtSubmit.preventDefault();
-																	$.ajax({
-																		url: "{{ path('ajout_panier', {id: produit.id}) }}",
-																		data: "qte=" + 1,
-																		type: 'POST',
-																		dataType: "json",
-																		success: (data) => {
-																			$("#nombre").html(data);
-																			console.log("nb produits dans le panier = " + data);
-																		},
-																		error: (jqXHR,status, error) => {
-																			console.log("ERREUR AJAX" , status,error);
-																		}
-																	});
-																	});
-																	});
-															</script> #}
+																			window.addEventListener("load", () => {
+																			//console.log($("#field{{ produit.id }} [name='qte']").val());
+																			//console.log($("#field{{ produit.id }} [name='qte']").val());
+																			$("#form{{ produit.id }}").on("click",(evtSubmit) => {
+																				evtSubmit.preventDefault();
+																				$.ajax({
+																					url: "{{ path('ajout_panier', {id: produit.id}) }}",
+																					data: "qte=" + 1,
+																					type: 'POST',
+																					dataType: "json",
+																					success: (data) => {
+																						$("#nombre").html(data);
+																						console.log("nb produits dans le panier = " + data);
+																					},
+																					error: (jqXHR,status, error) => {
+																						console.log("ERREUR AJAX" , status,error);
+																					}
+																				});
+																				});
+																				});
+																		</script> #}
 		{% endfor %}
 		{% if produits.hasPreviousPage %}
-			<a href="{{ path('produits_par_categorie', {'categoryId': categoryId,'page': produits.previousPage}) }}"class="pagination">Précédent</a>
+			<a href="{{ path('produits_par_categorie', {'categoryId': categoryId,'page': produits.previousPage}) }}" class="pagination">Précédent</a>
 		{% endif %}
 		{% if produits.hasNextPage %}
 			<a href="{{ path('produits_par_categorie', {'categoryId': categoryId,'page': produits.nextPage}) }}" class="pagination">Suivant</a>

@@ -51,33 +51,38 @@ header {
   margin-top: 5px; /* Espace entre les deux liens */
 
 /* } */
-#total-prix{
+#total-prix {
   text-align: center;
   margin-top: 30px;
 }
-.hr_panier{
+
+.hr_panier {
   width: 400px;
   height: 3px;
-   border-width: 3px;
+  border-width: 3px;
 }
-.product-checkbox{
+
+.product-checkbox {
   width: 30px;
   position: absolute;
-  top:10;
- 
+  top: 10;
+
 }
-.livraison_panier_select{
+
+.livraison_panier_select {
   width: 300px;
   padding: 5px;
   border: 4px solid pink;
   margin-left: 20px;
 }
+
 .details_body {
   background-color: rgb(207, 185, 210);
 
 
 }
-.bouton_home{
+
+.bouton_home {
   justify-content: center;
   display: flex;
   font-size: 28px;
@@ -87,7 +92,8 @@ header {
 
 
 }
-.bouton_home:hover{
+
+.bouton_home:hover {
   background-color: black;
   color: white;
   cursor: pointer;
@@ -124,29 +130,34 @@ header {
   cursor: pointer;
 }
 
-.taille_solo.checked{
+.taille_solo.checked {
   background-color: black;
   color: white;
 }
-.carousel_front{
+
+.carousel_front {
   width: 100% !important;
-  height: 1000px ;
+  height: 1000px;
 }
 
-.carousel-item,.carousel_front img {
+.carousel-item,
+.carousel_front img {
   height: 100%;
 }
-.bouton_commande{
+
+.bouton_commande {
   width: 450px;
   padding: 8px;
   background-color: rgb(141, 195, 141);
   border-radius: 10px;
   margin-left: -20px;
 }
-.espace_livraison{
- height: 100px;
+
+.espace_livraison {
+  height: 100px;
 }
-.ajout_panier_details{
+
+.ajout_panier_details {
   margin-left: -30px;
   border: 1px solid palevioletred;
   width: 280px;
@@ -154,7 +165,8 @@ header {
   padding: 6px;
   margin-bottom: 35px;
 }
-.ajout_panier_details:hover{
+
+.ajout_panier_details:hover {
   background-color: black;
   color: white;
   cursor: pointer;
@@ -164,14 +176,15 @@ header {
 .supprimer_panier {
   margin-top: 40px;
 }
-.vider_panier{
+
+.vider_panier {
   width: 140px;
   height: 60px;
   margin-right: 40px;
   color: black;
   background-color: darkred;
   font-weight: bold;
-  
+
 }
 
 
@@ -183,7 +196,8 @@ header {
   color: black;
 
 }
-.debut_panier{
+
+.debut_panier {
   display: flex;
   justify-content: space-between;
 }
@@ -260,10 +274,11 @@ li a {
   margin: auto;
   position: relative;
   padding-bottom: 60px;
- 
- 
+
+
 }
-.listeProduits img{
+
+.listeProduits img {
   margin-top: 40px;
   border-radius: 10px;
 }
@@ -284,6 +299,7 @@ h3 {
   font-size: 25px;
   color: rgb(109, 7, 84);
 }
+
 .ajouter_au_panier {
   font-size: 25px;
   color: rgb(109, 7, 84);
@@ -295,7 +311,8 @@ h3 {
   color: rgb(109, 7, 84);
   margin-left: 20px;
 }
-.ajouter_au_panier_details:hover{
+
+.ajouter_au_panier_details:hover {
   color: white;
 }
 
@@ -313,7 +330,7 @@ h3 {
   padding: 10px;
   border-radius: 15px;
   transition: transform 0.2s ease;
-  
+
   /* Effet de transition au survol */
 }
 
@@ -339,10 +356,11 @@ h3 {
 .coffre1 {
   position: relative;
   margin-left: 15px;
- 
+
 }
+
 .coffre1 img {
-  margin-top:35px !important;
+  margin-top: 35px !important;
 }
 
 .promo1 {
@@ -487,10 +505,10 @@ table {
 }
 
 .ul_panier {
- display: flex;
- flex-wrap: wrap;
- justify-content: space-around;
- width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 1000px;
 
 
 }
@@ -500,7 +518,8 @@ table {
   height: 300px;
 
 }
-.structure_panier{
+
+.structure_panier {
   display: flex;
   justify-content: space-around;
 }
@@ -510,9 +529,9 @@ table {
   border-radius: 15px;
   /* margin: 15px; */
   min-height: 380px;
-  position:relative;
+  position: relative;
   display: block;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 
 }
 
@@ -600,13 +619,15 @@ hr {
   width: 1200px;
   font-size: 15px;
 }
-.pagination{
+
+.pagination {
   position: absolute;
   bottom: 0;
   right: 10px;
-  
+
 }
-.livraison_label{
+
+.livraison_label {
   font-size: 25px;
   font-weight: bold;
   margin-left: 60px;
@@ -616,7 +637,9 @@ hr {
 
 
 
-
+.non_visible {
+  visibility: hidden;
+}
 
 
 

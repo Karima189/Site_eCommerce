@@ -8,6 +8,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Produit; // Assurez-vous d'importer l'entité Produit
@@ -15,7 +17,7 @@ use App\Entity\Produit; // Assurez-vous d'importer l'entité Produit
 class CommandeController extends AbstractController
 {
     #[Route('/commande/recap', name: 'order_add', methods: 'POST')]
-    public function summary(Request $request, EntityManagerInterface $em): Response
+    public function summary(Request $request, EntityManagerInterface $em, SessionInterface $sessionInterface): Response
     {
         $commandeRequete = $request->getContent();
 
@@ -53,20 +55,21 @@ class CommandeController extends AbstractController
             }
         }
 
+        $sessionInterface->set('recapitulatif', $infos);
         // Affichage récap
 
-        return $this->redirectToRoute('recapp', ['infos' => json_encode($infos)]);
+        return new JsonResponse(['url' => '/confirmation-commande']);
     }
 
     #[Route('/confirmation-commande', name: 'confirmation_commande')]
-    public function confirmationCommande(Request $request): Response
+    public function confirmationCommande(Request $request, SessionInterface $session): Response
     {
         // Récupération des informations de la commande depuis les paramètres de requête
-        $infos = json_decode($request->query->get('infos'), true);
-    
+        $infos = $session->get('recapitulatif', []);
+        // dd($infos);
         // Votre logique pour afficher la confirmation de la commande...
     
-        return $this->render('confirmation_commande.html.twig', ['infos' => $infos]);
+        return $this->render('commande/confirmation_commande.html.twig', ['infos' => $infos]);
     }
 }
 

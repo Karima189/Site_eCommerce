@@ -109,15 +109,27 @@ class ProduitsController extends AbstractController
         // Ajouter le produit au panier
         if (is_array($tailles)) {
             foreach ($tailles as $taille) {
-                $panier[] = [
-                    'id' => $produit->getId(),
-                    'image' => $produit->getImage(),
-                    'description' => $produit->getDescription(),
-                    'prix' => $produit->getPrix(),
-                    'taille' => $taille
-                ];
+                if ($taille !== "") {
+                    $panier[] = [
+                        'id' => $produit->getId(),
+                        'image' => $produit->getImage(),
+                        'description' => $produit->getDescription(),
+                        'prix' => $produit->getPrix(),
+                        'taille' => $taille
+                    ];
+                } else {
+                    $panier[] = [
+                        'id' => $produit->getId(),
+                        'image' => $produit->getImage(),
+                        'description' => $produit->getDescription(),
+                        'prix' => $produit->getPrix(),
+                        'taille' => "taille_unique"
+                    ];
+                }
             }
         }
+
+        
 
         // Mettre à jour le panier dans la session
         $session->set('panier', $panier);

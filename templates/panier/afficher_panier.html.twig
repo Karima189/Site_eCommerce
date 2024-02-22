@@ -29,9 +29,9 @@
 						<img src="{{ asset('img/' ~ item.image) }}" alt="{{ item.description }}" width="200" height="200">
 						<h4 class="descriptionArticle">{{ item.description }}</h4>
 
-						<h4 class="sousTitres-panier">
+						<h4 class="sousTitres-panier {{item.taille == 'taille_unique' ? 'non_visible' : ''}}">
 							Taille :
-							<span class="tailles" id="taille{{item.id}}">{{item.taille}}</span>
+							<span class="tailles" id="taille{{item.id}}{{item.taille}}">{{item.taille}}</span>
 						</h4>
 
 						<!-- Prix initial -->

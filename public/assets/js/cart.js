@@ -13,6 +13,9 @@ $(document).ready(function () {
                 // Vous pouvez envoyer la valeur dans votre requête AJAX ici
             }
         });
+        if (taillesCochées.length == 0) {
+            taillesCochées = {taille: ""};
+        }
         $.ajax({
             url: '/ajouter-au-panier/' + id,
             dataType: "json",
@@ -67,7 +70,8 @@ function updateTotal() {
         var prixUnitaire = parseFloat(document.querySelector('#prix' + itemId).innerText);
         var quantity = parseInt(document.querySelector('#quantity' + itemId).value);
         var totalArticle = prixUnitaire * quantity; // Calculer le total de chaque article
-        var taille = document.getElementById('taille' + id).textContent;
+        var taille = document.getElementById('taille' + itemId).textContent;
+        console.log(taille);
 
         totalPrix += totalArticle; // Ajouter le total de l'article au totalPrix
 
@@ -77,7 +81,7 @@ function updateTotal() {
             quantity: quantity,
             prixUnitaire: prixUnitaire,
             prixTotalProduit: totalArticle,
-            taille : taille
+            taille: taille
         });
     });
 
@@ -108,7 +112,7 @@ $(document).ready(function () {
             contentType: 'application/json',
             data: articlesSelectionnes,
             success: function (response) {
-                // Traiter la réponse si nécessaire
+                window.location.href = response.url;
             },
             error: function (xhr, status, error) {
                 // Gérer les erreurs de la requête AJAX
