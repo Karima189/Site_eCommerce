@@ -130,7 +130,7 @@ header {
   cursor: pointer;
 }
 
-.taille_solo.checked {
+.taille_solo .checked {
   background-color: black;
   color: white;
 }
@@ -640,10 +640,26 @@ hr {
 .non_visible {
   visibility: hidden;
 }
+.info_recap{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
 
 
 
+
+}
+.info_recap_titres{
+  display: flex;
+  justify-content: space-around;
+  font-size: 45px !important;
+  color: darkred;
+  font-weight: bold;
+  font-family: "Dancing Script", cursive;
+  
+
+}
 /* .maquillage img {
   width: 254px;
   height: 170px;

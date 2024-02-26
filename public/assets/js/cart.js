@@ -14,7 +14,7 @@ $(document).ready(function () {
             }
         });
         if (taillesCochées.length == 0) {
-            taillesCochées = {taille: ""};
+            taillesCochées = { taille: "" };
         }
         $.ajax({
             url: '/ajouter-au-panier/' + id,

@@ -45,16 +45,23 @@ class CommandeController extends AbstractController
                     $detail->setProduit($produit);
                     $detail->setQuantité($articleData['quantity']);
                     $detail->setPrix($articleData['prixTotalProduit']);
-                    $detail->setTaille($articleData['taille']);
+                    if($articleData['taille'] == 'taille_unique'){
+                        $detail->setTaille(null);
+                    } else {
+                        $detail->setTaille($articleData['taille']);
+                    }
 
                     $em->persist($detail);
 
-                    $em->flush();
-                    $infos = $em->getRepository(Detail::class)->findBy(['produit' => $produit->getId()]);
                 }
             }
         }
+        
+        $em->flush();
 
+        $infos = $em->getRepository(Detail::class)->findBy(['commande' =>$commande]);
+        // dd($infos[0]->getCommande()->getUser()->getEmail());
+        // dd($infos[1]->getProduit()->getDescription());
         $sessionInterface->set('recapitulatif', $infos);
         // Affichage récap
 
@@ -68,8 +75,7 @@ class CommandeController extends AbstractController
         $infos = $session->get('recapitulatif', []);
         // dd($infos);
         // Votre logique pour afficher la confirmation de la commande...
-    
-        return $this->render('commande/confirmation_commande.html.twig', ['infos' => $infos]);
+        return $this->render('commande/confirmation_commande.html.twig', ['infos' => $infos, "confirmation_commande" => "Votre commande a bien été passée"]);
     }
 }
 

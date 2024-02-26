@@ -34,6 +34,7 @@ class ProduitsController extends AbstractController
 
         $produits->setCurrentPage($currentPage);
 
+        // dd($produits);
         switch ($categoryId) {
             case '1':
                 $phrase = 'Chez Nous vous trouvez un large choix de vetements pour un look exellent et attirant!';
@@ -48,11 +49,11 @@ class ProduitsController extends AbstractController
             case '4':
                 $phrase = ' Des Montres Raffinées et Luxes spécialements pour Vous !';
                 break;
-            default:
+                default:
                 $phrase = null;
-        }
-
-        // dd($produits);
+            }
+            
+            // dd($produits);
 
         // Afficher la liste des produits dans le template Twig
         return $this->render('produits/produits.html.twig', [
@@ -86,7 +87,6 @@ class ProduitsController extends AbstractController
         } else if ($categorie->getId() == 1) {
             $tabTaille = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
         }
-
 
 
         return $this->render('produits/detailsProduit.html.twig', [

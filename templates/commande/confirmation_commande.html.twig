@@ -1,3 +1,36 @@
-{% for i in infos %}
-    {# <h1>{{}}</h1> #}
-{% endfor %}
+{% extends 'base.html.twig' %}
+{% block title %}{% endblock %}
+{% block body %}
+	<div class="alert alert-success"> 
+		{{confirmation_commande}}
+	</div>
+	<h1>Mon recapitulatif</h1>
+	{% for i in infos %}
+		<div class="liste_panier">
+			<div class="info_recap_titres">
+
+				<h4>Image du Produit:</h4>
+				<h4>Description</h4>
+				
+				<h4>Prix</h4>
+				
+				<h4>Taille</h4>
+				
+			</div>
+            <div class="info_recap">
+
+				<img src="{{ asset('img/' ~ i.produit.image) }}" alt="Image produit">
+
+				<h4>{{ i.produit.description}}</h4>
+				
+				<h4>{{ i.produit.prix}} €</h4>
+				
+				<h4>{{ i.taille}}</h4>
+				
+			</div>
+
+		</div>
+	{% endfor %}
+{% endblock %}
+
+

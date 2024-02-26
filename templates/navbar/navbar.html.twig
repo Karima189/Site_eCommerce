@@ -62,10 +62,14 @@
 					<i class="fa-solid fa-user"></i>
 					<li class="nav-item">
 						<a class="nav-link nav-liens " href="{{ path('afficher_panier') }}">
-							Panier
+							 
+							 <div>Panier  <i class="fa-solid fa-cart-shopping"></i></div>
+							 
+							
 						</a>
+						
 					</li>
-					<i class="fa-solid fa-cart-shopping"></i>
+					
 					<span id="nombre">{{app.session.get('nbArticles','')}}</span>
 					<li class="nav-item">
 						<a class="nav-link nav-liens " href="#" tabindex="-1" aria-disabled="true">

@@ -33,5 +33,10 @@
 	{% if not showNav is defined %}
 		{% include "navbar/navbar.html.twig" %}
 	{% endif %}
+	{% if app.session.get('confirmation_commande') %}
+		<div class="alert alert-success">
+			{{app.session.get('confirmation_commande')}}
+		</div>
+	{% endif %}
 	{% block body %}{% endblock %}
 </html></body></html>

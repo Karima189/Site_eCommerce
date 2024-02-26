@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\DetailRepository;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Nullable;
 
 #[ORM\Entity(repositoryClass: DetailRepository::class)]
 class Detail
@@ -27,7 +28,7 @@ class Detail
     #[ORM\Column]
     private ?int $prix = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $taille = null;
 
     public function getId(): ?int
@@ -88,7 +89,7 @@ class Detail
         return $this->taille;
     }
 
-    public function setTaille(string $taille): static
+    public function setTaille(?string $taille): static
     {
         $this->taille = $taille;
 

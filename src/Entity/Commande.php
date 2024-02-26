@@ -36,6 +36,11 @@ class Commande
     {
         $this->details = new ArrayCollection();
     }
+    
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
