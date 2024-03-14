@@ -144,35 +144,4 @@ class ProduitsController extends AbstractController
         return $response;
     }
 
-    // Code de Mitra:
-
-    // #[Route('/ajout-panier/{id}', name: 'ajout_panier')]
-    // public function ajoutPanier($id, ProduitRepository $pr, SessionInterface $session, Request $rq): Response
-    // {
-    //     $quantite = $rq->query->get("qte", 1) ?: 1;
-    //     $produit = $pr->find($id);
-    //     $panier = $session->get("panier", []); // on récupère ce qu'il y a dans le panier en session
-
-    //     $produitDejaDansPanier = false;
-    //     foreach ($panier as $indice => $ligne) {
-    //         if ($produit->getId() == $ligne["produit"]->getId()) {
-    //             $panier[$indice]["quantite"] += $quantite;
-    //             $produitDejaDansPanier = true;
-    //             break;  // pour sortir de la boucle foreach
-    //         }
-    //     }
-    //     if (!$produitDejaDansPanier) {
-    //         $panier[] = ["quantite" => $quantite, "produit" => $produit];  // on ajoute une ligne au panier => $panier est un array d'array
-    //     }
-
-
-    //     $session->set("panier", $panier);
-
-    //     $nb = 0;
-    //     foreach ($panier as $ligne) {
-    //         $nb += $ligne["quantite"];
-    //     }
-    //     return $this->json($nb);
-    // }
-
 }

@@ -1,20 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdressController!{% endblock %}
+{% block title %}Mes adresses - Zest de Charme{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/project_final_symfony2/src/Controller/AdressController.php'|file_link(0) }}">src/Controller/AdressController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/project_final_symfony2/templates/adress/index.html.twig'|file_link(0) }}">templates/adress/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="container-fluid mt-5 ml-6 pb-6">
+        <h2 class="mb-4 text-center">Enregistrer une adresse</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_row(form.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Prénom'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.adressePostale, {'attr': {'class': 'form-control', 'placeholder': 'Adresse'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.codePostal, {'attr': {'class': 'form-control', 'placeholder': 'Code postal'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.ville, {'attr': {'class': 'form-control', 'placeholder': 'Ville'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.pays, {'attr': {'class': 'form-control', 'placeholder': 'Pays'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.numeroTelephone, {'attr': {'class': 'form-control', 'placeholder': 'Numéro de téléphone'}}) }}
+                </div>
+                {# <button type="submit" class="btn btn-primary ">Enregistrer</button> #}
+                <div class="form-group mt-3 mb-3">
+                {{form_row(form.submit)}}
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
+

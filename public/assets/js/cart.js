@@ -133,3 +133,39 @@ function viderPanier() { // Utiliser une requête AJAX pour appeler la route de 
         }
     });
 }
+
+
+// Tout cocher 
+
+$(document).ready(function () {
+    // Sélection de la case à cocher "selectAll"
+    var selectAll = $('#selectAll');
+
+    // Gestion de l'événement de changement d'état de la case à cocher "selectAll"
+    selectAll.change(function () {
+        // Vérifie si la case à cocher "selectAll" est cochée ou non
+        var isChecked = $(this).is(':checked');
+
+        // Sélection de toutes les autres cases à cocher
+        var otherCheckboxes = $('input[type="checkbox"]').not(this);
+
+        // Si la case "selectAll" est cochée
+        if (isChecked) {
+            // Cocher toutes les autres cases à cocher
+            otherCheckboxes.prop('checked', true);
+            updateTotal();
+        } else {
+            // Sinon, décocher toutes les autres cases à cocher
+            otherCheckboxes.prop('checked', false);
+        }
+    });
+    
+    var confirmer = $('#continue_to_form');
+
+    confirmer.on('click', function () {
+        window.location.href = "/verification/adresse";
+    })
+});
+
+
+

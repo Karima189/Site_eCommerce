@@ -22,12 +22,14 @@ class PanierController extends AbstractController
             'panier' => $panier,
         ]);
     }
+    
     // pour supprimer un produit du panier
     #[Route('/supprimer-du-panier/{id}', name: 'supprimer_du_panier')]
     public function supprimerDuPanier(int $id, SessionInterface $session): Response
     {
         // Récupérer le panier depuis la session
         $panier = $session->get('panier', []);
+        
 
         // Rechercher l'index du produit dans le panier
         foreach ($panier as $index => $produit) {
@@ -47,7 +49,10 @@ class PanierController extends AbstractController
 
         // Si le produit n'est pas trouvé, rediriger vers la page du panier
         return $this->redirectToRoute('afficher_panier');
+        
     }
+   
+  
     // pour vider le panier
     #[Route('/vider-panier', name: 'vider_panier')]
     public function viderPanier(SessionInterface $session): Response

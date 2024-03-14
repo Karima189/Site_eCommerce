@@ -30,7 +30,11 @@ class Commande
 
     #[ORM\ManyToOne(inversedBy: 'commandes')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user = null;
+    private ?User $user = null;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?AdresseCommande $adresse = null;
 
     public function __construct()
     {
@@ -108,7 +112,7 @@ class Commande
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
@@ -116,6 +120,18 @@ class Commande
     public function setUser(?user $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?AdresseCommande
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(AdresseCommande $adresse): static
+    {
+        $this->adresse = $adresse;
 
         return $this;
     }

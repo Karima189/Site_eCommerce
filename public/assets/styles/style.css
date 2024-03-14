@@ -1,3 +1,7 @@
+body {
+  background-image: linear-gradient(#c0acca, #cbb7c5) !important;
+
+}
 header {
   display: flex;
   background-color: rgb(255, 216, 223);
@@ -18,6 +22,10 @@ header {
   background-color: pink !important;
   color: black !important;
   border-radius: 15px !important;
+}
+.description_produits{
+  width: 400px;
+  font-size: 30px;
 }
 
 /* .invisible{
@@ -174,7 +182,8 @@ header {
 }
 
 .supprimer_panier {
-  margin-top: 40px;
+  margin-top: 30px;
+  border-radius: 15px;
 }
 
 .vider_panier {
@@ -220,7 +229,7 @@ a>i {
   top: 7px;
 }
 
-input {
+#searchInput {
   padding: 8px;
   width: 400px;
   border-radius: 15px;
@@ -287,7 +296,7 @@ h3 {
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 20px;
-  color: crimson;
+  color: rgb(169, 70, 90);
   font-family: "Dancing Script", cursive;
   font-weight: bold;
   font-size: 40px;
@@ -330,9 +339,13 @@ h3 {
   padding: 10px;
   border-radius: 15px;
   transition: transform 0.2s ease;
+ 
+
+
 
   /* Effet de transition au survol */
 }
+
 
 .makeup_liste:hover {
   transform: scale(1.1);
@@ -399,6 +412,9 @@ h3 {
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
+  display:flex ;
+  flex-direction: column;
+  align-items: center;
 }
 
 .montresAcceuil:hover {
@@ -528,7 +544,7 @@ table {
   border: 1px solid black;
   border-radius: 15px;
   /* margin: 15px; */
-  min-height: 380px;
+  min-height: 400px;
   position: relative;
   display: block;
   margin-bottom: 20px;
@@ -660,6 +676,39 @@ hr {
   
 
 }
+.continue_commande{
+  width: 450px;
+  padding: 8px;
+  background-color: rgb(141, 195, 141);
+  border-radius: 10px;
+  position: absolute;
+  right: 40px;
+  margin-bottom: 20px;
+  
+  
+}
+.confirmation_commande_body{
+  position: relative;
+  padding-bottom: 70px;
+}
+.description_bijoux_index{
+  width: 400px;
+   margin-left: 20px;
+   color:black;
+   text-align: justify;
+   margin-top: 20px;
+}
+.description_montres_index{
+  width: 400px;
+   /* margin-left: 60px; */
+   color:black;
+   text-align: justify;
+   text-align: center;
+   margin-top:16px ;
+
+}
+
+
 /* .maquillage img {
   width: 254px;
   height: 170px;
@@ -708,3 +757,27 @@ hr {
   justify-content: space-between;
   height: 500px;
 } */
+
+
+/* caroussel */
+
+.flex-caroussel {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.carousel-container {
+  display: flex;
+}
+
+.card-flex {
+  flex: 0 0 auto;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.card-flex img {
+ width: 100%;
+  height: auto;
+}

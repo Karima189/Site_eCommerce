@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vos adresses
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h2 class="mb-4 text-center">Vos adresses enregistrées</h2>
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<ul class="list-group">
+					{% for address in addresses %}
+						<li class="list-group-item">
+							<h4>{{ address.prenom }}
+								{{ address.nom }}</h4>
+							<p>{{ address.adressePostale }}</p>
+							<p>{{ address.codePostal }}
+								{{ address.ville }}</p>
+							<p>{{ address.pays }}</p>
+							<p>Téléphone:
+								{{ address.numeroTelephone }}</p>
+						</li>
+						<a href="{{path('app_paiement')}}">Choisir cette adresse</a>
+					{% else %}
+						<li class="list-group-item">Aucune adresse enregistrée.</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		<a href="{{path('account_address')}}">Ajouter une adresse</a>
+	</div>
+{% endblock %}
