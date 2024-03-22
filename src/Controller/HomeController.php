@@ -60,6 +60,14 @@ class HomeController extends AbstractController
 
         ]);
     }
+    public function RecuperationUtilisateur()
+    {
+        $user = $this->getUser(); // Récupérer l'utilisateur connecté
+
+        return $this->render('navbar/navbar.html.twig', [
+            'user' => $user,
+        ]);
+    }
     
  
 

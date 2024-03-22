@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -49,16 +50,28 @@ class AdressController extends AbstractController
         ]);
     }
 
-    #[Route('verification/adresse', name:'adresse_verify')]
+    #[Route('verification/adresse', name: 'adresse_verify')]
     public function verification(EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
         $addresses = $em->getRepository(AdresseCommande::class)->findBy(['user' => $user]);
 
-        if($addresses){
-           return $this->redirectToRoute('account_addresses');
+        if ($addresses) {
+            return $this->redirectToRoute('account_addresses');
         } else {
-           return $this->redirectToRoute('account_address');
+            return $this->redirectToRoute('account_address');
         }
     }
+
+    #[Route('/compte/adresses/supprimer/{id}', name: 'delete_address')]
+    public function delete(AdresseCommande $address, EntityManagerInterface $entityManager): RedirectResponse
+    {
+        $entityManager->remove($address);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Adresse supprimée avec succès.');
+
+        return $this->redirectToRoute('account_addresses');
+    }
 }
+

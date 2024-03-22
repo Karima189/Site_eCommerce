@@ -1,35 +1,35 @@
 <header>
 	{% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
 	{# <img src="{{ asset('img/logo_img2.png') }}" alt="">
-				<h1>Chic Mademoiselle</h1>
-				<div class="invisible">  </div>
-				
-		
-		
-				<div id="searchResults"></div>
-				<div class="barre">
-					<div class="icone">
-					<i class="fa-solid fa-user"></i>
-						<a class="seConnecter" href="{{path('app_login')}}">Se Connecter</a> <br>
-						<a class="inscription" href="{{path('app_register')}}">Inscription</a>
-						
-					</div>
-		
-					<div class="icone">
-						<a id="panierLink" href="{{ path('afficher_panier') }}">Panier</a>
-		
-						<i class="fa-solid fa-cart-shopping"></i>
-					</div>
-		
-					<div class="icone">
-						<a href="{{ path('contact_show') }}">Contact</a>
-						<i class="fa-solid fa-envelope"></i>
-					</div>
-				</div>
-				<div class="invisible2">  </div> #}
-	<nav class="navbar navbar-expand-lg container-fluid">
+														<h1>Chic Mademoiselle</h1>
+														<div class="invisible">  </div>
+														
+												
+												
+														<div id="searchResults"></div>
+														<div class="barre">
+															<div class="icone">
+															<i class="fa-solid fa-user"></i>
+																<a class="seConnecter" href="{{path('app_login')}}">Se Connecter</a> <br>
+																<a class="inscription" href="{{path('app_register')}}">Inscription</a>
+																
+															</div>
+												
+															<div class="icone">
+																<a id="panierLink" href="{{ path('afficher_panier') }}">Panier</a>
+												
+																<i class="fa-solid fa-cart-shopping"></i>
+															</div>
+												
+															<div class="icone">
+																<a href="{{ path('contact_show') }}">Contact</a>
+																<i class="fa-solid fa-envelope"></i>
+															</div>
+														</div>
+														<div class="invisible2">  </div> #}
+	<nav class="navbar navbar-expand-lg container-fluid position-relative">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="">
+			<a class="navbar-brand" href="{{ path('app_home') }}">
 				<img src="{{ asset('img/logo_img2.png') }}" alt="" width="180" height="150"></a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -43,9 +43,15 @@
 					</li>
 
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle nav-liens" href="{{ path('app_login') }}" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Se Connecter
-						</a>
+						{% if app.user %}
+							<a class="nav-link nav-liens" href="{{ path('app_logout') }}" role="button" aria-expanded="false">
+								Se Déconnecter
+							</a>
+						{% else %}
+							<a class="nav-link dropdown-toggle nav-liens" href="{{ path('app_login') }}" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								Se Connecter
+							</a>
+						{% endif %}
 						<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
 							<li>
 								<a class="dropdown-item active inscription " href="{{ path('app_register') }}">
@@ -62,14 +68,16 @@
 					<i class="fa-solid fa-user"></i>
 					<li class="nav-item">
 						<a class="nav-link nav-liens " href="{{ path('afficher_panier') }}">
-							 
-							 <div>Panier  <i class="fa-solid fa-cart-shopping"></i></div>
-							 
-							
+
+							<div>Panier
+								<i class="fa-solid fa-cart-shopping"></i>
+							</div>
+
+
 						</a>
-						
+
 					</li>
-					
+
 					<span id="nombre">{{app.session.get('nbArticles','')}}</span>
 					<li class="nav-item">
 						<a class="nav-link nav-liens " href="#footer" tabindex="-1" aria-disabled="true">
@@ -77,26 +85,51 @@
 						</a>
 					</li>
 					<i class="fa-solid fa-envelope"></i>
+					{# 
+										{% if app.user %}
+											<h6 class="bienveunue_profil" id="user-name">Bienvenue,
+												{{ app.user.prenom }}!</h6>
+											{# <li>Votre adresse email est :
+												{{ app.user.email }}</li> #}
+					{# {% else %}
+											<h6>Bienvenue sur notre site!</h6>
+										{% endif %} #}
+
+
+					<div class="navbar-nav ml-auto">
+						{% if app.user %}
+							<span class="navbar-text">
+								<h6 class="welcome-message ">Bienvenue,
+									{{ app.user.prenom }}!</h6>
+								<h6 class="email-message">Votre adresse email est
+									{{ app.user.email }}</h6>
+								
+							</span>
+						
+						{% endif %}
+					</div>
+
+
 					{# <li class="nav-item">
-											<a class="nav-link nav-liens" href="{{ path('afficher_panier') }}">
-												Panier
-												{% if currentPath == "/" %}
-													<div id="nombre"></div>
-												{% else %}
-													<div id="nombr"></div>
-												{% endif %}
-											</a>
-										</li>
-										<i class="fa-solid fa-cart-shopping"></i> #}
+																																																													<a class="nav-link nav-liens" href="{{ path('afficher_panier') }}">
+																																																														Panier
+																																																														{% if currentPath == "/" %}
+																																																															<div id="nombre"></div>
+																																																														{% else %}
+																																																															<div id="nombr"></div>
+																																																														{% endif %}
+																																																													</a>
+																																																												</li>
+																																																												<i class="fa-solid fa-cart-shopping"></i> #}
 				</ul>
 				{# <form class="d-flex">
-					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">
-						Search
-
-
-					</button>
-				</form> #}
+																																													<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+																																													<button class="btn btn-outline-success" type="submit">
+																																														Search
+																																								
+																																								
+																																													</button>
+																																												</form> #}
 			</div>
 		</div>
 	</nav>

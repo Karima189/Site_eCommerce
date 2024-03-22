@@ -51,14 +51,14 @@
 				€
 			</h4>
 			<div class="ajout_panier_details">
-					<a href='' data-id={{produit.id}} class="ajouter_au_panier">
-						Ajouter au Panier
-					</a>
-					<i class="fa-solid fa-cart-shopping"></i>
-				</div>
+				<a href='' data-id={{produit.id}} class="ajouter_au_panier">
+					Ajouter au Panier
+				</a>
+				<i class="fa-solid fa-cart-shopping"></i>
+			</div>
 		</div>
 
-		
+
 		<div class="livraison">
 			<h1>
 				Expédition Rapide à France
@@ -159,10 +159,12 @@ if (! isClickInside && ! isTitleClick) {
 document.getElementById("hiddenText").style.display = "none";
 }
 });
-
+// pour la taille : quand on clique 
 function toggleCheckbox(element) {
-var checkbox = element.querySelector('input[type="checkbox"]');
-checkbox.checked = ! checkbox.checked;//elle est egale à false si on clique elle devient true, et inversement
+var checkbox = element.querySelector('input[type="checkbox"]');// on choisit la premiere input de type checkbox
+checkbox.checked = ! checkbox.checked;
+
+// elle est egale à false si on clique elle devient true, et inversement
 
 // Ajoutez ou supprimez la classe 'checked' pour styliser visuellement
 if (checkbox.checked) {
@@ -172,5 +174,4 @@ element.classList.remove('checked');
 }
 }
 	</script>
-</div></div>
-{% endblock %}
+</div></div>{% endblock %}

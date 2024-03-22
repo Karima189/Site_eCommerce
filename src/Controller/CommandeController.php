@@ -25,7 +25,6 @@ class CommandeController extends AbstractController
         $data = json_decode($commandeRequete, true); // décode le format envoyé par javascript (JSON ou string); 
         $sessionInterface->set('recapitulatif', $data);
         // Affichage récap
-
         return new JsonResponse(['url' => '/confirmation-commande']);
     }
 

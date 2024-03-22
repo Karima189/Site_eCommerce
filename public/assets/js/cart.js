@@ -18,6 +18,7 @@ $(document).ready(function () {
         }
         $.ajax({
             url: '/ajouter-au-panier/' + id,
+            type : 'get',
             dataType: "json",
             data: {
                 taille: taillesCochées

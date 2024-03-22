@@ -13,6 +13,8 @@
 					<h4>Prix</h4>
 
 					<h4>Taille</h4>
+				    <h4>Quantité</h4>	
+
 
 				</div>
 				<div class="info_recap">
@@ -26,12 +28,16 @@
 
 					<h4>{{ i.data.taille}}</h4>
 
+					<h4>{{ i.data.quantity}}</h4>
+
+
+
 				</div>
 
 
 			</div>
 		{% endfor %}
-	<p class="d-flex justify-content-end"><span class="text-warning me-5">{{totalPrix}} € A PAYER AU TOTAL ALORS PAYE VITE MERCI</span></p>
+	<p class="d-flex justify-content-end"><span class="me-5">{{totalPrix}} €</span></p>
 
 		<button class="continue_commande" id="continue_to_form">Continuer vers ma commande</button>
 	</div>

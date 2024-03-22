@@ -17,6 +17,10 @@ class RegistrationController extends AbstractController
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
+        // $request est une variable de type objet qui est une instance de Request
+        // Response est une classe 
+        // handleRequest 
+
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -34,7 +38,8 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('produits_par_categorie');
+            return $this->redirectToRoute('app_login');
+            // $this c'est à dire dans cette classe execute cette methode
         }
 
         return $this->render('registration/register.html.twig', [

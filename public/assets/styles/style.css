@@ -24,8 +24,9 @@ header {
   border-radius: 15px !important;
 }
 .description_produits{
-  width: 400px;
+  width: 420px;
   font-size: 30px;
+
 }
 
 /* .invisible{
@@ -138,7 +139,7 @@ header {
   cursor: pointer;
 }
 
-.taille_solo .checked {
+.checked {
   background-color: black;
   color: white;
 }
@@ -608,6 +609,7 @@ table {
   padding: 10px;
   flex: 1;
   margin: 10px;
+  height: 400px;
 }
 
 .contact_final {
@@ -707,7 +709,65 @@ hr {
    margin-top:16px ;
 
 }
+/* pour la partie de la corbeille dans l'adresse          */
+.purple-footer {
+  background-color: violet;
+  color: white; /* pour assurer la lisibilité du texte sur le fond violet */
+  padding: 10px;
+  text-align: center; /* pour centrer le texte dans le pied de carte */
+}
+.btn-danger{
+  font-size: 1.5rem !important;
+  color: red !important;
+  margin-right: 0 !important;
+  
+}
+#adresse_infos{
+  position: relative;
+}
+#corbeille_adresse{
+ position: absolute;
+ left: 93%;
+ top:15px;
+}
+/* CSS */
+#corbeille_adresse:hover + .delete-message {
+  display: block;
+}
 
+.delete-message {
+  position: absolute;
+  top: 50px;
+  left: 93%;
+  transform: translate(-50%, 0);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 3px;
+  border-radius: 5px;
+  display: none;
+  font-size: 15px;
+ 
+}
+.btn-success{
+  background-color: purple;
+  width: 40%;
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+.btn-violet {
+  background-color: purple;
+
+}
+
+.btn-violet:hover,
+.btn-violet:focus {
+  background-color: purple; /* Garde la couleur violette au survol */
+  border-color: violet;
+}
+/* .card-body{
+  background-color: rgba(232, 160, 214, 0.748);
+} */
 
 /* .maquillage img {
   width: 254px;
@@ -780,4 +840,23 @@ hr {
 .card-flex img {
  width: 100%;
   height: auto;
+}
+.welcome-message{
+position: absolute;
+right: 90px;
+font-size: 25px;
+color: purple;
+font-weight: bold;
+cursor: pointer;
+top:40px;
+}
+.email-message {
+  display: none;
+  position: absolute;
+ bottom: 25px;
+ right: 8px;
+}
+
+.welcome-message:hover + .email-message {
+  display: block;
 }

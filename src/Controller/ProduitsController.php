@@ -99,11 +99,12 @@ class ProduitsController extends AbstractController
     #[Route('/ajouter-au-panier/{id}', name: 'ajouter_au_panier')]
     public function ajouterAuPanier(Produit $produit, SessionInterface $session, Request $request): JsonResponse
     {
+        
         // Récupérer le panier actuel depuis la session
         $panier = $session->get('panier', []);
-
+       //  récupère tous les paramètres de la requête GET actuelle.
         $params = $request->query->all();
-
+        
         $tailles = $params['taille'] ?? [];
 
         // Ajouter le produit au panier
@@ -128,14 +129,14 @@ class ProduitsController extends AbstractController
                 }
             }
         }
-
         
-
+        
+        
         // Mettre à jour le panier dans la session
         $session->set('panier', $panier);
-
+        
         $nbArticles = count($session->get('panier'));
-
+        
         $session->set('nbArticles', $nbArticles);
 
         // Rediriger vers la page précédente ou une autre page
