@@ -67,7 +67,6 @@ class ProduitsController extends AbstractController
     public function afficherProduit(Produit $produit, TailleProduitRepository $tailleProduit): Response
     {
         $categorie = $produit->getCategory();
-        // dd($categorie);
         $nomProduit = strtolower($produit->getDescription());
 
         // On déclare les variables null pour éviter les erreurs dans les endroits où on en a pas besoin (exemple, maquillage);

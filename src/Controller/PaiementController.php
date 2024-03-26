@@ -15,7 +15,7 @@ class PaiementController extends AbstractController
     public function index(SessionInterface $session, UrlGeneratorInterface $urlGeneratorInterface): Response
     {
 
-        \Stripe\Stripe::setApiKey('sk_test_51OICEgC3GA5BR02Af7eTScs2GgI29d4FpjzMiWRo625SCPzvudJNRQPg0A3ICZ9wTnCiXJadx9TrO7MRr9lVaXV800sjafT7mP');
+        // \Stripe\Stripe::setApiKey('sk_test_51OICEgC3GA5BR02Af7eTScs2GgI29d4FpjzMiWRo625SCPzvudJNRQPg0A3ICZ9wTnCiXJadx9TrO7MRr9lVaXV800sjafT7mP');
 
         $recapitulatif = $session->get('recapitulatif', []);
         // dd($recapitulatif);

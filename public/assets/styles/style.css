@@ -25,7 +25,8 @@ header {
 }
 .description_produits{
   width: 420px;
-  font-size: 30px;
+  font-size: 28px;
+  margin-bottom: 18px;
 
 }
 
@@ -72,11 +73,17 @@ header {
 }
 
 .product-checkbox {
-  width: 30px;
+  width: 17px;
+  height: 17px;
   position: absolute;
-  top: 10;
+  top: 8px;
+  left: 10px;
+
+  
 
 }
+
+
 
 .livraison_panier_select {
   width: 300px;
@@ -87,6 +94,10 @@ header {
 
 .details_body {
   background-color: rgb(207, 185, 210);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
 
 }
@@ -146,13 +157,13 @@ header {
 
 .carousel_front {
   width: 100% !important;
-  height: 1000px;
+  height: 800px;
 }
 
 .carousel-item,
 .carousel_front img {
   height: 100%;
-}
+} 
 
 .bouton_commande {
   width: 450px;
@@ -168,11 +179,12 @@ header {
 
 .ajout_panier_details {
   margin-left: -30px;
-  border: 1px solid palevioletred;
+  /* border: 1px solid palevioletred; */
   width: 280px;
   border-radius: 15px;
   padding: 6px;
   margin-bottom: 35px;
+  text-align: center;
 }
 
 .ajout_panier_details:hover {
@@ -210,6 +222,7 @@ header {
 .debut_panier {
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .recherche {
@@ -280,10 +293,12 @@ li a {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 1500px;
+  width: 1400px;
   margin: auto;
   position: relative;
   padding-bottom: 60px;
+  padding-left: 15px;
+  
 
 
 }
@@ -291,6 +306,8 @@ li a {
 .listeProduits img {
   margin-top: 40px;
   border-radius: 10px;
+  width: 350px;
+  height: 350px;
 }
 
 h3 {
@@ -306,14 +323,33 @@ h3 {
 
 .voir_detail {
 
-  font-size: 25px;
-  color: rgb(109, 7, 84);
+  font-size: 22px;
+ border: 1px solid palevioletred;
+ padding: 7px;
+ border-radius:15px;
+ 
 }
 
+
 .ajouter_au_panier {
-  font-size: 25px;
+  /* font-size: 25px;
   color: rgb(109, 7, 84);
-  margin-left: 20px;
+  margin-left: 20px; */
+  background-color: #9a5fa9; /* Couleur de fond */
+  color: #fff; /* Couleur du texte */
+  text-decoration: none; /* Supprime le soulignement du lien */
+  border: none; /* Supprime les bordures */
+  border-radius: 5px; /* Ajoute des coins arrondis */
+  cursor: pointer; /* Change le curseur au survol */
+  padding: 5px;
+
+  margin-right: 10px;
+  margin-top: 20px;
+}
+.ajouter_panier_div{
+  margin-top: 20px;
+  margin-bottom: 15px;
+
 }
 
 .ajouter_au_panier_details {
@@ -354,8 +390,8 @@ h3 {
 }
 
 .carousel-inner {
-  width: 500px;
-  height: 700px;
+  width: 450px;
+  height: 600px;
   margin-top: 40px;
 }
 
@@ -365,6 +401,7 @@ h3 {
   text-align: center;
   font-weight: bold;
   width: 500px;
+  font-size: 35px;
 }
 
 .coffre1 {
@@ -428,7 +465,7 @@ h3 {
 }
 
 .block_detail {
-  width: 55%;
+  width: 61%;
   margin: auto;
 }
 
@@ -452,7 +489,7 @@ h3 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 28px;
-  width: 1200px;
+  width: 1100px;
   margin-left: -30px;
   text-align: justify;
 
@@ -533,7 +570,11 @@ table {
 .liste_panier img {
   width: 300px;
   height: 300px;
+  margin-left: 10px;
 
+}
+.descriptionArticle{
+  margin-left: 8px;
 }
 
 .structure_panier {
@@ -549,14 +590,29 @@ table {
   position: relative;
   display: block;
   margin-bottom: 20px;
+  margin-top: 20px;
+ 
 
 }
 
 .sousTitres-panier {
   font-size: 20px;
-  color: blue;
+  color: rgb(140, 12, 208);
   font-weight: bold;
+  margin-left: 8px;
 }
+.selectionner_tout_panier{
+  font-size: 20px;
+  color: deeppink;
+  position: absolute;
+  left: 110px;
+  
+}
+.selectionner_tout_panier input{
+  width: 17px;
+  height: 17px;
+}
+
 
 .liste_panier span {
   color: black;
@@ -634,8 +690,9 @@ table {
 }
 
 hr {
-  width: 1200px;
+  width: 1100px;
   font-size: 15px;
+
 }
 
 .pagination {
@@ -668,6 +725,12 @@ hr {
 
 
 }
+.info_recap img{
+  width: 300px;
+  height: 300px;
+  border-radius: 15px;
+  margin: 0 30px;
+}
 .info_recap_titres{
   display: flex;
   justify-content: space-around;
@@ -676,7 +739,10 @@ hr {
   font-weight: bold;
   font-family: "Dancing Script", cursive;
   
+}
 
+.info_recap_titres>h4:first-child{
+  margin: 0 30px;
 }
 .continue_commande{
   width: 450px;
@@ -694,11 +760,13 @@ hr {
   padding-bottom: 70px;
 }
 .description_bijoux_index{
-  width: 400px;
+  width: 350px;
    margin-left: 20px;
    color:black;
    text-align: justify;
    margin-top: 20px;
+   font-size:30px;
+   word-spacing: normal;
 }
 .description_montres_index{
   width: 400px;
@@ -859,4 +927,48 @@ top:40px;
 
 .welcome-message:hover + .email-message {
   display: block;
+}
+.titre_formulaire{
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+  font-size: 45px;
+}
+.form-label{
+  color: rgb(198, 7, 150);
+  font-size: 20px;
+  /* font-weight: bold; */
+ 
+}
+.form-check-label{
+  color: rgb(198, 7, 150);
+  font-size: 20px;
+  /* font-weight: bold; */
+ margin-top: 15px;
+}
+.form-check-input{
+  margin-top: 23px;
+  font-size: 18px;
+  margin-left: 10px;
+}
+#registration_form_register,.bouton_adresse_commande{
+  margin-top: 20px;
+  background-color:rgb(207, 166, 200);
+  color: black;
+  padding: 8px;
+  width: 150px;
+  font-weight: bold;
+  margin-bottom: 35px;
+  border: 1px solid black;
+}
+#carouselVetements {
+  max-width: 100%; /* Limite la largeur du carousel à la largeur de la page */
+  overflow: hidden; /* Cache tout contenu qui dépasse la largeur du carousel */
+}
+
+.carousel-item img {
+  max-width: 100%; /* Limite la largeur des images à la largeur du carousel */
+  height: auto; /* Garde le rapport hauteur-largeur de l'image */
+}
+.container{
+  max-width: 1100px;
 }

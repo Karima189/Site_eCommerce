@@ -10,7 +10,7 @@
 		<div class="invisible_panier"></div>
 		<button onclick="viderPanier()" class="vider_panier">Vider le Panier</button>
 	</div>
-	<div>
+	<div class="selectionner_tout_panier">
 		<input type="checkbox" id="selectAll">
 		<label for="selectAll">
 			Tout séléctionner
@@ -30,7 +30,7 @@
 						<!-- Ajouter une case à cocher -->
 						<input type="checkbox" class="product-checkbox" name="selected_products[]" value="{{ item.id }}" data-taille="{{item.id}}{{item.taille}}" onchange="updateTotal()">
 
-						<img src="{{ asset('img/' ~ item.image) }}" alt="{{ item.description }}" width="200" height="200">
+						<img src="{{ asset('img/' ~ item.image) }}" alt="{{ item.description }}" width="250" height="250">
 						<h4 class="descriptionArticle">{{ item.description }}</h4>
 
 						<h4 class="sousTitres-panier {{item.taille == 'taille_unique' ? 'non_visible' : ''}}">
@@ -85,12 +85,17 @@
 				<hr class="hr_panier">
 				<h2 id="total-prix"></h2>
 
-				<button class="bouton_commande" id="passer_commande">Passer Ma Commande</button>
-
+				{% if app.user %}
+					<button class="bouton_commande" id="passer_commande">Passer Ma Commande</button>
+				{% else %}
+					<button class="bouton_commande">
+						<a href="{{path('app_login', 'panier': "retour_panier")}}">Passer Ma Commande</a>
+					</button>
+				{% endif %}
 				<script>
 					document.getElementById('passer_commande').addEventListener('click', function () { // Redirection vers l'URL de la route 'account_address'
-                    window.location.href = "{{ path('confirmation_commande') }}";
-                });
+window.location.href = "{{ path('confirmation_commande') }}";
+});
 				</script>
 
 

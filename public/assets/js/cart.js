@@ -122,6 +122,7 @@ $(document).ready(function () {
     });
 
 })
+
 function viderPanier() { // Utiliser une requête AJAX pour appeler la route de vidage du panier
     $.ajax({
         url: '/vider-panier',
@@ -166,7 +167,11 @@ $(document).ready(function () {
     confirmer.on('click', function () {
         window.location.href = "/verification/adresse";
     })
+
 });
+function connectRequired(){
+    window.location.href = '/login';
+}
 
 
 
