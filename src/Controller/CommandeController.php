@@ -46,7 +46,6 @@ class CommandeController extends AbstractController
     {
         // Récupération des informations de la commande depuis les paramètres de requête
         $produits = $session->get('recapitulatif', []);
-        // dd($produits);
         $infos = [];
         $totalProduits = 0;
         foreach ($produits as &$produit) {

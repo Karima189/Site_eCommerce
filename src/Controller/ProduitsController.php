@@ -104,7 +104,8 @@ class ProduitsController extends AbstractController
        //  récupère tous les paramètres de la requête GET actuelle.
         $params = $request->query->all();
         
-        $tailles = $params['taille'] ?? [];
+        $tailles = $params['taille'] ?? [];// si  $params['taille'] existe et il est non null alos $tailles = $params['taille']
+        // sinon  $tailles= []
 
         // Ajouter le produit au panier
         if (is_array($tailles)) {

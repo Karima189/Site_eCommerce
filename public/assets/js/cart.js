@@ -1,20 +1,21 @@
 $(document).ready(function () {
     $(".ajouter_au_panier").on("click", (evtClick) => {
         evtClick.preventDefault();
-        var id = $(evtClick.target).data('id');
+        var id = $(evtClick.target).data('id');// pour récupérer l'id du produit stocké dans data-id
         var checkbox = $('.taille_solo  input[type="checkbox"]');
 
         var taillesCochées = [];
+
         checkbox.each(function () {
             if ($(this).is(":checked")) {
-                var checkboxValue = $(this).val();
-                taillesCochées.push(checkboxValue); // Ajoutez la taille cochée au tableau
+                var checkboxValue = $(this).val(); // 
+                taillesCochées.push(checkboxValue); // Ajoutez la valeur de la taille cochée au tableau
                 console.log("Case cochée avec la valeur :", checkboxValue);
                 // Vous pouvez envoyer la valeur dans votre requête AJAX ici
             }
         });
         if (taillesCochées.length == 0) {
-            taillesCochées = { taille: "" };
+            taillesCochées = { taille: "" };// tailleCochés c'est un tableau JSON ou taille est la clé et "" est la valeur
         }
         $.ajax({
             url: '/ajouter-au-panier/' + id,
@@ -36,7 +37,6 @@ $(document).ready(function () {
 
 
     var quantityInputs = document.querySelectorAll('.quantity-input');
-
     quantityInputs.forEach(function (input) {
         input.addEventListener('change', function () {
             var itemId = input.getAttribute('data-id');
@@ -56,12 +56,18 @@ $(document).ready(function () {
 });
 
 
+
+
+
 // Fonction pour mettre à jour le total lorsque les cases à cocher ou les quantités changent
 function updateTotal() {
     var totalPrix = 0;
     var checkboxes = document.querySelectorAll('.product-checkbox:checked');
     var livraisonSelect = document.getElementById('livraison');
     var prixLivraison = parseFloat(livraisonSelect.options[livraisonSelect.selectedIndex].getAttribute('data-prix'));
+    
+
+
 
     articlesEnvoyes = [];
 
@@ -72,7 +78,6 @@ function updateTotal() {
         var quantity = parseInt(document.querySelector('#quantity' + itemId).value);
         var totalArticle = prixUnitaire * quantity; // Calculer le total de chaque article
         var taille = document.getElementById('taille' + itemId).textContent;
-        console.log(taille);
 
         totalPrix += totalArticle; // Ajouter le total de l'article au totalPrix
 
@@ -85,15 +90,17 @@ function updateTotal() {
             taille: taille
         });
     });
-
+   
     // Ajouter le prix de livraison au total
     totalPrix += prixLivraison;
 
     articlesEnvoyes.push({
+        prixLivraison: prixLivraison,
         totalPrix: totalPrix
     })
 
     document.getElementById('total-prix').innerText = "Total: " + totalPrix.toFixed(2) + " €";
+    
 }
 
 

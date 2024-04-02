@@ -78,6 +78,7 @@
 					<option value="express" data-prix="6.90">Livraison Express : 6.90 €</option>
 				</select>
 
+
 				<!-- Bouton pour calculer le total des produits sélectionnés -->
 				<div style="visibility: hidden;">
 					<button type="button" onclick="calculerTotal()">Total:</button>
@@ -89,7 +90,7 @@
 					<button class="bouton_commande" id="passer_commande">Passer Ma Commande</button>
 				{% else %}
 					<button class="bouton_commande">
-						<a href="{{path('app_login', 'panier': "retour_panier")}}">Passer Ma Commande</a>
+						<a href="{{path('app_login')}}">Passer Ma Commande</a>
 					</button>
 				{% endif %}
 				<script>
