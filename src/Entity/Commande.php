@@ -19,9 +19,6 @@ class Commande
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $created_at = null;
 
-    #[ORM\Column]
-    private ?int $state = null;
-
     #[ORM\Column(length: 255)]
     private ?string $reference = null;
 
@@ -32,13 +29,13 @@ class Commande
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?AdresseCommande $adresse = null;
+    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: AdresseCommande::class)]
+    private Collection $adresseCommandes;
 
     public function __construct()
     {
         $this->details = new ArrayCollection();
+        $this->adresseCommandes = new ArrayCollection();
     }
     
     public function getId(): ?int
@@ -54,18 +51,6 @@ class Commande
     public function setCreatedAt(\DateTimeInterface $created_at): static
     {
         $this->created_at = $created_at;
-
-        return $this;
-    }
-
-    public function getState(): ?int
-    {
-        return $this->state;
-    }
-
-    public function setState(int $state): static
-    {
-        $this->state = $state;
 
         return $this;
     }
@@ -124,14 +109,32 @@ class Commande
         return $this;
     }
 
-    public function getAdresse(): ?AdresseCommande
+    /**
+     * @return Collection<int, AdresseCommande>
+     */
+    public function getAdresseCommandes(): Collection
     {
-        return $this->adresse;
+        return $this->adresseCommandes;
     }
 
-    public function setAdresse(AdresseCommande $adresse): static
+    public function addAdresseCommande(AdresseCommande $adresseCommande): static
     {
-        $this->adresse = $adresse;
+        if (!$this->adresseCommandes->contains($adresseCommande)) {
+            $this->adresseCommandes->add($adresseCommande);
+            $adresseCommande->setCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdresseCommande(AdresseCommande $adresseCommande): static
+    {
+        if ($this->adresseCommandes->removeElement($adresseCommande)) {
+            // set the owning side to null (unless already changed)
+            if ($adresseCommande->getCommande() === $this) {
+                $adresseCommande->setCommande(null);
+            }
+        }
 
         return $this;
     }

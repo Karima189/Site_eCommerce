@@ -66,9 +66,6 @@ function updateTotal() {
     var livraisonSelect = document.getElementById('livraison');
     var prixLivraison = parseFloat(livraisonSelect.options[livraisonSelect.selectedIndex].getAttribute('data-prix'));
     
-
-
-
     articlesEnvoyes = [];
 
     checkboxes.forEach(function (checkbox) {

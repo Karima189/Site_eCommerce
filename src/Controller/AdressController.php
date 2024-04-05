@@ -21,15 +21,15 @@ class AdressController extends AbstractController
         $form = $this->createForm(AdressType::class, $adress);
 
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-            $adress->setUser($this->getUser());
+            $data = $form->getData();
+            $session->set('adresse', $data);
+            $session->set('order', 1);
 
-            $em->persist($adress);
-            $em->flush();
+
             if ($session->get('order') === 1) {       //Redirection vers la commande si celle-ci a été amorcée
                 $session->set('order', 0);
-                return $this->redirectToRoute('order');
+                return $this->redirectToRoute('app_paiement');
             }
             return $this->redirectToRoute('account_address');
         }
@@ -40,8 +40,9 @@ class AdressController extends AbstractController
     }
 
     #[Route('/compte/adresses', name: 'account_addresses')]
-    public function list(EntityManagerInterface $em): Response
+    public function list(EntityManagerInterface $em, SessionInterface $sessionInterface): Response
     {
+        // dd($sessionInterface->get('recapitulatif',[]));  
         $user = $this->getUser();
         $addresses = $em->getRepository(AdresseCommande::class)->findBy(['user' => $user]);
 

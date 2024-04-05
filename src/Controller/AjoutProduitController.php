@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AjoutProduitController extends AbstractController
 {
     #[Route('/produit', name: 'app_ajout_produit')]
-    public function ajout_vetement(Request $request, EntityManagerInterface $entityManager, CategoriesRepository $categoriesRepository): Response
+    public function ajout_produit(Request $request, EntityManagerInterface $entityManager, CategoriesRepository $categoriesRepository): Response
     {
         $produit = new Produit();
         $form = $this->createForm(ProduitsType::class, $produit);

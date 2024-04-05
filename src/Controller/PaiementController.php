@@ -2,6 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\AdresseCommande;
+use App\Entity\Detail;
+use App\Entity\Produit;
+use App\Entity\Commande;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -87,15 +92,15 @@ class PaiementController extends AbstractController
         // \Stripe\Stripe::setApiKey('sk_test_51OICEgC3GA5BR02Af7eTScs2GgI29d4FpjzMiWRo625SCPzvudJNRQPg0A3ICZ9wTnCiXJadx9TrO7MRr9lVaXV800sjafT7mP');
     
         $recapitulatif = $session->get('recapitulatif', []);
-
-        $prixLivraison = $recapitulatif['prixLivraison'] ?? null;
-        $prixTotal = $recapitulatif['totalPrix'] ?? null ;
-    
+        
+        $dernierElement = end($recapitulatif);
+        
+        $prixLivraison = isset($dernierElement['prixLivraison']) ? $dernierElement['prixLivraison'] : dd('erreur');
         $lineItems = [];
     
         foreach ($recapitulatif as $recap) {
-            if (isset($recap['prixTotalProduit']) && isset($recap['description'])) {
-                $uniteAmout = round($recap['prixTotalProduit'] * 100);
+            if (isset($recap['prixTotalProduit'])) {
+                $uniteAmout = round(($recap['prixTotalProduit']) * 100 );
                 $lineItems[] = [
                     'price_data' => [
                         'currency' => 'eur',
@@ -108,17 +113,6 @@ class PaiementController extends AbstractController
                 ];
             }
         }
-    
-        // Récupérer la valeur de livraison sélectionnée par l'utilisateur depuis la requête
-        $prixLivraison = $request->request->get('prixLivraison');
-
-        // Stocker le prix de livraison dans la session Symfony
-        $session->set('prixLivraison', $prixLivraison);
-    
-    
-        // Stocker le prix de livraison dans la session Symfony
-        $session->set('prixLivraison', $prixLivraison);
-    
     
         // Ajouter les frais de livraison
         $lineItems[] = [
@@ -149,8 +143,54 @@ class PaiementController extends AbstractController
     
     
     #[Route('/confirmation_paiement', name: "confirm_paiement_app")]
-    public function confirmPaiement(): Response
+    public function confirmPaiement(EntityManagerInterface $em, SessionInterface $sessionInterface): Response
     {
+         // Création de la commande avec les infos formulaire
+         $commande = new Commande;
+         $adresse = new AdresseCommande;
+         $date = new \DateTime;
+
+         $infosAdresse = $sessionInterface->get('adresse');
+        // dd($infosAdresse);
+         $commande
+             ->setUser($this->getUser()) // c'est user_id dans la table commande
+             ->setCreatedAt($date)
+             ->setReference($date->format('YmdHis') . '-' . uniqid());
+        $adresse->setUser($this->getUser())
+        ->setPrenom($infosAdresse->getPrenom())
+        ->setNom($infosAdresse->getNom())
+        ->setAdressePostale($infosAdresse->getAdressePostale())
+        ->setCodePostal($infosAdresse->getCodePostal())
+        ->setVille($infosAdresse->getVille())
+        ->setPays($infosAdresse->getPays())
+        ->setNumeroTelephone($infosAdresse->getNumeroTelephone())
+        ->setCommande($commande);
+ 
+         $em->persist($commande);
+         $em->persist($adresse);
+ 
+         $data = $sessionInterface->get('recapitulatif',[]);
+         // Création des lignes de détails pour chacun des produits de la commande
+         // Parcourir les articles sélectionnés
+         foreach ($data as $articleData) {
+             if (isset($articleData['id'])) {
+                 $produit = $em->getRepository(Produit::class)->find($articleData['id']);
+                 if ($produit) {
+                     $detail = new Detail();
+                     $detail->setCommande($commande);
+                     $detail->setProduit($produit);
+                     $detail->setQuantité($articleData['quantity']);
+                     $detail->setPrix($articleData['prixTotalProduit']);
+                     $articleData['taille'] == 'taille_unique' ? $detail->setTaille(null) : $detail->setTaille($articleData['taille']);
+                     $em->persist($detail);
+                 }
+             }
+         }
+         // dd($data); 
+         $em->flush();
+ 
+         $infos = $em->getRepository(Detail::class)->findBy(['commande' => $commande]);
+         // dd($infos[0]->getCommande()->getUser()->getEmail());
         return $this->render('paiement/confirmation_paiement.html.twig', []);
     }
 

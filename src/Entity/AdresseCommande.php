@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AdresseCommandeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AdresseCommandeRepository::class)]
@@ -37,6 +39,14 @@ class AdresseCommande
 
     #[ORM\Column]
     private ?int $numeroTelephone = null;
+
+    #[ORM\ManyToOne(inversedBy: 'adresseCommandes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Commande $commande = null;
+
+    public function __construct()
+    {
+    }
 
     public function getId(): ?int
     {
@@ -135,6 +145,18 @@ class AdresseCommande
     public function setNumeroTelephone(int $numeroTelephone): static
     {
         $this->numeroTelephone = $numeroTelephone;
+
+        return $this;
+    }
+
+    public function getCommande(): ?Commande
+    {
+        return $this->commande;
+    }
+
+    public function setCommande(?Commande $commande): static
+    {
+        $this->commande = $commande;
 
         return $this;
     }
