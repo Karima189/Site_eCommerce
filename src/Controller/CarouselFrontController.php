@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CarouselFrontController extends AbstractController
 {
     #[Route('/ajout_carousel', name: 'app_ajout_carousel')]
+  
     public function ajoutCarousel(Request $request, EntityManagerInterface $entityManager): Response
     {
         $carousel = new CarouselFront();

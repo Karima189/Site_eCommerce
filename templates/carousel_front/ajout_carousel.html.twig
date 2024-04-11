@@ -1,4 +1,4 @@
-
+{# 
 
 {% extends 'base.html.twig' %}
 
@@ -13,5 +13,33 @@
 
     <button type="submit"style="margin-left:30px">Ajouter l'image</button>
     {{ form_end(form) }}
+{% endblock %} #}
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une image au Carousel{% endblock %}
+
+{% block body %}
+    {% if not app.user or 'ROLE_ADMIN' not in app.user.roles %}
+        <div class="alert alert-danger" role="alert">
+            Vous n'avez pas les droits d'accéder à cette page.
+        </div>
+    {% else %}
+        <div class="container">
+            <h1 class="heading">Ajouter une image au Carousel</h1>
+            
+            <div class="form-container">
+                {{ form_start(form, {'attr': {'class': 'image-form'}}) }}
+                    <div class="form-group">
+                        {{ form_row(form.image, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Ajouter l'image</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
+
 

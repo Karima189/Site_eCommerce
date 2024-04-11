@@ -6,6 +6,8 @@ use App\Entity\AdresseCommande;
 use App\Entity\Detail;
 use App\Entity\Produit;
 use App\Entity\Commande;
+use App\Repository\AdresseCommandeRepository;
+use App\Repository\ProduitRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PaiementController extends AbstractController
 {
-   
+
     // public function index(SessionInterface $session, UrlGeneratorInterface $urlGeneratorInterface , Request $request): Response
     // {
     //     \Stripe\Stripe::setApiKey('sk_test_51OICEgC3GA5BR02Af7eTScs2GgI29d4FpjzMiWRo625SCPzvudJNRQPg0A3ICZ9wTnCiXJadx9TrO7MRr9lVaXV800sjafT7mP');
@@ -86,26 +88,36 @@ class PaiementController extends AbstractController
     //             return 4; // Exemple : 4.00 EUR
     //     }
     // }
-    #[Route('/paiement', name: 'app_paiement')]
-    public function index(SessionInterface $session, UrlGeneratorInterface $urlGeneratorInterface , Request $request): Response
+    #[Route('/paiement/{id}', name: 'app_paiement')]
+    public function index(SessionInterface $session, UrlGeneratorInterface $urlGeneratorInterface, Request $request, $id, AdresseCommandeRepository $adresseCommandeRepository, ProduitRepository $produitRepository): Response
     {
-        // \Stripe\Stripe::setApiKey('sk_test_51OICEgC3GA5BR02Af7eTScs2GgI29d4FpjzMiWRo625SCPzvudJNRQPg0A3ICZ9wTnCiXJadx9TrO7MRr9lVaXV800sjafT7mP');
-    
+        \Stripe\Stripe::setApiKey('sk_test_51OICEgC3GA5BR02Af7eTScs2GgI29d4FpjzMiWRo625SCPzvudJNRQPg0A3ICZ9wTnCiXJadx9TrO7MRr9lVaXV800sjafT7mP');
+
         $recapitulatif = $session->get('recapitulatif', []);
-        
+        // dd($adresse);
+        if (empty($session->get('adresse'))) {
+            $adresse = $adresseCommandeRepository->find($id);
+            $session->set('adresse', $adresse);
+        }
+
+        // Récuperer ID de adresse et la chercher sur repository:
+
         $dernierElement = end($recapitulatif);
-        
+
         $prixLivraison = isset($dernierElement['prixLivraison']) ? $dernierElement['prixLivraison'] : dd('erreur');
         $lineItems = [];
-    
         foreach ($recapitulatif as $recap) {
+            if(!isset($recap['description']) && isset($recap['id'])){
+                $descriptionRepository = $produitRepository->find($recap['id']);
+                $description = $descriptionRepository->getDescription();
+            }
             if (isset($recap['prixTotalProduit'])) {
-                $uniteAmout = round(($recap['prixTotalProduit']) * 100 );
+                $uniteAmout = round(($recap['prixUnitaire']) * 100);
                 $lineItems[] = [
                     'price_data' => [
                         'currency' => 'eur',
                         'product_data' => [
-                            'name' => $recap['description'],
+                            'name' => $recap['description'] ?? $description,
                         ],
                         'unit_amount' => $uniteAmout,
                     ],
@@ -113,7 +125,7 @@ class PaiementController extends AbstractController
                 ];
             }
         }
-    
+
         // Ajouter les frais de livraison
         $lineItems[] = [
             'price_data' => [
@@ -125,7 +137,7 @@ class PaiementController extends AbstractController
             ],
             'quantity' => 1, // Vous pouvez ajuster la quantité selon votre besoin
         ];
-    
+
         $checkout_session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
             'line_items' => $lineItems,
@@ -137,60 +149,68 @@ class PaiementController extends AbstractController
             ),
             "cancel_url" => $urlGeneratorInterface->generate('cancel_payment', [], $urlGeneratorInterface::ABSOLUTE_URL),
         ]);
-    
+
         return new RedirectResponse($checkout_session->url, 303);
     }
-    
-    
+
+
     #[Route('/confirmation_paiement', name: "confirm_paiement_app")]
     public function confirmPaiement(EntityManagerInterface $em, SessionInterface $sessionInterface): Response
     {
-         // Création de la commande avec les infos formulaire
-         $commande = new Commande;
-         $adresse = new AdresseCommande;
-         $date = new \DateTime;
+        // Création de la commande avec les infos formulaire
+        $commande = new Commande;
+        $adresse = new AdresseCommande;
+        $date = new \DateTime;
+        $data = $sessionInterface->get('recapitulatif', []);
 
-         $infosAdresse = $sessionInterface->get('adresse');
-        // dd($infosAdresse);
-         $commande
-             ->setUser($this->getUser()) // c'est user_id dans la table commande
-             ->setCreatedAt($date)
-             ->setReference($date->format('YmdHis') . '-' . uniqid());
+        $infosAdresse = $sessionInterface->get('adresse');
+        $end = end($data);
+        $commande
+            ->setUser($this->getUser()) // c'est user_id dans la table commande
+            ->setCreatedAt($date)
+            ->setReference($date->format('YmdHis') . '-' . uniqid())
+            ->setPrixTotal($end['totalPrix']);
         $adresse->setUser($this->getUser())
-        ->setPrenom($infosAdresse->getPrenom())
-        ->setNom($infosAdresse->getNom())
-        ->setAdressePostale($infosAdresse->getAdressePostale())
-        ->setCodePostal($infosAdresse->getCodePostal())
-        ->setVille($infosAdresse->getVille())
-        ->setPays($infosAdresse->getPays())
-        ->setNumeroTelephone($infosAdresse->getNumeroTelephone())
-        ->setCommande($commande);
- 
-         $em->persist($commande);
-         $em->persist($adresse);
- 
-         $data = $sessionInterface->get('recapitulatif',[]);
-         // Création des lignes de détails pour chacun des produits de la commande
-         // Parcourir les articles sélectionnés
-         foreach ($data as $articleData) {
-             if (isset($articleData['id'])) {
-                 $produit = $em->getRepository(Produit::class)->find($articleData['id']);
-                 if ($produit) {
-                     $detail = new Detail();
-                     $detail->setCommande($commande);
-                     $detail->setProduit($produit);
-                     $detail->setQuantité($articleData['quantity']);
-                     $detail->setPrix($articleData['prixTotalProduit']);
-                     $articleData['taille'] == 'taille_unique' ? $detail->setTaille(null) : $detail->setTaille($articleData['taille']);
-                     $em->persist($detail);
-                 }
-             }
-         }
-         // dd($data); 
-         $em->flush();
- 
-         $infos = $em->getRepository(Detail::class)->findBy(['commande' => $commande]);
-         // dd($infos[0]->getCommande()->getUser()->getEmail());
+            ->setPrenom($infosAdresse->getPrenom())
+            ->setNom($infosAdresse->getNom())
+            ->setAdressePostale($infosAdresse->getAdressePostale())
+            ->setCodePostal($infosAdresse->getCodePostal())
+            ->setVille($infosAdresse->getVille())
+            ->setPays($infosAdresse->getPays())
+            ->setNumeroTelephone($infosAdresse->getNumeroTelephone())
+            ->setCommande($commande);
+
+        $em->persist($commande);
+        $em->persist($adresse);
+
+        // Création des lignes de détails pour chacun des produits de la commande
+        // Parcourir les articles sélectionnés
+        //  dd($data);
+        foreach ($data as $articleData) {
+            if (isset($articleData['id'])) {
+                $produit = $em->getRepository(Produit::class)->find($articleData['id']);
+                if ($produit) {
+                    $detail = new Detail();
+                    $detail->setCommande($commande);
+                    $detail->setProduit($produit);
+                    $detail->setQuantité($articleData['quantity']);
+                    $detail->setPrix($articleData['prixTotalProduit']);
+                    $articleData['taille'] == 'taille_unique' ? $detail->setTaille(null) : $detail->setTaille($articleData['taille']);
+                    $em->persist($detail);
+                }
+            }
+        }
+        // dd($data); 
+        $em->flush();
+
+        $infos = $em->getRepository(Detail::class)->findBy(['commande' => $commande]);
+
+        $sessionInterface->remove('panier');
+        $sessionInterface->remove('recapitulatif');
+        $sessionInterface->remove('nbArticles');
+        $sessionInterface->remove('adresse');
+
+        // dd($infos[0]->getCommande()->getUser()->getEmail());
         return $this->render('paiement/confirmation_paiement.html.twig', []);
     }
 

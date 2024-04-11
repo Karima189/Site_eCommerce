@@ -1,67 +1,67 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Register
+{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1 class="titre_formulaire">Formulaire d'Inscription</h1>
+<div class="container">
+	<h1 class="titre_formulaire">Formulaire d'Inscription</h1>
 
-        {{ form_errors(registrationForm) }}
+    
+	
+	{{ form_errors(registrationForm) }}
 
-        <div class="registration-form custom-form-width">
-            {{ form_start(registrationForm) }}
-            
-            <div class="form-group">
-                {{ form_label(registrationForm.prenom, 'Prénom', {'label_attr': {'class': 'form-label custom-label'}}) }}
-                {{ form_widget(registrationForm.prenom, {'attr': {'class': 'form-control'}}) }}
-            </div>
-            
-            <div class="form-group">
-                {{ form_label(registrationForm.nom, 'Nom', {'label_attr': {'class': 'form-label custom-label'}}) }}
-                {{ form_widget(registrationForm.nom, {'attr': {'class': 'form-control'}}) }}
-            </div>
-            
-            <div class="form-group">
-                {{ form_label(registrationForm.numeroTelephone, 'Numéro de téléphone', {'label_attr': {'class': 'form-label custom-label'}}) }}
-                {{ form_widget(registrationForm.numeroTelephone, {'attr': {'class': 'form-control'}}) }}
-            </div>
-            
-            <div class="form-group">
-                {{ form_label(registrationForm.adresse, 'Adresse', {'label_attr': {'class': 'form-label custom-label'}}) }}
-                {{ form_widget(registrationForm.adresse, {'attr': {'class': 'form-control'}}) }}
-            </div>
-            
-            <div class="form-group">
-                {{ form_label(registrationForm.codePostal, 'Code postal', {'label_attr': {'class': 'form-label custom-label'}}) }}
-                {{ form_widget(registrationForm.codePostal, {'attr': {'class': 'form-control'}}) }}
-            </div>
-            
-            <div class="form-group">
-                {{ form_label(registrationForm.email, 'Email', {'label_attr': {'class': 'form-label custom-label'}}) }}
-                {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
-            </div>
-            
-            <div class="form-group">
-                {{ form_label(registrationForm.password.first, 'Mot de Passe', {'label_attr': {'class': 'form-label custom-label'}}) }}
-                {{ form_widget(registrationForm.password.first, {'attr': {'class': 'form-control'}}) }}
-            </div> 
-            
-            <div class="form-group">
-                {{ form_label(registrationForm.password.second, 'Confirmez votre mot de passe', {'label_attr': {'class': 'form-label custom-label'}}) }}
-                {{ form_widget(registrationForm.password.second, {'attr': {'class': 'form-control'}}) }}
-            </div>
-            
-            <div class="form-group">
-                {{ form_label(registrationForm.agreeTerms, 'Je suis d\'accord avec les termes', {'label_attr': {'class': 'form-check-label custom-label'}}) }}
+	<div class="registration-form custom-form-width">
+		{{ form_start(registrationForm) }}
+
+		<div class="form-group">
+			{{ form_label(registrationForm.prenom, 'Prénom', {'label_attr': {'class': 'form-label custom-label'}}) }}
+			{{ form_widget(registrationForm.prenom, {'attr': {'class': 'form-control'}}) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(registrationForm.nom, 'Nom', {'label_attr': {'class': 'form-label custom-label'}}) }}
+			{{ form_widget(registrationForm.nom, {'attr': {'class': 'form-control'}}) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(registrationForm.numeroTelephone, 'Numéro de téléphone', {'label_attr': {'class': 'form-label custom-label'}}) }}
+			{{ form_widget(registrationForm.numeroTelephone, {'attr': {'class': 'form-control'}}) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(registrationForm.adresse, 'Adresse', {'label_attr': {'class': 'form-label custom-label'}}) }}
+			{{ form_widget(registrationForm.adresse, {'attr': {'class': 'form-control'}}) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(registrationForm.codePostal, 'Code postal', {'label_attr': {'class': 'form-label custom-label'}}) }}
+			{{ form_widget(registrationForm.codePostal, {'attr': {'class': 'form-control'}}) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(registrationForm.email, 'Email', {'label_attr': {'class': 'form-label custom-label'}}) }}
+			{{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(registrationForm.password.first, 'Mot de Passe', {'label_attr': {'class': 'form-label custom-label'}}) }}
+			{{ form_widget(registrationForm.password.first, {'attr': {'class': 'form-control'}}) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(registrationForm.password.second, 'Confirmez votre mot de passe', {'label_attr': {'class': 'form-label custom-label'}}) }}
+			{{ form_widget(registrationForm.password.second, {'attr': {'class': 'form-control'}}) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(registrationForm.agreeTerms, 'Je suis d\'accord avec les termes', {'label_attr': {'class': 'form-check-label custom-label'}}) }}
                 {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
             </div>
+
+      
 
             {{ form_end(registrationForm) }}
         </div>
     </div>
 {% endblock %}
-
-
-
-
-

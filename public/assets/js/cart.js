@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     $(".ajouter_au_panier").on("click", (evtClick) => {
         evtClick.preventDefault();
@@ -19,7 +20,7 @@ $(document).ready(function () {
         }
         $.ajax({
             url: '/ajouter-au-panier/' + id,
-            type : 'get',
+            type: 'get',
             dataType: "json",
             data: {
                 taille: taillesCochées
@@ -28,6 +29,9 @@ $(document).ready(function () {
                 console.log(data);
                 console.log(typeof data);
                 $("#nombre").html(data.nbArticles);
+                if (data.erreur_taille) {
+                    alert(data.erreur_taille);
+                }
             },
             error: (jqXHR, status, error) => {
                 console.log("ERREUR AJAX", status, error);
@@ -64,8 +68,8 @@ function updateTotal() {
     var totalPrix = 0;
     var checkboxes = document.querySelectorAll('.product-checkbox:checked');
     var livraisonSelect = document.getElementById('livraison');
-    var prixLivraison = parseFloat(livraisonSelect.options[livraisonSelect.selectedIndex].getAttribute('data-prix'));
-    
+    var prixLivraison = parseFloat(livraisonSelect.options[livraisonSelect.selectedIndex].getAttribute('data-prix')); //recupère le prix de la livraison choisie 
+
     articlesEnvoyes = [];
 
     checkboxes.forEach(function (checkbox) {
@@ -87,7 +91,7 @@ function updateTotal() {
             taille: taille
         });
     });
-   
+
     // Ajouter le prix de livraison au total
     totalPrix += prixLivraison;
 
@@ -97,7 +101,7 @@ function updateTotal() {
     })
 
     document.getElementById('total-prix').innerText = "Total: " + totalPrix.toFixed(2) + " €";
-    
+
 }
 
 
@@ -165,7 +169,7 @@ $(document).ready(function () {
             otherCheckboxes.prop('checked', false);
         }
     });
-    
+
     var confirmer = $('#continue_to_form');
 
     confirmer.on('click', function () {
@@ -173,7 +177,7 @@ $(document).ready(function () {
     })
 
 });
-function connectRequired(){
+function connectRequired() {
     window.location.href = '/login';
 }
 

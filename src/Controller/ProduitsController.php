@@ -49,11 +49,11 @@ class ProduitsController extends AbstractController
             case '4':
                 $phrase = ' Des Montres Raffinées et Luxes spécialements pour Vous !';
                 break;
-                default:
+            default:
                 $phrase = null;
-            }
-            
-            // dd($produits);
+        }
+
+        // dd($produits);
 
         // Afficher la liste des produits dans le template Twig
         return $this->render('produits/produits.html.twig', [
@@ -98,45 +98,61 @@ class ProduitsController extends AbstractController
     #[Route('/ajouter-au-panier/{id}', name: 'ajouter_au_panier')]
     public function ajouterAuPanier(Produit $produit, SessionInterface $session, Request $request): JsonResponse
     {
-        
+
         // Récupérer le panier actuel depuis la session
         $panier = $session->get('panier', []);
-       //  récupère tous les paramètres de la requête GET actuelle.
+        //  récupère tous les paramètres de la requête GET actuelle.
         $params = $request->query->all();
-        
+
         $tailles = $params['taille'] ?? [];// si  $params['taille'] existe et il est non null alos $tailles = $params['taille']
         // sinon  $tailles= []
 
+        // dd($tailles);
+        $isTailleUniqueAdded = false;
         // Ajouter le produit au panier
         if (is_array($tailles)) {
             foreach ($tailles as $taille) {
-                if ($taille !== "") {
-                    $panier[] = [
-                        'id' => $produit->getId(),
-                        'image' => $produit->getImage(),
-                        'description' => $produit->getDescription(),
-                        'prix' => $produit->getPrix(),
-                        'taille' => $taille
-                    ];
+                if ($taille == "" && $produit->getCategory()->getId() !== 2) {
+                    return new JsonResponse(['erreur_taille' => "Veuillez choisir une taille pour ce produit, merci"]);
                 } else {
-                    $panier[] = [
-                        'id' => $produit->getId(),
-                        'image' => $produit->getImage(),
-                        'description' => $produit->getDescription(),
-                        'prix' => $produit->getPrix(),
-                        'taille' => "taille_unique"
-                    ];
+                    if ($taille !== "") {
+                        $panier[] = [
+                            'id' => $produit->getId(),
+                            'image' => $produit->getImage(),
+                            'description' => $produit->getDescription(),
+                            'prix' => $produit->getPrix(),
+                            'taille' => $taille
+                        ];
+                    } else {
+                        // Vérifier si le produit sans taille n'est pas déjà présent dans le panier
+                        $isAlreadyAdded = false;
+                        foreach ($panier as $item) {
+                            if ($item['id'] == $produit->getId() && $item['taille'] == "taille_unique") {
+                                $isAlreadyAdded = true;
+                                break;
+                            }
+                        }
+                        if (!$isAlreadyAdded) {
+                            $panier[] = [
+                                'id' => $produit->getId(),
+                                'image' => $produit->getImage(),
+                                'description' => $produit->getDescription(),
+                                'prix' => $produit->getPrix(),
+                                'taille' => "taille_unique"
+                            ];
+                        }
+                    }
                 }
             }
         }
-        
-        
-        
+
+
+
         // Mettre à jour le panier dans la session
         $session->set('panier', $panier);
-        
+
         $nbArticles = count($session->get('panier'));
-        
+
         $session->set('nbArticles', $nbArticles);
 
         // Rediriger vers la page précédente ou une autre page

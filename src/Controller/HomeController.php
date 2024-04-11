@@ -5,18 +5,16 @@ namespace App\Controller;
 use App\Repository\LogosRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\CarouselFrontRepository;
-use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
     public function index(ProduitRepository $produitRepository , LogosRepository $logosRepository, CarouselFrontRepository $carouselFrontRepository): Response
     {
+
         // Identifiants spécifiques des 4 produits que vous souhaitez afficher
         $productIdsToDisplay = [22, 27, 29, 31];
 

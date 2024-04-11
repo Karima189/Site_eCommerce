@@ -89,7 +89,7 @@ header {
   width: 300px;
   padding: 5px;
   border: 4px solid pink;
-  margin-left: 20px;
+  margin-left: 38px;
 }
 
 .details_body {
@@ -168,9 +168,10 @@ header {
 .bouton_commande {
   width: 450px;
   padding: 8px;
-  background-color: rgb(141, 195, 141);
+  background-color:rgb(217, 146, 197);
   border-radius: 10px;
   margin-left: -20px;
+  font-weight: bold;
 }
 
 .espace_livraison {
@@ -298,7 +299,8 @@ li a {
   position: relative;
   padding-bottom: 60px;
   padding-left: 15px;
-  
+
+
 
 
 }
@@ -312,8 +314,8 @@ li a {
 
 h3 {
   margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 20px;
+  margin-bottom: 30px;
+  margin-left: 40px;
   color: rgb(169, 70, 90);
   font-family: "Dancing Script", cursive;
   font-weight: bold;
@@ -443,7 +445,7 @@ h3 {
 .montresAcceuil {
   border: 3px solid purple;
   border-radius: 15px;
-  width: 600px;
+  width: 540px;
   padding: 20px;
   text-align: center;
   margin-top: 30px;
@@ -460,8 +462,8 @@ h3 {
 }
 
 .montresAcceuil img {
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
 }
 
 .block_detail {
@@ -488,7 +490,7 @@ h3 {
 .description_detaille {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: 28px;
+  font-size: 26px;
   width: 1100px;
   margin-left: -30px;
   text-align: justify;
@@ -640,32 +642,76 @@ table {
 
 
 .block_footer img {
-  width: 200px;
-  height: 200px;
+  width: 180;
+  height: 180px;
+
+}
+.block_footer h2{
+  font-size: 28px;
+  width: 260px;
+
 
 }
 
-.block_footer2 {
+.block_footer1 {
   background-color: black;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+ 
   margin-top: 25px;
+  height: 300px;
 
 
 }
+.block_footer1 h4{
+  text-align: right;
+  margin-top: 30px;
+  margin-right: 40px;
+}
+.block_footer1 hr{
+  width: 1550px;
+}
+.description_site{
+  text-align: justify;
+  max-width: 1400px; /* Largeur maximale du conteneur pour limiter la largeur du paragraphe */
+  margin: 0 auto; /* Centre le conteneur horizontalement */
+  padding: 0 20px;
+  font-size: 28px;
+  padding-bottom: 40px;
+
+}
+.a_propos h1{
+  margin-left: 80px;
+  font-family: "Dancing Script", cursive;
+  color: darkviolet;
+  font-weight: bold;
+}
+.block_footer2{
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
 
 .partie_finale {
-  width: 660px;
-  border: 1px solid rgb(181, 179, 179);
+  /* width: 660px; */
+  /* border: 1px solid rgb(181, 179, 179); */
   border-radius: 15px;
   padding: 10px;
   flex: 1;
   margin: 10px;
-  height: 400px;
+  /* height: 400px; */
+  margin-left: 20px;
+}
+.contact_final h2{
+  font-size: 25px;
+  
+}
+.partie_finale a{
+ color: white;
+}
+.invisible_footer{
+  height: 50px;
 }
 
 .contact_final {
@@ -705,7 +751,7 @@ hr {
 .livraison_label {
   font-size: 25px;
   font-weight: bold;
-  margin-left: 60px;
+  margin-left: 65px;
   margin-bottom: 30px;
 }
 
@@ -719,17 +765,21 @@ hr {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  
 
 
 
 
 
 }
+.info_recap h4{
+  padding: 30px;
+}
 .info_recap img{
   width: 300px;
   height: 300px;
   border-radius: 15px;
-  margin: 0 30px;
+  margin: 0 20px;
 }
 .info_recap_titres{
   display: flex;
@@ -741,32 +791,31 @@ hr {
   
 }
 
+
 .info_recap_titres>h4:first-child{
-  margin: 0 30px;
+  margin: 0 60px;
 }
 .continue_commande{
   width: 450px;
   padding: 8px;
-  background-color: rgb(141, 195, 141);
+  background-color:rgb(217, 146, 197);
   border-radius: 10px;
   position: absolute;
   right: 40px;
   margin-bottom: 20px;
-  
-  
+ font-weight: bold;
 }
 .confirmation_commande_body{
   position: relative;
   padding-bottom: 70px;
 }
 .description_bijoux_index{
-  width: 350px;
+  width: 340px;
    margin-left: 20px;
    color:black;
    text-align: justify;
    margin-top: 20px;
-   font-size:30px;
-   word-spacing: normal;
+   font-size:29px; 
 }
 .description_montres_index{
   width: 400px;
@@ -974,5 +1023,48 @@ top:40px;
 }
 .message_paiement{
   font-family: "Dancing Script", cursive;
+
+}
+.logos_footer{
+margin-left: 23px !important;
+}
+.fa-cart-shopping {
+  color: black !important;
+}
+/* .block_nombreArticles{
+  background-color: #a64a8e;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  position: relative;
+ display: inline-flex;
+  justify-content: center;
+  align-items: center;
   
+
+}
+.nombreArticlesPanier{
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+} */
+.nombreArticlesPanier{
+  color: fuchsia;
+  font-weight: bold;
+  font-size: 23px;
+}
+#ajouterPanierDetail{
+ margin-top: 15px;
+ margin-bottom: 15px;
+ margin-left:-30px ;
+}
+.partie_finale p{
+  font-size: 15px;
+  width: 400px;
+  margin: 0px;
+  padding: 0px;
 }

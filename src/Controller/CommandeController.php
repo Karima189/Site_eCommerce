@@ -31,7 +31,7 @@ class CommandeController extends AbstractController
     // }
 
     #[Route('/commande/recap', name: 'order_add', methods: ['POST'])]
-    public function summary(Request $request, EntityManagerInterface $em, SessionInterface $sessionInterface): Response
+    public function summary(Request $request,SessionInterface $sessionInterface): Response
     {
         // Vérifier si l'utilisateur est connecté
         $commandeRequete = $request->getContent();
@@ -40,7 +40,7 @@ class CommandeController extends AbstractController
         // Affichage récap
         return new JsonResponse(['url' => '/confirmation-commande']);
     }
-
+    
     #[Route('/confirmation-commande', name: 'confirmation_commande')]
     public function confirmationCommande(Request $request, SessionInterface $session, ProduitRepository $produitRepository): Response
     {
@@ -48,8 +48,7 @@ class CommandeController extends AbstractController
         $produits = $session->get('recapitulatif', []);
         $infos = [];
         $totalProduits = 0;
-        foreach ($produits as &$produit) {
-
+        foreach ($produits as &$produit) {  
             if (isset($produit['id'])) {
                 $product = $produitRepository->findOneBy(['id' => $produit['id']]);
                 if ($product) {
@@ -69,6 +68,7 @@ class CommandeController extends AbstractController
         }
         // dd($infos);
         // Votre logique pour afficher la confirmation de la commande...
+
         return $this->render('commande/confirmation_commande.html.twig', ['infos' => $infos, 'totalPrix' => $totalProduits]);
     }
 

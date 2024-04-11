@@ -66,7 +66,7 @@
 						</ul>
 					</li>
 					<i class="fa-solid fa-user"></i>
-					<li class="nav-item">
+					<li class="nav-item panier_nav">
 						<a class="nav-link nav-liens " href="{{ path('afficher_panier') }}">
 
 							<div>Panier
@@ -78,7 +78,7 @@
 
 					</li>
 
-					<span id="nombre">{{app.session.get('nbArticles','')}}</span>
+					<span class="nombreArticlesPanier" id="nombre">{{app.session.get('nbArticles','')}}</span>
 					<li class="nav-item">
 						<a class="nav-link nav-liens " href="#footer" tabindex="-1" aria-disabled="true">
 							Contact

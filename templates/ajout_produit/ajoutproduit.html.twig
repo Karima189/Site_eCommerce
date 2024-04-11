@@ -44,6 +44,12 @@
 {% block title %}Formulaire d'Ajout d'un Produit{% endblock %}
 
 {% block body %}
+     {% if not app.user or 'ROLE_ADMIN' not in app.user.roles %}
+        <div class="alert alert-danger" role="alert">
+            Vous n'avez pas les droits d'accéder à cette page.
+        </div>
+    {% else %}
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -87,5 +93,6 @@
             </div>
         </div>
     </div>
+    {% endif %}
 {% endblock %}
 

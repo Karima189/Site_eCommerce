@@ -32,6 +32,9 @@ class Commande
     #[ORM\OneToMany(mappedBy: 'commande', targetEntity: AdresseCommande::class)]
     private Collection $adresseCommandes;
 
+    #[ORM\Column]
+    private ?float $prixTotal = null;
+
     public function __construct()
     {
         $this->details = new ArrayCollection();
@@ -135,6 +138,18 @@ class Commande
                 $adresseCommande->setCommande(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPrixTotal(): ?float
+    {
+        return $this->prixTotal;
+    }
+
+    public function setPrixTotal(float $prixTotal): static
+    {
+        $this->prixTotal = $prixTotal;
 
         return $this;
     }
