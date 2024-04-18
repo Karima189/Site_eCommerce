@@ -35,8 +35,8 @@ class CommandeController extends AbstractController
     {
         // Vérifier si l'utilisateur est connecté
         $commandeRequete = $request->getContent();
-        $data = json_decode($commandeRequete, true); // décode le format envoyé par javascript (JSON ou string); 
-        $sessionInterface->set('recapitulatif', $data);
+        $data = json_decode($commandeRequete, true); // décode le format envoyé par javascript (JSON ou string) et true ça veut dire les données json doivent etre tableu associatif
+        $sessionInterface->set('recapitulatif', $data); // $data contient les informations des artciles séléctionnées en forme d'un tableau associatif 
         // Affichage récap
         return new JsonResponse(['url' => '/confirmation-commande']);
     }

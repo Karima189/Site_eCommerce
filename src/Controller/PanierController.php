@@ -14,7 +14,7 @@ class PanierController extends AbstractController
 {
     //pour ajouter des produits au panier
     #[Route('/panier', name: 'afficher_panier')]
-    public function afficherPanier(SessionInterface $session, ProduitRepository $produitRepository): Response
+    public function afficherPanier(SessionInterface $session): Response
     {
         // Récupérer le panier depuis la session
         $panier = $session->get('panier', []);

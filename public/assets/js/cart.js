@@ -74,7 +74,7 @@ function updateTotal() {
 
     checkboxes.forEach(function (checkbox) {
         var id = checkbox.value;
-        var itemId = checkbox.getAttribute('data-taille');
+        var itemId = checkbox.getAttribute('data-taille'); // identifiant unique de l'article basé sur la taille du produit. Cette valeur est stockée dans la variable itemId.
         var prixUnitaire = parseFloat(document.querySelector('#prix' + itemId).innerText);
         var quantity = parseInt(document.querySelector('#quantity' + itemId).value);
         var totalArticle = prixUnitaire * quantity; // Calculer le total de chaque article

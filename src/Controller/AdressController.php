@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\AdressType;
 use App\Entity\AdresseCommande;
+use App\Repository\AdresseCommandeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,15 +41,15 @@ class AdressController extends AbstractController
     }
 
     #[Route('/compte/adresses', name: 'account_addresses')]
-    public function list(EntityManagerInterface $em, SessionInterface $sessionInterface): Response
+    public function list(EntityManagerInterface $em, SessionInterface $sessionInterface, Request $request, AdresseCommandeRepository $adresseCommandeRepository): Response
     {
-        // dd($sessionInterface->get('recapitulatif',[]));  
+        // dd($sessionInterface->get('recapitulatif',[])); 
         $user = $this->getUser();
         $addresses = $em->getRepository(AdresseCommande::class)->findBy(['user' => $user]);
 
-       // cette partie c'est si on a 2 adresses identiques on veut afficher cette adresse une seule fois 
+        // cette partie c'est si on a 2 adresses identiques on veut afficher cette adresse une seule fois 
         // On converti le tableau d'objets $addresses en tableau associatif pour pouvoir comparer grâce à la methode array_unique();
-        $addressData = array_map(function($address) {
+        $addressData = array_map(function ($address) {
             return $address->getAdressePostale();
         }, $addresses);
 
@@ -64,7 +65,15 @@ class AdressController extends AbstractController
             if ($uniqueAddress !== null) {
                 $uniqueAddresses[] = $uniqueAddress;
             }
-        } 
+        }
+
+        $url = $request->query->all();
+        if (isset($url['id'])) {
+            $adresse = $adresseCommandeRepository->findOneBy(['id' => $url['id']]);
+            $sessionInterface->set('adresse', $adresse);
+            return $this->redirectToRoute('app_paiement');
+        }
+        // if(isset(00))
 
         return $this->render('adress/list.html.twig', [
             'addresses' => $uniqueAddresses,

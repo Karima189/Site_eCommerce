@@ -6,7 +6,7 @@ header {
   display: flex;
   background-color: rgb(242, 214, 219);
   width: 100%;
-  height: 150px;
+  /* height: 150px; */
   justify-content: space-around;
 }
 
@@ -24,9 +24,10 @@ header {
   border-radius: 15px !important;
 }
 .description_produits{
-  width: 420px;
+  width: 380px;
   font-size: 28px;
   margin-bottom: 18px;
+  
 
 }
 
@@ -275,7 +276,15 @@ ul {
   align-items: center;
   margin-top: 30px;
 }
-
+.nav2 ul{
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+.nav2 li{
+  list-style-type: none;
+  padding: 20px;
+}
 li {
   list-style-type: none;
   padding: 20px;
@@ -298,7 +307,6 @@ li a {
   margin: auto;
   position: relative;
   padding-bottom: 60px;
-  padding-left: 15px;
 
 
 
@@ -306,10 +314,12 @@ li a {
 }
 
 .listeProduits img {
+  display: block;
+  margin: auto;
   margin-top: 40px;
   border-radius: 10px;
-  width: 350px;
-  height: 350px;
+  width: 380px;
+  height: 380px;
 }
 
 h3 {
@@ -965,7 +975,7 @@ font-size: 25px;
 color: purple;
 font-weight: bold;
 cursor: pointer;
-top:40px;
+top:58px;
 }
 .email-message {
   display: none;
@@ -1019,7 +1029,7 @@ top:40px;
   height: auto; /* Garde le rapport hauteur-largeur de l'image */
 }
 .container{
-  max-width: 1100px;
+  max-width: 1024px;
 }
 .message_paiement{
   font-family: "Dancing Script", cursive;
@@ -1068,3 +1078,230 @@ margin-left: 23px !important;
   margin: 0px;
   padding: 0px;
 }
+
+
+@media (min-width: 1023.98px) and (max-width: 1290px) {
+ .welcome-message {
+  top: 0px;
+  bottom: 116PX;
+ }
+
+ .nav2 ul {
+  list-style: none;
+  padding: 0;
+}
+
+.nav2 li {
+  margin-bottom: 10px; /* Espacement entre chaque élément */
+  display: flex;
+  align-items: center;
+}
+
+.nav2 li a {
+  margin-right: 10px; /* Espacement entre la description et le logo */
+}
+
+.nav2 li div {
+  margin-right: 10px; /* Espacement entre la description et le logo */
+}
+
+.nav2 li img {
+  width: 100%; /* Ajustez la taille du logo selon vos besoins */
+}
+}
+
+
+@media (min-width: 1023.98px) {
+  .navbar-expand-custom-lg {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+  }
+  .navbar-expand-custom-lg .navbar-nav {
+    flex-direction: row;
+  }
+  .navbar-expand-custom-lg .navbar-nav .nav-link {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+  .navbar-expand-custom-lg .navbar-collapse {
+    display: flex!important;
+  }
+  .navbar-expand-custom-lg .navbar-toggler {
+    display: none;
+  }
+
+
+  .nav2 li {
+    /* width: 20%; Chaque élément occupe toute la largeur */
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Espacement entre chaque élément */
+  }
+
+}
+
+
+@media  (max-width: 1023.98px) { 
+  .container{
+    width: 100%;
+  }
+  .nav2{
+    width: 100%;
+  }
+  .nav2  ul{
+   display: flex;
+   /* flex-wrap: wrap; */
+  }
+ .nav2 li {
+    width: 30%;
+   
+  }
+
+  .navbar-collapse.show {
+    height: auto !important;
+  }
+
+  .nav2 img{
+    width: 70px;
+    height: 70px;
+  }
+
+  .nav2 li {
+    /* width: 20%; Chaque élément occupe toute la largeur */
+    display: flex;
+    align-items: center;
+  }
+  .nav2 ul{
+    width: 100%;
+  }
+  .nav2 li{
+    width: 25%;
+  }
+  .listeProduits{
+    display: flex;
+    flex-wrap: wrap;
+    width: 890px;
+  } 
+  .phrase_produits{
+    width: 550px;
+  }
+  .block_detail img{
+    width: 550px;
+    height: 550px;
+    margin: auto;
+  }
+  .description_product{
+    text-align: center;
+    margin-right: 7px;
+  }
+  .details_body{
+    margin: auto;
+  }
+  .description_detaille{
+    width: 700px;
+  }
+
+
+}
+
+
+
+@media  (max-width: 1399.98px) {
+ 
+  
+  .listeProduits{
+    width: 900px;
+   
+  } 
+  .description_detaille{
+    width: 100%;
+  
+  }
+  hr{
+    width: 100%;
+  }
+ .block_detail img{
+  margin: auto;
+  display: block;
+ }
+ .block_detail{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+ }
+ .livraison{
+  width: 100%;
+ }
+ .taille_utilisateur{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+ }
+
+}
+
+
+@media  (max-width: 999.98px) {
+ 
+  
+  .listeProduits{
+    width: 100%;
+    justify-content: space-around;
+   
+  } 
+  
+  .listeProduits img{
+    width: 100%;
+   
+  } 
+  .nav2 ul{
+    width: 100%;
+  }
+  .bouton_commande{
+    width: 350px;
+    margin-left: 20px;
+    
+  }
+  
+
+}
+
+@media (max-width: 768px) {
+  body{
+    width: 100%;
+  }
+
+  .listeProduits{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+   
+  } 
+  .phrase_produits{
+    width: 450px;
+  }
+  .block_detail img{
+    margin: auto;
+    display: block;
+    width: 100%;
+    height: 230px;
+    margin-top: 20px;
+   }
+   .taille_utilisateur{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+   }
+   .livraison{
+    width: 100%;
+   }
+    .bouton_commande{
+    width: 350px;
+    margin-left: 20px;
+    
+  }
+}
+
+
+

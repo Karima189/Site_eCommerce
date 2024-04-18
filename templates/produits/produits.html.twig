@@ -15,7 +15,7 @@
 		{% for produit in produits %}
 			<div>
 				<div>
-					<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}" width="400" height="400"></div>
+					<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}"></div>
 				<h2 class="description_produits">
 					{{ produit.description }}
 				</h2>
@@ -31,7 +31,7 @@
 					Voir Plus de détails sur ce produit
 				</a>
 			</div>
-		
+
 		{% endfor %}
 		{% if produits.hasPreviousPage %}
 			<a href="{{ path('produits_par_categorie', {'categoryId': categoryId,'page': produits.previousPage}) }}" class="pagination">Précédent</a>
@@ -42,22 +42,26 @@
 
 	</div>
 
-	
+
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
 var recherche = document.getElementById("searchInput");
 var articles = document.querySelectorAll(".listeProduits div");
 
 recherche.addEventListener("input", function () {
-var searchTerm = recherche.value.toLowerCase();
+var searchTerm = recherche.value.trim().toLowerCase(); // Assurez-vous de supprimer les espaces blancs
 
 articles.forEach(function (article) {
-var articleName = article.querySelector("h2").textContent.toLowerCase();
+var articleNameElement = article.querySelector("h2");
+if (articleNameElement) { // Vérifie si l'élément h2 existe
+var articleName = articleNameElement.textContent.trim().toLowerCase();
+// Assurez-vous de supprimer les espaces blancs
 // Vérifiez si le terme de recherche est inclus dans le titre de l'article
 if (articleName.includes(searchTerm)) {
 article.style.display = "block";
 } else {
 article.style.display = "none";
+}
 }
 });
 });

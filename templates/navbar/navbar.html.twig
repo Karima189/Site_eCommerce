@@ -27,7 +27,7 @@
 															</div>
 														</div>
 														<div class="invisible2">  </div> #}
-	<nav class="navbar navbar-expand-lg container-fluid position-relative">
+	<nav class="navbar navbar-expand-custom-lg container-fluid position-relative">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="{{ path('app_home') }}">
 				<img src="{{ asset('img/logo_img2.png') }}" alt="" width="180" height="150"></a>
@@ -35,7 +35,7 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse mb-4" id="navbarScroll">
-				<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+				<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" >
 					<li class="nav-item">
 						<a class="titre_site nav-link active " aria-current="page" href="{{ path('app_home') }}">
 							Chic Mademoiselle
@@ -96,7 +96,7 @@
 										{% endif %} #}
 
 
-					<div class="navbar-nav ml-auto">
+					<div class="navbar-nav ml-auto user-info">
 						{% if app.user %}
 							<span class="navbar-text">
 								<h6 class="welcome-message ">Bienvenue,
@@ -134,7 +134,7 @@
 		</div>
 	</nav>
 </header>
-<nav>
+{# <nav class="nav2">
 	<ul>
 		<li>
 			<a href="{{path('produits_par_categorie', {categoryId: 1})}}">Vetements</a>
@@ -153,4 +153,26 @@
 		</li>
 		<div><img src="{{ asset('img/montres_logo.png') }}" alt=""></div>
 	</ul>
+</nav> #}
+
+<nav class="nav2">
+    <ul>
+        <li>
+            <a href="{{path('produits_par_categorie', {categoryId: 1})}}">Vêtements</a>
+            <div><img src="{{ asset('img/logo.png') }}" alt=""></div>
+        </li>
+        <li>
+            <a href="{{path('produits_par_categorie', {categoryId: 2})}}">Maquillage</a>
+            <div><img src="{{ asset('img/logo_maquillage.png') }}" alt=""></div>
+        </li>
+        <li>
+            <a href="{{path('produits_par_categorie', {categoryId: 3})}}">Bijoux</a>
+            <div><img src="{{ asset('img/bijoux_logo.png') }}" alt=""></div>
+        </li>
+        <li>
+            <a href="{{path('produits_par_categorie', {categoryId: 4})}}">Montres</a>
+            <div><img src="{{ asset('img/montres_logo.png') }}" alt=""></div>
+        </li>
+    </ul>
 </nav>
+

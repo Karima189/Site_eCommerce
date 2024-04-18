@@ -88,17 +88,12 @@ class PaiementController extends AbstractController
     //             return 4; // Exemple : 4.00 EUR
     //     }
     // }
-    #[Route('/paiement/{id}', name: 'app_paiement')]
-    public function index(SessionInterface $session, UrlGeneratorInterface $urlGeneratorInterface, Request $request, $id, AdresseCommandeRepository $adresseCommandeRepository, ProduitRepository $produitRepository): Response
+    #[Route('/paiement', name: 'app_paiement')]
+    public function index(SessionInterface $session, UrlGeneratorInterface $urlGeneratorInterface, Request $request, AdresseCommandeRepository $adresseCommandeRepository, ProduitRepository $produitRepository): Response
     {
         \Stripe\Stripe::setApiKey('sk_test_51OICEgC3GA5BR02Af7eTScs2GgI29d4FpjzMiWRo625SCPzvudJNRQPg0A3ICZ9wTnCiXJadx9TrO7MRr9lVaXV800sjafT7mP');
 
         $recapitulatif = $session->get('recapitulatif', []);
-        // dd($adresse);
-        if (empty($session->get('adresse'))) {
-            $adresse = $adresseCommandeRepository->find($id);
-            $session->set('adresse', $adresse);
-        }
 
         // Récuperer ID de adresse et la chercher sur repository:
 
