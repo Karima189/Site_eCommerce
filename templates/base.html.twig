@@ -37,10 +37,22 @@
 	{% if not showNav is defined %}
 		{% include "navbar/navbar.html.twig" %}
 	{% endif %}
+
+	
+
 	{% if app.session.get('confirmation_commande') %}
 		<div class="alert alert-success">
 			{{app.session.get('confirmation_commande')}}
 		</div>
 	{% endif %}
-	{% block body %}{% endblock %}
+	
+
+
+     
+	{% block body %}
+	{% endblock %}
+	{% if not showNav is defined %}
+		    {% include "footer/footer.html.twig" %}
+
+	{% endif %}
 </html></body></html>

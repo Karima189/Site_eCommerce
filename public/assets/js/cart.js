@@ -47,7 +47,7 @@ $(document).ready(function () {
             var itemPrice = parseFloat(document.querySelector('#total' + itemId).innerText);
             var prixUnitaire = parseFloat(document.querySelector('#prix' + itemId).innerText);
             var quantity = parseInt(input.value);
-            var total = prixUnitaire * quantity;
+            var total = prixUnitaire * quantity; 
 
             // Mettre à jour le total affiché
             document.querySelector('#total' + itemId).innerText = total;
@@ -170,6 +170,7 @@ $(document).ready(function () {
         }
     });
 
+    
     var confirmer = $('#continue_to_form');
 
     confirmer.on('click', function () {

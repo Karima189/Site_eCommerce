@@ -17,7 +17,7 @@
 				<div>
 					<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}"></div>
 				<h2 class="description_produits">
-					{{ produit.description }}
+					{{ produit.description | slice(0,80)}}
 				</h2>
 				{% if produit.category.id == 2 %}
 					<div class="ajouter_panier_div">

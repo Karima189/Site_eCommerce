@@ -19,81 +19,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PaiementController extends AbstractController
 {
-
-    // public function index(SessionInterface $session, UrlGeneratorInterface $urlGeneratorInterface , Request $request): Response
-    // {
-    //     \Stripe\Stripe::setApiKey('sk_test_51OICEgC3GA5BR02Af7eTScs2GgI29d4FpjzMiWRo625SCPzvudJNRQPg0A3ICZ9wTnCiXJadx9TrO7MRr9lVaXV800sjafT7mP');
-
-    //     $recapitulatif = $session->get('recapitulatif', []);
-
-    //     $lineItems = [];
-
-    //     foreach ($recapitulatif as $recap) {
-    //         if (isset($recap['prixTotalProduit']) && isset($recap['description'])) {
-    //             $uniteAmout = round($recap['prixTotalProduit'] * 100);
-    //             $lineItems[] = [
-    //                 'price_data' => [
-    //                     'currency' => 'eur',
-    //                     'product_data' => [
-    //                         'name' => $recap['description'],
-    //                     ],
-    //                     'unit_amount' => $uniteAmout,
-    //                 ],
-    //                 'quantity' => $recap['quantity'],
-    //             ];
-    //         }
-    //     }
-
-    //     // Frais de livraison
-    //     $livraison = $session->get('livraison');
-    //     $prixLivraison = $this->getPrixLivraison($livraison);
-
-
-    //     // Ajouter les frais de livraison
-    //     $lineItems[] = [
-    //         'price_data' => [
-    //             'currency' => 'eur',
-    //             'product_data' => [
-    //                 'name' => 'Frais de livraison',
-    //             ],
-    //             'unit_amount' => round($prixLivraison * 100),
-    //         ],
-    //         'quantity' => 1, // Vous pouvez ajuster la quantité selon votre besoin
-    //     ];
-
-    //     $checkout_session = \Stripe\Checkout\Session::create([
-    //         'payment_method_types' => ['card'],
-    //         'line_items' => $lineItems,
-    //         'mode' => "payment",
-    //         "success_url" => $urlGeneratorInterface->generate(
-    //             'confirm_paiement_app',
-    //             [],
-    //                 $urlGeneratorInterface::ABSOLUTE_URL
-    //         ),
-    //         "cancel_url" => $urlGeneratorInterface->generate('cancel_payment', [], $urlGeneratorInterface::ABSOLUTE_URL),
-    //     ]);
-
-    //     return new RedirectResponse($checkout_session->url, 303);
-    // }
-
-    // // Fonction pour récupérer le prix de livraison en fonction de l'option sélectionnée
-    // private function getPrixLivraison($livraison)
-    // {
-    //     switch ($livraison) {
-    //         case 'point_relais':
-    //             return 3.5; // Exemple : 3.50 EUR
-    //         case 'express':
-    //             return 6.90; // Exemple : 6.90 EUR
-    //         case 'standard':
-    //             return 4; // Exemple : 4.00 EUR
-    //     }
-    // }
     #[Route('/paiement', name: 'app_paiement')]
     public function index(SessionInterface $session, UrlGeneratorInterface $urlGeneratorInterface, Request $request, AdresseCommandeRepository $adresseCommandeRepository, ProduitRepository $produitRepository): Response
     {
         \Stripe\Stripe::setApiKey('sk_test_51OICEgC3GA5BR02Af7eTScs2GgI29d4FpjzMiWRo625SCPzvudJNRQPg0A3ICZ9wTnCiXJadx9TrO7MRr9lVaXV800sjafT7mP');
 
         $recapitulatif = $session->get('recapitulatif', []);
+    
 
         // Récuperer ID de adresse et la chercher sur repository:
 
@@ -103,8 +35,8 @@ class PaiementController extends AbstractController
         $lineItems = [];
         foreach ($recapitulatif as $recap) {
             if(!isset($recap['description']) && isset($recap['id'])){
-                $descriptionRepository = $produitRepository->find($recap['id']);
-                $description = $descriptionRepository->getDescription();
+                $produit = $produitRepository->find($recap['id']);// retourne un produit avec toutes ses informations
+                $description = $produit->getDescription();
             }
             if (isset($recap['prixTotalProduit'])) {
                 $uniteAmout = round(($recap['prixUnitaire']) * 100);
@@ -157,6 +89,7 @@ class PaiementController extends AbstractController
         $adresse = new AdresseCommande;
         $date = new \DateTime;
         $data = $sessionInterface->get('recapitulatif', []);
+        
 
         $infosAdresse = $sessionInterface->get('adresse');
         $end = end($data);
@@ -186,7 +119,7 @@ class PaiementController extends AbstractController
                 $produit = $em->getRepository(Produit::class)->find($articleData['id']);
                 if ($produit) {
                     $detail = new Detail();
-                    $detail->setCommande($commande);
+                    $detail->setCommande($commande); // ORM stocke automatiquement que l'id dans BDD
                     $detail->setProduit($produit);
                     $detail->setQuantité($articleData['quantity']);
                     $detail->setPrix($articleData['prixTotalProduit']);

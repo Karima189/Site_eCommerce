@@ -28,57 +28,83 @@
 		</div>
 
 		<h3>Notre séléction Make Up</h3>
-		<div class="liste_produits">
-			{% for produit in produits %}
-				<div class="makeup_liste">
-					<div>
-						<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}" width="400" height="400">
+				
+		<section class=" position-relative d-block m-auto section_makeup  ">
+			<div class="container ">
+				<div class="row">
+					<div class="col-12">
+						<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel" data-interval="false">
+							<div class="carousel-inner liste_produits">
+								{% for produit_chunk in produits|batch(3) %}
+								<div class="carousel-item {% if loop.first %}active{% endif %}">
+									<div class="row text-left">
+										{% for produit in produit_chunk %}
+										<div class="col-md-4 mb-3">
+											<div class="card ml-md-auto card-maquillage"> <!-- Utilisation de ml-md-auto pour décaler vers la gauche sur les écrans de taille moyenne et plus grands -->
+												<img class="img-fluid" alt="{{ produit.description }}" src="{{ asset('img/' ~ produit.image) }}">
+												<div class="card-body">
+													<h4 class="card-title">{{ produit.description }}</h4>
+													<a href="{{ path('afficher_produit', {'id': produit.id}) }}" class="btn btn-primary btn-block">Voir le produit</a>
+												</div>
+											</div>
+										</div>
+										{% endfor %}
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+							<a class="  mb-3 mr-1  bouton-gauche" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+								<i class="fa fa-arrow-left"></i>
+							</a>
+							<a class="  mb-3 position-absolute bouton-droite" href="#carouselExampleIndicators2" role="button" data-slide="next">
+								<i class="fa fa-arrow-right"></i>
+							</a>
+						</div>
 					</div>
-					<h2 style="width:350px;margin-left:20px;">{{ produit.description }}</h2>
-					<a href="{{ path('afficher_produit', {'id': produit.id}) }}" class="bouton_home">
-						Voir le produit
-					</a>
 				</div>
-			{% endfor %}
+			</div>
+		</section>
 
-		</div>
+
+
+
 
 		{# <div class="carousel">
-															<div class="carousel-inner">
-																{% for produit in produits %}
-																	<div class="carousel-item">
-																		<div>
-																			<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}" width="400" height="400">
-																		</div>
-																		<h2 style="width:350px;margin-left:20px;">{{ produit.description }}</h2>
-																		<a href="{{ path('afficher_produit', {'id': produit.id}) }}" class="bouton_home">Voir le produit</a>
-																	</div>
-																{% endfor %}
-															</div>
-															<div class="carousel-controls">
-																<button onclick="moveCarousel(-1)">Précédent</button>
-																<button onclick="moveCarousel(1)">Suivant</button>
-															</div>
-														</div> #}
+																											<div class="carousel-inner">
+																												{% for produit in produits %}
+																													<div class="carousel-item">
+																														<div>
+																															<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}" width="400" height="400">
+																														</div>
+																														<h2 style="width:350px;margin-left:20px;">{{ produit.description }}</h2>
+																														<a href="{{ path('afficher_produit', {'id': produit.id}) }}" class="bouton_home">Voir le produit</a>
+																													</div>
+																												{% endfor %}
+																											</div>
+																											<div class="carousel-controls">
+																												<button onclick="moveCarousel(-1)">Précédent</button>
+																												<button onclick="moveCarousel(1)">Suivant</button>
+																											</div>
+																										</div> #}
 
 
 		{# <div class="flex-caroussel">
-																									<button class="prev">❮</button>
-																									<div class="carousel-container">
-																										{% for produit in produits %}
-																											<div class="card-flex">
-																												<div>
-																													<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}">
-																												</div>
-																												<h2 style="width:350px;margin-left:20px;">{{ produit.description }}</h2>
-																												<a href="{{ path('afficher_produit', {'id': produit.id}) }}" class="bouton_home">
-																													Voir le produit
-																												</a>
-																											</div>
-																										{% endfor %}
-																									</div>
-																									<button class="next">❯</button>
-																								</div> #}
+																																					<button class="prev">❮</button>
+																																					<div class="carousel-container">
+																																						{% for produit in produits %}
+																																							<div class="card-flex">
+																																								<div>
+																																									<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}">
+																																								</div>
+																																								<h2 style="width:350px;margin-left:20px;">{{ produit.description }}</h2>
+																																								<a href="{{ path('afficher_produit', {'id': produit.id}) }}" class="bouton_home">
+																																									Voir le produit
+																																								</a>
+																																							</div>
+																																						{% endfor %}
+																																					</div>
+																																					<button class="next">❯</button>
+																																				</div> #}
 
 
 		<div class=" d-flex justify-content-around align-items-center">
@@ -90,7 +116,7 @@
 				<div class="carousel-inner">
 					{% set firstItem = true %}
 					{% for vetement in vetements %}
-						<div class="carousel-item {{firstItem ? 'active'}}">
+						<div class="carousel-item carouselVetements {{firstItem ? 'active'}}">
 							<img src="{{asset('/img/' ~ vetement.image)}}" class="d-block w-100" alt="">
 						</div>
 						{% set firstItem = false %}
@@ -113,26 +139,26 @@
 		<h3>Nos Promotions de Coffrets Bijoux
 		</h3>
 		{# <div class="d-flex justify-content-around" class="promo-bijoux">
-																																								
-																																								
-																																											{% for produit in bijoux %}
-																																												<div class="coffre1">
-																																													<div>
-																																														<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}" width="400" height="400">
-																																													</div>
-																																													<h2 style="width:400px;margin-left:20px;">{{ produit.description }}</h2>
-																																													<div class="promo1">
-																																														OFFRE EXEPCIONNELLE
-																																													</div>
-																																													<div class="promo2">PROMO
-																																													</div>
-																																								
-																																												</div>
-																																											{% endfor %}
-																																								
-																																										</div> #}
+																																																				
+																																																				
+																																																							{% for produit in bijoux %}
+																																																								<div class="coffre1">
+																																																									<div>
+																																																										<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}" width="400" height="400">
+																																																									</div>
+																																																									<h2 style="width:400px;margin-left:20px;">{{ produit.description }}</h2>
+																																																									<div class="promo1">
+																																																										OFFRE EXEPCIONNELLE
+																																																									</div>
+																																																									<div class="promo2">PROMO
+																																																									</div>
+																																																				
+																																																								</div>
+																																																							{% endfor %}
+																																																				
+																																																						</div> #}
 
-		<div class="d-flex justify-content-around" class="promo-bijoux">
+		<div class="d-flex justify-content-around blockBijoux" >
 			{% for produit in bijoux %}
 				<div class="coffre1">
 					<a href="{{ path('afficher_produit', {'id': produit.id}) }}">
@@ -150,39 +176,39 @@
 		<h3>Nos Montres Incontournables à prix Raisonnable
 		</h3>
 		{# 
-																																								<div class="d-flex justify-content-around" class="block_watch">
-																																			
-																																			
-																																									{% for produit in montres1 %}
-																																										<div class="montresAcceuil">
-																																											<div>
-																																												<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}" width="400" height="400">
-																																											</div>
-																																											<h2 style="width:400px;margin-left:20px;">{{ produit.description }}</h2>
-																																			
-																																			
-																																										</div>
-																																									{% endfor %}
-																																			
-																																								</div>
-																																			
-																																			
-																																								<div class="d-flex justify-content-around" class="block_watch">
-																																			
-																																			
-																																									{% for produit in montres2 %}
-																																										<div class="montresAcceuil">
-																																			
-																																											<div>
-																																												<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}" width="400" height="400">
-																																											</div>
-																																											<h2 style="width:400px;margin-left:20px;">{{ produit.description }}</h2>
-																																			
-																																			
-																																										</div>
-																																									{% endfor %}
-																																			
-																																								</div> #}
+																																																				<div class="d-flex justify-content-around" class="block_watch">
+																																															
+																																															
+																																																					{% for produit in montres1 %}
+																																																						<div class="montresAcceuil">
+																																																							<div>
+																																																								<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}" width="400" height="400">
+																																																							</div>
+																																																							<h2 style="width:400px;margin-left:20px;">{{ produit.description }}</h2>
+																																															
+																																															
+																																																						</div>
+																																																					{% endfor %}
+																																															
+																																																				</div>
+																																															
+																																															
+																																																				<div class="d-flex justify-content-around" class="block_watch">
+																																															
+																																															
+																																																					{% for produit in montres2 %}
+																																																						<div class="montresAcceuil">
+																																															
+																																																							<div>
+																																																								<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}" width="400" height="400">
+																																																							</div>
+																																																							<h2 style="width:400px;margin-left:20px;">{{ produit.description }}</h2>
+																																															
+																																															
+																																																						</div>
+																																																					{% endfor %}
+																																															
+																																																				</div> #}
 
 		<div class="d-flex justify-content-around block_watch">
 
@@ -230,49 +256,6 @@
 			{% endfor %}
 
 		</div>
-
- <div id="footer" class="block_footer1">
-	<div class="block_footer2" >
-			
-
-		<div class="partie_finale">
-		<div class="invisible_footer"></div>
-			<a href="{{ path('app_a_propos_de_nous') }}">A Propos De Nous</a>
-
-		</div>	
-
-		<div class="partie_finale">
-				<div class="contact_final">
-					<h2>Nous Contacter</h2>
-					<i class="fa-solid fa-envelope"></i>
-					<i class="fa-solid fa-phone"></i>
-				</div>
-
-				<p>Nous contacter
-														+33 6 51 48 90 88
-														(Appel Non Surtaxé)
-				</p>
-				<p>ous pouvez nous rejoindre en nous envoyant un message sur notre boite Email suivante : chic_mademoiselle@gmail.com 
-																																																																																															</p>
-
-		
-		</div>
-
-		<div class="partie_finale">
-	        <h2>Notre Livraison</h2>	
-			<p>Toutes les commandes sont envoyées via Colissimo UPS ou Chronopost.
-															Les commandes effectuées le samedi et le dimanche seront traitées le lundi suivant. <br>Livraison standard gratuite dès 49€ d'achat</p>
-
-		</div>
-
-		
-
-	</div>
-
-	<hr>
-		<h4>Tous les droits sont réservés <i class="fa-solid fa-copyright"></i> -2024</h4>
-</div>
-		
 
 
 	{% endif %}

@@ -42,7 +42,7 @@ class CommandeController extends AbstractController
     }
     
     #[Route('/confirmation-commande', name: 'confirmation_commande')]
-    public function confirmationCommande(Request $request, SessionInterface $session, ProduitRepository $produitRepository): Response
+    public function confirmationCommande( SessionInterface $session, ProduitRepository $produitRepository): Response
     {
         // Récupération des informations de la commande depuis les paramètres de requête
         $produits = $session->get('recapitulatif', []);
@@ -51,7 +51,7 @@ class CommandeController extends AbstractController
         foreach ($produits as &$produit) {  
             if (isset($produit['id'])) {
                 $product = $produitRepository->findOneBy(['id' => $produit['id']]);
-                if ($product) {
+                if ($product) { 
                     $description = $product->getDescription();
                     $produit['description'] = $description;
                     $infos[] = [

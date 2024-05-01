@@ -8,7 +8,7 @@
 	<div class="details_body">
 		<div class="block_detail">
 			<div>
-				<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}" width="700" height="500">
+				<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}" width="650" height="550">
 			</div>
 			<h2 class="description_product">
 				{{ produit.description }}
@@ -60,18 +60,18 @@
 
 
 		<div class="livraison">
-			<h1>
+			<h2>
 				Expédition Rapide à France
-			</h1>
+			</h2>
 			<div class="expedition">
 				<h4>
 					<i class="fa-solid fa-truck"></i>
 					Livraison standard gratuite dès 49€ d'achat
 				</h4>
 			</div>
-			<h1 style="color:darkblue;">
+			<h2 class="titre_livraison">
 				Notre Livraison
-			</h1>
+			</h2>
 			<div>
 				<table>
 					<tr>
@@ -120,15 +120,15 @@
 					</tr>
 				</table>
 			</div>
-			<h1 class="custom-title" onclick="toggleText()" style="color:darkblue;">
+			<h2 class="custom-title titre_livraison" onclick="toggleText()">
 				Politique de Retour
-			</h1>
-			<div id="hiddenText">
+			</h2>
+			<div id="hiddenText" class="texteCaché">
 				<p>
 					Les retours peuvent être effectués pendant 45 jours après la date d’achat.
 
 				</p>
-				<p style="color:darkblue;">
+				<p class="titre_livraison">
 					Politique de retour :
 				</p>
 				<p>

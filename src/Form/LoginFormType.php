@@ -10,23 +10,23 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class LoginFormType extends AbstractType
 {
-public function buildForm(FormBuilderInterface $builder, array $options)
-{
-$builder
-->add('_username', TextType::class, [
-'label' => 'Email', // Vous pouvez personnaliser l'étiquette selon vos besoins
-'attr' => ['placeholder' => 'Votre email'],
-])
-->add('_password', PasswordType::class, [
-'label' => 'Mot de passe', // Vous pouvez personnaliser l'étiquette selon vos besoins
-'attr' => ['placeholder' => 'Votre mot de passe'],
-]);
-}
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('_username', TextType::class, [
+                'label' => 'Email', // Vous pouvez personnaliser l'étiquette selon vos besoins
+                'attr' => ['placeholder' => 'Votre email'],
+            ])
+            ->add('_password', PasswordType::class, [
+                'label' => 'Mot de passe', // Vous pouvez personnaliser l'étiquette selon vos besoins
+                'attr' => ['placeholder' => 'Votre mot de passe'],
+            ]);
+    }
 
-public function configureOptions(OptionsResolver $resolver)
-{
-$resolver->setDefaults([
-// Configurez vos options si nécessaire
-]);
-}
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            // Configurez vos options si nécessaire
+        ]);
+    }
 }
