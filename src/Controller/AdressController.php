@@ -46,7 +46,7 @@ class AdressController extends AbstractController
         // dd($sessionInterface->get('recapitulatif',[])); 
         $user = $this->getUser();
         $addresses = $em->getRepository(AdresseCommande::class)->findBy(['user' => $user]);
-          
+    
         // cette partie c'est si on a 2 adresses identiques on veut afficher cette adresse une seule fois 
         // On converti le tableau d'objets $addresses en tableau associatif pour pouvoir comparer grâce à la methode array_unique();
         $addressData = array_map(function ($address) {

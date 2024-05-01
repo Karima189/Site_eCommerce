@@ -1182,7 +1182,19 @@ hr {
 } */
 
 
+.child > li {
+  padding-right: 50px;
+  position: relative;
+}
+.navbar-nav .dropdown-menu {
+    position: absolute;
+    float: none;
+}
 
+ul > li > .show {
+  padding: 0px 0px 0px 0px;
+  margin: -17px 0px -24px 1px;
+}
 
 
 
@@ -1301,6 +1313,11 @@ hr {
   .phrase_produits{
     width: 50%;
     margin-bottom: 20px;
+  }
+  .description_produits{
+    height: 90px;
+    margin-top: 20px;
+ 
   }
 }
   
