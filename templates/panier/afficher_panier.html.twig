@@ -25,8 +25,7 @@
 		<div class="structure_panier">
 			<ul class="ul_panier">
 				{% for item in panier %}
-					<li
-						class="liste_panier">
+					<li class="liste_panier">
 						<!-- Ajouter une case à cocher -->
 						<input type="checkbox" class="product-checkbox" name="selected_products[]" value="{{ item.id }}" data-taille="{{item.id}}{{item.taille}}" onchange="updateTotal()">
 

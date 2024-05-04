@@ -37,14 +37,14 @@
 							<div class="carousel-inner liste_produits">
 								{% for produit_chunk in produits|batch(3) %}
 								<div class="carousel-item {% if loop.first %}active{% endif %}">
-									<div class="row text-left">
+									<div class="row text-left produit-card">
 										{% for produit in produit_chunk %}
 										<div class="col-md-4 mb-3">
 											<div class="card ml-md-auto card-maquillage"> <!-- Utilisation de ml-md-auto pour décaler vers la gauche sur les écrans de taille moyenne et plus grands -->
 												<img class="img-fluid" alt="{{ produit.description }}" src="{{ asset('img/' ~ produit.image) }}">
 												<div class="card-body">
 													<h4 class="card-title">{{ produit.description }}</h4>
-													<a href="{{ path('afficher_produit', {'id': produit.id}) }}" class="btn btn-primary btn-block">Voir le produit</a>
+													<a href="{{ path('afficher_produit', {'id': produit.id}) }}" class="btn  btn-block voirProduit">Voir le produit</a>
 												</div>
 											</div>
 										</div>

@@ -23,8 +23,8 @@ class ProduitsController extends AbstractController
         // Récupérer les produits avec category_id = 1
         $produitsQuery = $produitRepository->findBy(['category' => $categoryId]);
 
-        $adapter = new ArrayAdapter($produitsQuery);
-        $produits = new Pagerfanta($adapter);
+        $adapter = new ArrayAdapter($produitsQuery);// il fournit les données des produits à paginer
+        $produits = new Pagerfanta($adapter);// gère la logique de pagination elle meme
 
         // Définir le nombre d'éléments par page
         $produits->setMaxPerPage(15);
@@ -32,9 +32,8 @@ class ProduitsController extends AbstractController
         // Récupérer la page demandée depuis la requête
         $currentPage = $request->query->get('page', 1);
 
-        $produits->setCurrentPage($currentPage);
+        $produits->setCurrentPage($currentPage);// Définit la page actuelle
 
-        // dd($produits);
         switch ($categoryId) {
             case '1':
                 $phrase = 'Chez Nous vous trouvez un large choix de vetements pour un look exellent et attirant!';
@@ -53,8 +52,7 @@ class ProduitsController extends AbstractController
                 $phrase = null;
         }
 
-        // dd($produits);
-
+    
         // Afficher la liste des produits dans le template Twig
         return $this->render('produits/produits.html.twig', [
             'produits' => $produits,
@@ -64,7 +62,7 @@ class ProduitsController extends AbstractController
     }
 
     #[Route('/produit/{id}', name: 'afficher_produit')]
-    public function afficherProduit(Produit $produit, TailleProduitRepository $tailleProduit): Response
+    public function afficherProduit(Produit $produit): Response
     {
         $categorie = $produit->getCategory();
         $nomProduit = strtolower($produit->getDescription());
@@ -106,7 +104,6 @@ class ProduitsController extends AbstractController
 
         $tailles = $params['taille'] ?? [];// si  $params['taille'] existe et il est non null alos $tailles = $params['taille']
         // sinon  $tailles= []
-
         // dd($tailles);
         $isTailleUniqueAdded = false;
         // Ajouter le produit au panier

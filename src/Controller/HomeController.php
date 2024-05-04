@@ -42,6 +42,7 @@ class HomeController extends AbstractController
         
         $logos = $logosRepository->findAll();
         $carouselImages = $carouselFrontRepository->findAll();
+      
     
 
        

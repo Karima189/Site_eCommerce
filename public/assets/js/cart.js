@@ -39,9 +39,8 @@ $(document).ready(function () {
         });
     });
 
-
-    var quantityInputs = document.querySelectorAll('.quantity-input');
-    quantityInputs.forEach(function (input) {
+     var quantityInputs = document.querySelectorAll('.quantity-input');
+     quantityInputs.forEach(function (input) {
         input.addEventListener('change', function () {
             var itemId = input.getAttribute('data-id');
             var itemPrice = parseFloat(document.querySelector('#total' + itemId).innerText);

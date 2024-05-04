@@ -25,7 +25,7 @@
 				<span>
 					Couleur :
 				</span>
-				{{ produit.couleur }}                              
+				{{ produit.couleur }}
 			</h4>
 			<h4>
 				{% if produit.category.id != 2 %}
@@ -50,8 +50,8 @@
 				{{ produit.prix }}
 				€
 			</h4>
-			<div id="ajouterPanierDetail" >
-				<a href='' data-id={{produit.id}} class="ajouter_au_panier" >
+			<div id="ajouterPanierDetail">
+				<a href='' data-id={{produit.id}} class="ajouter_au_panier">
 					Ajouter au Panier
 				</a>
 				<i class="fa-solid fa-cart-shopping"></i>
@@ -142,10 +142,6 @@
 	</div>
 
 
-	
-	
-	
-	
 	<script>
 		function toggleText() {
 var hiddenText = document.getElementById("hiddenText");
@@ -167,10 +163,9 @@ document.getElementById("hiddenText").style.display = "none";
 });
 
 
-
-// pour la taille : quand on clique 
+// pour la taille : quand on clique
 function toggleCheckbox(element) {
-var checkbox = element.querySelector('input[type="checkbox"]');// on choisit la premiere input de type checkbox
+var checkbox = element.querySelector('input[type="checkbox"]'); // on choisit la premiere input de type checkbox
 checkbox.checked = ! checkbox.checked;
 
 // elle est egale à false si on clique elle devient true, et inversement

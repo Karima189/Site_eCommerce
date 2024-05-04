@@ -84,9 +84,19 @@ header {
 .liste_produits {
  
   justify-content: space-around !important;
-  width: 1040px !important;
+  width: 1030px !important;
   height: 620px !important;
+  margin: auto !important;
   
+}
+.produit-card{
+  height: 500px !important;
+}
+.card-body h4{
+  height: 100px !important;
+}
+.voirProduit{
+  background-color: rgb(199, 39, 149) !important;
 }
 .bouton-gauche{
   position: absolute !important;
@@ -97,7 +107,7 @@ header {
 .bouton-droite{
   position: absolute !important;
   top: 200px !important;
-  right: -150px !important;
+  right: -120px !important;
 
 }
 .ecritureCarousel {
@@ -918,7 +928,7 @@ h3 {
   margin-top: 20px;
   margin-bottom: 30px;
   margin-left: 40px;
-  color: rgb(169, 70, 90);
+  color: rgb(199, 39, 149);
   font-family: "Dancing Script", cursive;
   font-weight: bold;
   font-size: 40px;
@@ -1319,6 +1329,25 @@ ul > li > .show {
     margin-top: 20px;
  
   }
+  .description_detaille{
+    margin-left: 7px;
+    width: 100%;
+
+  }
+  .block_detail h4{
+    margin-left: 18px;
+  }
+ 
+  .taille_utilisateur{
+   margin-left: -28px;
+    width: 700px;
+  }
+  .Description_description_detaille{
+    margin-left: 2px;
+  }
+  .ul_panier{
+    width: 424px;
+  }
 }
   
   @media  (max-width: 958.98px) {
@@ -1344,7 +1373,31 @@ ul > li > .show {
     width: 50px;
     font-size: 19px;
   }
-  
+  .description_detaille{
+    margin-left: -19px;
+    width: 100%;
+
+  }
+  .block_detail h4{
+    margin-left: -13px;
+  }
+  .Description_description_detaille{
+    margin-left: -31px;
+  }
+  .taille_utilisateur{
+    width: 100%;
+   }
+   .livraison{
+    width: 100%;
+   }
+   .block_detail img{
+    width: 490px;
+    height: 490px;
+   }
+   .bouton_commande{
+    width: 384px;
+    margin-left: 8px;
+   }
   }
   
   
@@ -1369,6 +1422,13 @@ ul > li > .show {
     .block_footer1{
       height: auto;
     }
+    .block_detail img{
+      width: 350px;
+      height: 354px;
+     }
+     .taille_utilisateur{
+      width: 100%;
+     }
   }
 
 
