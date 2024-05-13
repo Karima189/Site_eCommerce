@@ -25,7 +25,7 @@ class ProduitsType extends AbstractType
             ->add('image', FileType::class, [
                 'label' => 'image (image file)',
                 'mapped' => false,
-                'required' => false,
+                'required' => true,
                 'constraints' => [new \Symfony\Component\Validator\Constraints\Image([
                     'maxSize' => '15M',
                     'mimeTypes' => [
@@ -38,7 +38,7 @@ class ProduitsType extends AbstractType
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description',
-                'required' => false, // Adapt based on your requirements
+                'required' => true, // Adapt based on your requirements
             ])
             ->add('taille', IntegerType::class, [
                 'label' => 'Taille',
@@ -46,16 +46,16 @@ class ProduitsType extends AbstractType
             ])
             ->add('couleur', TextType::class, [
                 'label' => 'Couleur',
-                'required' => false, // Adapt based on your requirements
+                'required' => true, // Adapt based on your requirements
             ])
             ->add('descriptionDetaille', TextareaType::class, [
                 'label' => 'Description détaillée',
-                'required' => false, // Adapt based on your requirements
+                'required' => true, // Adapt based on your requirements
             ])
             ->add('prix', MoneyType::class, [
                 'label' => 'Prix',
                 'currency' => 'EUR', // Change the currency as needed
-                'required' => false, // Adapt based on your requirements
+                'required' => true, // Adapt based on your requirements
             ])
             ->add('category', EntityType::class, [
                 'label' => 'Choix de la catégorie',

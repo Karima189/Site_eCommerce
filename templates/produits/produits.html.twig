@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}{% endblock %}
+{% block title %} Liste de Produits {% endblock %}
 {% block body %}
 	{% set showNav = true %}
 	{% include "home/index.html.twig" %}
@@ -17,7 +17,7 @@
 				<div>
 					<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}"></div>
 				<h2 class="description_produits">
-					{{ produit.description | slice(0,80)}}
+					{{ produit.description}}
 				</h2>
 				{% if produit.category.id == 2 %}
 					<div class="ajouter_panier_div">

@@ -16,6 +16,13 @@ class AjoutProduitController extends AbstractController
     #[Route('/produit', name: 'app_ajout_produit')]
     public function ajout_produit(Request $request, EntityManagerInterface $entityManager, CategoriesRepository $categoriesRepository): Response
     {
+        // $produit = new Produit($prix,'bleu');
+        // $produit->setTaille('XL');
+        // $produit2 = new Produit($prix+5,'rouge');
+        // $produit2->setTaille('S');
+        // $produit->descriptionDetaille='ABC';
+        // dump($produit);
+        // dd($produit2);
         $produit = new Produit();
         $form = $this->createForm(ProduitsType::class, $produit);
         $form->handleRequest($request);
@@ -29,26 +36,8 @@ class AjoutProduitController extends AbstractController
                 $this->getParameter('img_directory'),
                 $newFilename
             );
-
-            $couleur = $form->get('couleur')->getData();
-            $taille = $form->get('taille')->getData();
-            $description = $form->get('description')->getData();
-            $descriptionDetaillee = $form->get('descriptionDetaille')->getData();
-            $prix = $form->get('prix')->getData();
-            $category = $form->get('category')->getData();
-
-            // Enregistrement de nom de fichier dans la table de la BD
             $produit->setImage($newFilename);
-            $produit->setTaille($taille);
-            $produit->setCouleur($couleur);
-            $produit->setDescription($description);
-            $produit->setPrix($prix);
-            $produit->setDescriptionDetaille($descriptionDetaillee);
- 
-            $categoryId = $form->get('category')->getData();
-            $category = $categoriesRepository->find($categoryId);
-            $produit->setCategory($category);
-            
+        
             $entityManager->persist($produit);
             $entityManager->flush();
             return $this->redirectToRoute('app_home');

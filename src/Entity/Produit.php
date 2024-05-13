@@ -44,7 +44,16 @@ class Produit
     public function __construct()
     {
         $this->details = new ArrayCollection();
+         
     }
+
+    //  public function __construct($prix,$couleur)
+    //  {
+    //      $this->details = new ArrayCollection();
+    //      $this->prix=$prix;
+    //      $this->couleur=$couleur;
+    //      $this->description='default description'  ; 
+    //   }
 
     public function getId(): ?int
     {

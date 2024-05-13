@@ -1,9 +1,10 @@
 body {
   /* background-image: linear-gradient(#c0acca, #cbb7c5) !important; */
-    background-image: linear-gradient(#ccb7d5, #dec3d7) !important;
+  background-image: linear-gradient(#ccb7d5, #dec3d7) !important;
 
-
+ /* background-color: #e7d3ed !important; */
 }
+
 /*      Partie NavBar          */
 
 .titre_site {
@@ -20,43 +21,46 @@ body {
   border-radius: 15px !important;
 }
 
-.nombreArticlesPanier{
+.nombreArticlesPanier {
   color: fuchsia;
   font-weight: bold;
   font-size: 23px;
 }
 
-.welcome-message{
+.welcome-message {
   position: absolute;
   right: 90px;
   font-size: 25px;
   color: purple;
   font-weight: bold;
   cursor: pointer;
-  top:58px;
-  }
-  .email-message {
-    display: none;
-    position: absolute;
-   bottom: 19px;
-   right: 8px;
-  }
+  top: 58px;
+}
 
-  .nav2 ul{
-    display: flex;
-    align-items: center;
-    margin-top: 25px;
-    height: 115px;
-  }
-  .nav2 li{
-    list-style-type: none;
-    padding: 20px;
-  }
-  .nav-liens {
-    color: purple !important;
-    font-weight: bold;
-    font-size: 23px;
-  }
+.email-message {
+  display: none;
+  position: absolute;
+  bottom: 19px;
+  right: 8px;
+}
+
+.nav2 ul {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+  height: 115px;
+}
+
+.nav2 li {
+  list-style-type: none;
+  padding: 20px;
+}
+
+.nav-liens {
+  color: purple !important;
+  font-weight: bold;
+  font-size: 23px;
+}
 
 header {
   display: flex;
@@ -75,41 +79,51 @@ header {
 .carousel-item,
 .carousel_front img {
   height: 100%;
-} 
+}
+
 #carouselVetements {
   overflow-x: hidden;
   overflow-y: hidden;
 }
 
 .liste_produits {
- 
+
   justify-content: space-around !important;
   width: 1030px !important;
   height: 620px !important;
   margin: auto !important;
-  
+
+
 }
-.produit-card{
+
+.produit-card {
   height: 500px !important;
+
 }
-.card-body h4{
+
+.descriptionMakeupIndex h4 {
   height: 100px !important;
 }
-.voirProduit{
+
+.voirProduit {
   background-color: rgb(199, 39, 149) !important;
+  color: white;
 }
-.bouton-gauche{
+
+.bouton-gauche {
   position: absolute !important;
   top: 200px !important;
   left: -150px !important;
 
 }
-.bouton-droite{
+
+.bouton-droite {
   position: absolute !important;
   top: 200px !important;
   right: -120px !important;
 
 }
+
 .ecritureCarousel {
   color: rgb(56, 19, 165);
   font-family: "Dancing Script", cursive;
@@ -118,6 +132,7 @@ header {
   width: 500px;
   font-size: 35px;
 }
+
 .coffre1 {
   position: relative;
   margin-left: 15px;
@@ -153,25 +168,26 @@ header {
   text-align: center;
   font-weight: bold;
 }
-.description_bijoux_index{
+
+.description_bijoux_index {
   width: 340px;
-   margin-left: 20px;
-   color:black;
-   margin-top: 20px;
-   font-size:29px; 
+  margin-left: 20px;
+  color: black;
+  margin-top: 20px;
+  font-size: 29px;
 }
 
 .montresAcceuil {
   border: 3px solid purple;
   border-radius: 15px;
   width: 540px;
-  padding: 20px;
+  padding: 30px;
   text-align: center;
   margin-top: 30px;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
-  display:flex ;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
@@ -184,309 +200,330 @@ header {
   width: 350px;
   height: 350px;
 }
-.description_montres_index{
+
+.description_montres_index {
   width: 400px;
-   /* margin-left: 60px; */
-   color:black;
-   text-align: justify;
-   text-align: center;
-   margin-top:16px ;
+  /* margin-left: 60px; */
+  color: black;
+  text-align: justify;
+  text-align: center;
+  margin-top: 16px;
 
 }
-.logos_footer{
+
+.logos_footer {
   margin-left: 23px !important;
-  }
+}
 
-  .block_footer img {
-    width: 180;
-    height: 180px;
-  
-  }
-  .block_footer h2{
-    font-size: 28px;
-    width: 260px;
-  
-  
-  }
+.block_footer img {
+  width: 180;
+  height: 180px;
 
-  .carousel-inner {
-    width: 450px;
-    height: 600px;
-    margin-top: 40px;
- 
+}
 
-  }
-
-  .carousel-container {
-    display: flex;
-  }
-
-  .carousel-item img {
-    max-width: 100%; /* Limite la largeur des images à la largeur du carousel */
-    height: auto; /* Garde le rapport hauteur-largeur de l'image */
-  }
+.block_footer h2 {
+  font-size: 28px;
+  width: 260px;
 
 
-  /*  Page Produits */
-  .phrase_produits {
-    font-family: "Dancing Script", cursive;
-    font-weight: bolder;
-    text-align: center;
-    margin: auto;
-    /* background-color: rgb(239, 210, 215); */
-    height: 70px;
-    width: 1000px;
-  }
+}
 
-  .recherche {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-  }
-  #searchInput {
-    padding: 8px;
-    width: 400px;
-    border-radius: 15px;
-  }
-  .listeProduits {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 1400px;
-    margin: auto;
-    position: relative;
-    padding-bottom: 60px;
-  
-  }
-  .listeProduits img {
-    display: block;
-    margin: auto;
-    margin-top: 40px;
-    border-radius: 10px;
-    width: 380px;
-    height: 380px;
-  }
-  .description_produits{
-    width: 380px;
-    font-size: 28px;
-    margin-bottom: 18px;
-    /* height: 70px !important; */
-  
-  }
-  .ajouter_panier_div{
-    margin-top: 20px;
-    margin-bottom: 15px;
-  
-  }
+.carousel-inner {
+  width: 450px;
+  height: 600px;
+  margin-top: 40px;
 
-  .ajouter_au_panier {
-  
-    background-color: #9a5fa9; /* Couleur de fond */
-    color: #fff; /* Couleur du texte */
-    text-decoration: none; /* Supprime le soulignement du lien */
-    border: none; /* Supprime les bordures */
-    border-radius: 5px; /* Ajoute des coins arrondis */
-    cursor: pointer; /* Change le curseur au survol */
-    padding: 5px;
-  
-    margin-right: 10px;
-    margin-top: 20px;
-  }
 
-  .voir_detail {
+}
 
-    font-size: 22px;
-   border: 1px solid palevioletred;
-   padding: 7px;
-   border-radius:15px;
-   
-  }
-  
+.carousel-container {
+  display: flex;
+}
 
-  .pagination {
-    position: absolute;
-    bottom: 0;
-    right: 10px;
-  
-  }
+.carousel-item img {
+  max-width: 100%;
+  /* Limite la largeur des images à la largeur du carousel */
+  height: auto;
+  /* Garde le rapport hauteur-largeur de l'image */
+}
+
+
+/*  Page Produits */
+.phrase_produits {
+  font-family: "Dancing Script", cursive;
+  font-weight: bolder;
+  text-align: center;
+  margin: auto;
+  /* background-color: rgb(239, 210, 215); */
+  height: 70px;
+  width: 1000px;
+}
+
+.recherche {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+#searchInput {
+  padding: 8px;
+  width: 400px;
+  border-radius: 15px;
+}
+
+.listeProduits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 1400px;
+  margin: auto;
+  position: relative;
+  padding-bottom: 60px;
+
+}
+
+.listeProduits img {
+  display: block;
+  margin: auto;
+  margin-top: 40px;
+  border-radius: 10px;
+  width: 380px;
+  height: 380px;
+}
+
+.description_produits {
+  width: 380px;
+  font-size: 27px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  /* height: 70px !important; */
+
+}
+
+.ajouter_panier_div {
+  margin-top: 20px;
+  margin-bottom: 15px;
+
+}
+
+.ajouter_au_panier {
+
+  background-color: #9a5fa9;
+  /* Couleur de fond */
+  color: #fff;
+  /* Couleur du texte */
+  text-decoration: none;
+  /* Supprime le soulignement du lien */
+  border: none;
+  /* Supprime les bordures */
+  border-radius: 5px;
+  /* Ajoute des coins arrondis */
+  cursor: pointer;
+  /* Change le curseur au survol */
+  padding: 5px;
+
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.voir_detail {
+
+  font-size: 22px;
+  border: 1px solid palevioletred;
+  padding: 7px;
+  border-radius: 15px;
+
+}
+
+
+.pagination {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+
+}
+
 /*   Page Details du Produit */
 
-  .details_body {
-    background-color: rgb(207, 185, 210);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.details_body {
   
-  
-  }
+  width: 70%; /* ajustez la largeur selon vos préférences */
+  margin: 0 auto; /* cela centre le conteneur horizontalement */
+  text-align: center; /* cela centre le contenu à l'intérieur du conteneur */
+}
 
-  .block_detail {
-    width: 61%;
-    margin: auto;
-  }
-  
-  .block_detail h4 {
-    margin-left: -40px;
-  }
-  
-  .block_detail span {
-    color: rgba(98, 43, 72, 0.745);
-    font-weight: bold;
-    font-size: 28px;
-  
-  }
-  
-  .block_detail img {
-   display: block;
-   margin: auto;
-    margin-top: 40px;
-  }
+ /* .block_detail {
+  width: 61%;
+  margin: auto;
+} */
 
-  .description_product {
-    color: rgba(114, 27, 91, 0.877);
-    text-align: center;
-  
-  }
+.block_detail h4 {
+ text-align: left;
+}
 
-  .Description_description_detaille {
-    margin-left: -40px;
-    border: 2px solid palevioletred;
-    width: 200px;
-    color: rgba(98, 43, 72, 0.745);
-    border-radius: 15px;
-    padding: 8px;
-  }
+.block_detail span {
+  color: rgba(98, 43, 72, 0.745);
+  font-weight: bold;
+  font-size: 28px;
+
+}
+
+.block_detail img {
+  display: block;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.description_product {
+  color: rgba(114, 27, 91, 0.877);
+  text-align: center;
+
+}
+
+.Description_description_detaille {
+  /* margin-left: -76px; */
+  border: 2px solid palevioletred;
+  width: 200px;
+  color: rgba(98, 43, 72, 0.745);
+  border-radius: 15px;
+  padding: 8px;
+}
 
 
 
-  .description_detaille {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 24px;
-    width: 1100px;
-    margin-left: -40px;
-    text-align: justify;
-  
-  }
+.description_detaille {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  /* width: 1100px; */
+  /* margin-left: -76px; */
+  text-align: justify;
+
+}
 
 
-  .taille_utilisateur {
-    display: flex;
-    flex-wrap: wrap;
-    width: 900px;
-    margin: auto;
-    justify-content: center;
-  }
-  
-  .taille_solo {
-    border: 1px solid palevioletred;
-    margin: 20px;
-    padding: 25px;
-    border-radius: 15px;
-  }
-  
-  .taille_solo:hover {
-    background-color: black;
-    color: white;
-    cursor: pointer;
-  }
-  #ajouterPanierDetail{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    margin-left:-30px ;
-   }
+.taille_utilisateur {
+  display: flex;
+  flex-wrap: wrap;
+  width: 900px;
+  margin: auto;
+  justify-content: center;
+}
+
+.taille_solo {
+  border: 1px solid palevioletred;
+  margin: 20px;
+  padding: 25px;
+  border-radius: 15px;
+}
+
+.taille_solo:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+#ajouterPanierDetail {
+  margin-top: 15px;
+  margin-bottom: 15px;
+text-align: left;
+}
 
 
-   .livraison {
-    text-align: center;
-    border: 4px solid rgb(103, 68, 107);
-    border-radius: 25px;
-    margin: auto;
-    width: 900px;
-  }
-  
-  .livraison table,
-  th,
-  td,
-  tr {
-    border: 1px solid black;
-    border-collapse: collapse;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 25px;
-    padding: 10px;
-  }
-  
-  th {
-    color: darkred;
-  }
-  
-  table {
-    margin: auto;
-  }
-  
-  .expedition i {
-    color: rgb(212, 60, 207);
-    font-size: 25px;
-  }
-  
-  .expedition h4 {
-    margin-left: 30px;
-    font-size: 25px;
-    color: darkred;
-    text-align: center;
-  }
-  
-  #hiddenText {
-    display: none;
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 30px;
-    width: 600px;
-    margin: auto;
-  }
-  
-  .titre_livraison{
-    color: rgb(167, 27, 139) !important;
-    font-size: 35px;
-  }
-  .texteCaché  p{
-    font-size: 26px;
-  }
-  .custom-title{
-    cursor: pointer;
-  }
+.livraison {
+  text-align: center;
+  border: 4px solid rgb(103, 68, 107);
+  border-radius: 25px;
+  margin: auto;
+  width: 900px;
+}
 
-  /* Page Panier   */
-  .debut_panier {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-  }
+.livraison table,
+th,
+td,
+tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  padding: 10px;
+}
+
+th {
+  color: darkred;
+}
+
+table {
+  margin: auto;
+}
+
+.expedition i {
+  color: rgb(212, 60, 207);
+  font-size: 25px;
+}
+
+.expedition h4 {
+  margin-left: 30px;
+  font-size: 25px;
+  color: darkred;
+  text-align: center;
+}
+
+#hiddenText {
+  display: none;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 30px;
+  width: 600px;
+  margin: auto;
+}
+
+.titre_livraison {
+  color: rgb(167, 27, 139) !important;
+  font-size: 35px;
+} 
+
+.texteCaché p {
+  font-size: 26px;
+}
+
+.custom-title {
+  cursor: pointer;
+}
+
+/* Page Panier   */
+.debut_panier {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
 
 
-  .vider_panier {
-    width: 140px;
-    height: 60px;
-    margin-right: 40px;
-    color: black;
-    background-color: darkred;
-    font-weight: bold;
-  
-  }
+.vider_panier {
+  width: 150px;
+  height: 60px;
+  margin-right: 40px;
+  color: black;
+  background-color: darkred;
+  font-weight: bold;
+  margin-top: 38px;
 
-  
-.selectionner_tout_panier{
+}
+
+
+.selectionner_tout_panier {
   font-size: 20px;
   color: deeppink;
   position: absolute;
   left: 110px;
-  
+
 }
-.selectionner_tout_panier input{
+
+.selectionner_tout_panier input {
   width: 17px;
   height: 17px;
 }
+
 .panier_vide {
   font-family: "Dancing Script", cursive;
   font-weight: bold;
@@ -569,6 +606,7 @@ header {
   border: 4px solid pink;
   margin-left: 38px;
 }
+
 .hr_panier {
   width: 400px;
   height: 3px;
@@ -579,11 +617,12 @@ header {
 .bouton_commande {
   width: 450px;
   padding: 8px;
-  background-color:rgb(217, 146, 197);
+  background-color: rgb(217, 146, 197);
   border-radius: 10px;
   margin-left: -20px;
   font-weight: bold;
 }
+
 #total-prix {
   text-align: center;
   margin-top: 30px;
@@ -596,7 +635,7 @@ header {
   top: 8px;
   left: 10px;
 
-  
+
 
 }
 
@@ -608,7 +647,7 @@ header {
 
 /*  Page Récapitulatif   */
 
-.confirmation_commande_body{
+.confirmation_commande_body {
   position: relative;
   padding-bottom: 70px;
 }
@@ -622,79 +661,96 @@ header {
   display: block;
   margin-bottom: 20px;
   margin-top: 20px;
- 
+
 
 }
-.info_recap_titres{
+
+.info_recap_titres {
   display: flex;
   justify-content: space-around;
   font-size: 45px !important;
   color: darkred;
   font-weight: bold;
   font-family: "Dancing Script", cursive;
-  
+
 }
 
 
-.info_recap_titres>h4:first-child{
+.info_recap_titres>h4:first-child {
   margin: 0 60px;
 }
-.continue_commande{
+
+.continue_commande {
   width: 450px;
   padding: 8px;
-  background-color:rgb(217, 146, 197);
+  background-color: rgb(217, 146, 197);
   border-radius: 10px;
   position: absolute;
   right: 40px;
   margin-bottom: 20px;
- font-weight: bold;
+  font-weight: bold;
 }
 
 .non_visible {
   visibility: hidden;
 }
-.info_recap{
+
+.info_recap {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  
+
 
 
 
 
 
 }
-.info_recap h4{
+
+.info_recap h4 {
   padding: 30px;
 }
-.info_recap img{
+
+.info_recap img {
   width: 300px;
   height: 300px;
   border-radius: 15px;
   margin: 0 20px;
 }
+
 .purple-footer {
   background-color: violet;
-  color: white; /* pour assurer la lisibilité du texte sur le fond violet */
+  color: white;
+  /* pour assurer la lisibilité du texte sur le fond violet */
   padding: 10px;
-  text-align: center; /* pour centrer le texte dans le pied de carte */
+  text-align: center;
+  
+  /* pour centrer le texte dans le pied de carte */
 }
-.btn-danger{
+.purple-footer a{
+  color: white;
+}
+
+.btn-danger {
   font-size: 1.5rem !important;
   color: red !important;
   margin-right: 0 !important;
-  
+
 }
-#adresse_infos{
+
+#adresse_infos {
   position: relative;
+  border-radius: 10px;
 }
-#corbeille_adresse{
- position: absolute;
- left: 93%;
- top:15px;
+
+#corbeille_adresse {
+  position: absolute;
+  left: 93%;
+  top: 15px;
 }
+
 /* CSS */
-#corbeille_adresse:hover + .delete-message {
+#corbeille_adresse:hover+.delete-message {
   display: block;
 }
 
@@ -709,7 +765,7 @@ header {
   border-radius: 5px;
   display: none;
   font-size: 15px;
- 
+
 }
 
 /*  Footer      */
@@ -720,27 +776,43 @@ header {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
- 
+
   margin-top: 25px;
   height: 300px;
 
 
 }
-.block_footer1 h4{
+
+.block_footer1 h4 {
   text-align: right;
   margin-top: 30px;
   margin-right: 40px;
 }
-.block_footer2{
+
+.block_footer2 {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
 }
-.a_propos h1{
-  margin-left: 80px;
+
+.a_propos h1 {
+  margin-left: 10px;
   font-family: "Dancing Script", cursive;
   color: darkviolet;
   font-weight: bold;
+}
+
+.a_propos {
+  text-align: justify;
+  margin-left: 4%;
+  margin-right: 4%;
+}
+
+.a_propos p {
+  font-size: 20px;
+
+
+
 }
 
 
@@ -754,14 +826,17 @@ header {
   /* height: 400px; */
   margin-left: 20px;
 }
-.contact_final h2{
+
+.contact_final h2 {
   font-size: 25px;
-  
+
 }
-.partie_finale a{
- color: white;
+
+.partie_finale a {
+  color: white;
 }
-.invisible_footer{
+
+.invisible_footer {
   height: 50px;
 }
 
@@ -785,7 +860,8 @@ header {
 .partie_finale h1 {
   color: white;
 }
-.partie_finale p{
+
+.partie_finale p {
   font-size: 15px;
   width: 400px;
   margin: 0px;
@@ -948,9 +1024,15 @@ h3 {
   color: white;
 }
 
-.card-maquillage{
-  background-color: transparent;
- 
+.card-maquillage {
+  background-color: #e5cdeb;
+  /* Couleur de fond rose pâle */
+  border-radius: 10px;
+  /* Bordures arrondies */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  /* Ombre douce */
+  transition: box-shadow 0.3s ease;
+
 }
 
 .makeup_liste {
@@ -958,7 +1040,7 @@ h3 {
   padding: 10px;
   border-radius: 15px;
   transition: transform 0.2s ease;
- 
+
 
 
 
@@ -984,7 +1066,7 @@ h3 {
 
 
 
-.descriptionArticle{
+.descriptionArticle {
   margin-left: 8px;
   margin-top: 13px;
 }
@@ -997,10 +1079,12 @@ h3 {
 /* .block_footer1 hr{
   width: 1550px;
 } */
-.description_site{
+.description_site {
   text-align: justify;
-  max-width: 1400px; /* Largeur maximale du conteneur pour limiter la largeur du paragraphe */
-  margin: 0 auto; /* Centre le conteneur horizontalement */
+  max-width: 1400px;
+  /* Largeur maximale du conteneur pour limiter la largeur du paragraphe */
+  margin: 0 auto;
+  /* Centre le conteneur horizontalement */
   padding: 0 20px;
   font-size: 28px;
   padding-bottom: 40px;
@@ -1027,7 +1111,7 @@ hr {
 
 /* pour la partie de la corbeille dans l'adresse          */
 
-.btn-success{
+.btn-success {
   background-color: purple;
   width: 40%;
   margin-top: 35px;
@@ -1041,9 +1125,11 @@ hr {
 
 .btn-violet:hover,
 .btn-violet:focus {
-  background-color: purple; /* Garde la couleur violette au survol */
+  background-color: purple;
+  /* Garde la couleur violette au survol */
   border-color: violet;
 }
+
 /* .card-body{
   background-color: rgba(232, 160, 214, 0.748);
 } */
@@ -1115,39 +1201,45 @@ hr {
 }
 
 .card-flex img {
- width: 100%;
+  width: 100%;
   height: auto;
 }
 
 
-.welcome-message:hover + .email-message {
+.welcome-message:hover+.email-message {
   display: block;
 }
-.titre_formulaire{
+
+.titre_formulaire {
   text-align: center;
   font-family: "Dancing Script", cursive;
   font-size: 45px;
 }
-.form-label{
+
+.form-label {
   color: rgb(198, 7, 150);
   font-size: 20px;
   /* font-weight: bold; */
- 
+
 }
-.form-check-label{
+
+.form-check-label {
   color: rgb(198, 7, 150);
   font-size: 20px;
   /* font-weight: bold; */
- margin-top: 15px;
+  margin-top: 15px;
 }
-.form-check-input{
+
+.form-check-input {
   margin-top: 23px;
   font-size: 18px;
   margin-left: 10px;
 }
-#registration_form_register,.bouton_adresse_commande{
+
+#registration_form_register,
+.bouton_adresse_commande {
   margin-top: 20px;
-  background-color:rgb(207, 166, 200);
+  background-color: rgb(207, 166, 200);
   color: black;
   padding: 8px;
   width: 150px;
@@ -1158,17 +1250,20 @@ hr {
 
 
 
-.container{
+.container {
   max-width: 1024px;
 }
-.message_paiement{
+
+.message_paiement {
   font-family: "Dancing Script", cursive;
+  text-align: center;
 
 }
 
 .fa-cart-shopping {
   color: black !important;
 }
+
 /* .block_nombreArticles{
   background-color: #a64a8e;
   border-radius: 50%;
@@ -1192,16 +1287,17 @@ hr {
 } */
 
 
-.child > li {
+.child>li {
   padding-right: 50px;
   position: relative;
 }
+
 .navbar-nav .dropdown-menu {
-    position: absolute;
-    float: none;
+  position: absolute;
+  float: none;
 }
 
-ul > li > .show {
+ul>li>.show {
   padding: 0px 0px 0px 0px;
   margin: -17px 0px -24px 1px;
 }
@@ -1215,16 +1311,20 @@ ul > li > .show {
     flex-flow: row nowrap;
     justify-content: flex-start;
   }
+
   .navbar-expand-custom-lg .navbar-nav {
     flex-direction: row;
   }
+
   .navbar-expand-custom-lg .navbar-nav .nav-link {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
   }
+
   .navbar-expand-custom-lg .navbar-collapse {
-    display: flex!important;
+    display: flex !important;
   }
+
   .navbar-expand-custom-lg .navbar-toggler {
     display: none;
   }
@@ -1233,214 +1333,328 @@ ul > li > .show {
   .nav2 li {
     display: flex;
     align-items: center;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
   }
 
 }
 
 
-@media (max-width: 1199.98px) { 
-  .block_footer{
+@media (max-width: 1199.98px) {
+  .block_footer {
     width: 20%;
   }
-  
-  .block_footer h2{
+
+  .block_footer h2 {
     font-size: 18px;
     width: 230px;
-   
+
   }
-  
-  .bouton-droite{
+
+  .bouton-droite {
     right: -2px !important;
   }
-  .bouton-gauche{
-    left: -20px !important;
-   
+
+  .bouton-gauche {
+    left: -47px !important;
+
   }
-  .liste_produits{
-    width:600px !important;
+  .section_makeup{
+    width: 90% !important;
+ }
+  .liste_produits {
+    width: 100% !important;
     margin: auto !important;
   }
-  .nav2 li{
+
+  .nav2 li {
     width: 25%;
   }
-  .montresAcceuil{
+
+  .montresAcceuil {
     width: 430px;
   }
-  .ecritureCarousel{
-    width: 280px;
+  #carouselVetements2{
+    width: 40% !important;
   }
-  .block_footer{
+  .carousel_front{
+    height: 100% !important;
+  }
+  .ecritureCarousel {
+    width: 25%;
+  }
+  .carouselVetements img{
+    width: 88% !important;
+  }
+  
+
+  .block_footer {
     width: 20%;
   }
-  .block_footer img{
+
+  .block_footer img {
     width: 170px;
     height: 170px;
   }
-  .block_footer h2{
+
+  .block_footer h2 {
     width: 180px;
     font-size: 22px;
-   
+
   }
-  .description_bijoux_index{
+
+  .description_bijoux_index {
+    width: 259px;
+    word-spacing: normal;
+  }
+
+ 
+
+  .coffre1 img {
     width: 280px;
-      word-spacing: normal;
+    height: 280px;
   }
-  .section_makeup{
-    width: 600px !important;
-  }
-  .coffre1 img{
-     width:280px;
-     height: 280px;
-  }
-  .listeProduits{
+
+  .listeProduits {
     flex-wrap: wrap;
     width: 850px;
-  }  
-  .welcome-message{
+  }
+
+  .welcome-message {
     top: 20px;
     font-size: 20px;
   }
-  .titre_site{
+
+  .titre_site {
     font-size: 30px !important;
   }
-  .nav-liens{
+
+  .nav-liens {
     font-size: 20px !important;
   }
-  .nav2 ul{
+
+  .nav2 ul {
     width: 100%;
   }
-  .nav2 img{
+
+  .nav2 img {
     width: 100px;
   }
-  .block_footer1{
+
+  .block_footer1 {
     height: 450px;
   }
-  .block_footer2{
+
+  .block_footer2 {
     flex-wrap: wrap;
   }
 
-  .phrase_produits{
+  .phrase_produits {
     width: 50%;
     margin-bottom: 20px;
   }
-  .description_produits{
-    height: 90px;
+
+  .description_produits {
+    height: 70px;
     margin-top: 20px;
- 
+    margin-bottom: 43px;
+
   }
-  .description_detaille{
-    margin-left: 7px;
+
+  .description_detaille {
+    /* margin-left: 7px; */
     width: 100%;
 
   }
-  .block_detail h4{
+
+  /* .block_detail h4 {
     margin-left: 18px;
-  }
- 
-  .taille_utilisateur{
-   margin-left: -28px;
+  } */
+
+  .taille_utilisateur {
+    /* margin-left: -28px; */
     width: 700px;
   }
-  .Description_description_detaille{
+
+  /* .Description_description_detaille {
     margin-left: 2px;
-  }
-  .ul_panier{
+  } */
+
+  .ul_panier {
     width: 424px;
   }
+  .livraison{
+    width: 100%;
+  }
 }
-  
-  @media  (max-width: 958.98px) {
-  
-  .liste_produits{
+
+@media (max-width: 958.98px) {
+
+  .liste_produits {
     width: 700px !important;
     margin: 0px !important;
-    
+
   }
-  .listeProduits{
+
+  .listeProduits {
     flex-wrap: wrap;
-    width :700px;
+    width: 700px;
   }
-  .listeProduits img{
-    width: 300px;
+
+  .listeProduits img {
+    width: 320px;
     height: 300px;
   }
-  .description_produits{
 
-    width: 280px;
+  .description_produits {
+    height: 110px;
+    width: 300px;
   }
-  .voir_detail{
-    width: 50px;
+
+  .voir_detail {
+    /* width: 50px; */
     font-size: 19px;
   }
-  .description_detaille{
-    margin-left: -19px;
+
+  .description_detaille {
+    /* margin-left: -19px; */
     width: 100%;
 
+
   }
-  .block_detail h4{
+
+  /* .block_detail h4 {
     margin-left: -13px;
-  }
-  .Description_description_detaille{
+  } */
+
+  /* .Description_description_detaille {
     margin-left: -31px;
+  } */
+
+  .taille_utilisateur {
+    width: 100%;
   }
-  .taille_utilisateur{
+
+  .livraison {
     width: 100%;
-   }
-   .livraison{
-    width: 100%;
-   }
-   .block_detail img{
-    width: 490px;
-    height: 490px;
-   }
-   .bouton_commande{
-    width: 384px;
+  }
+
+  .block_detail img {
+    width: 390px;
+    height: 390px;
+  }
+
+  .bouton_commande {
+    width: 310px;
     margin-left: 8px;
-   }
-  }
-  
-  
-  @media  (max-width: 720px) {
-    .listeProduits{
-      flex-wrap: wrap;
-      width: 200px;
-      margin: auto;
-    } 
-    .listeProduits img{
-      display: block;
-      margin: auto;
-      margin-top: 25px
-    }
-    .listeProduits{
-      margin: auto
-    }
-    .voir_detail{
-      
-      font-size: 18px;
-    }
-    .block_footer1{
-      height: auto;
-    }
-    .block_detail img{
-      width: 350px;
-      height: 354px;
-     }
-     .taille_utilisateur{
-      width: 100%;
-     }
   }
 
+  .hr_panier {
+    width: 320px;
+  }
+
+  .livraison_panier_select {
+    width: 250px;
+  }
+
+  .livraison_label {
+    margin-left: 47px;
+  }
+}
+
+
+@media (max-width: 720px) {
+  .listeProduits {
+    flex-wrap: wrap;
+    width: 45%;
+    margin: auto;
+  }
+
+  .description_produits {
+    height: 70px;
+
+
+  }
+
+  .listeProduits img {
+    display: block;
+    margin: auto;
+    margin-top: 25px
+  }
+
+  .listeProduits {
+    margin: auto
+  }
+
+  .voir_detail {
+
+    font-size: 18px;
+  }
+
+  /* .description_detaille {
+    width: 350px;
+  } */
+
+  .block_footer1 {
+    height: auto;
+  }
+
+  .block_detail img {
+    width: 250px;
+    height: 254px;
+  }
+
+  .taille_utilisateur {
+    width: 100%;
+  }
+
+  .structure_panier {
+    flex-wrap: wrap;
+
+  }
+  .livraison{
+    width: 100% !important;
+  }
+
+
+  /* .Description_description_detaille {
+    width: 170px;
+  } */
+
+  .espace_livraison {
+    height: 0px;
+  }
+
+  .vider_panier {
+    width: 100px;
+    padding: 3px;
+  }
+
+  .selectionner_tout_panier {
+    margin-left: -37px;
+  }
+
+  .nav2 {
+    height: 340px;
+  }
+
+  .nav2 ul {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .nav2 li {
+    width: 50%;
+  }
+
+  .nav2 a {
+    margin-left: 44px;
+  }
+
+  .nav2 img {
+    width: 80%;
+    margin-left: 15px;
+  }
 
 
 
-
-
-
-
-
-
-
-
-
-
+}

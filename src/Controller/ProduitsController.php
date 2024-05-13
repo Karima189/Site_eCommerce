@@ -94,9 +94,9 @@ class ProduitsController extends AbstractController
     }
 
     #[Route('/ajouter-au-panier/{id}', name: 'ajouter_au_panier')]
-    public function ajouterAuPanier(Produit $produit, SessionInterface $session, Request $request): JsonResponse
+    public function ajouterAuPanier( ProduitRepository $produitRepository ,SessionInterface $session, Request $request,$id): JsonResponse
     {
-
+       $produit=$produitRepository->find($id);
         // Récupérer le panier actuel depuis la session
         $panier = $session->get('panier', []);
         //  récupère tous les paramètres de la requête GET actuelle.
@@ -105,6 +105,7 @@ class ProduitsController extends AbstractController
         $tailles = $params['taille'] ?? [];// si  $params['taille'] existe et il est non null alos $tailles = $params['taille']
         // sinon  $tailles= []
         // dd($tailles);
+
         $isTailleUniqueAdded = false;
         // Ajouter le produit au panier
         if (is_array($tailles)) {
