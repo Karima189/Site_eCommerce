@@ -23,11 +23,13 @@ class ProduitsController extends AbstractController
         // Récupérer les produits avec category_id = 1
         $produitsQuery = $produitRepository->findBy(['category' => $categoryId]);
 
+
         $adapter = new ArrayAdapter($produitsQuery);// il fournit les données des produits à paginer
         $produits = new Pagerfanta($adapter);// gère la logique de pagination elle meme
 
         // Définir le nombre d'éléments par page
         $produits->setMaxPerPage(15);
+        
 
         // Récupérer la page demandée depuis la requête
         $currentPage = $request->query->get('page', 1);

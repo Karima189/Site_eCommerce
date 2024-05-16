@@ -10,22 +10,24 @@
 		<div class="invisible_panier"></div>
 		<button onclick="viderPanier()" class="vider_panier">Vider le Panier</button>
 	</div>
-	<div class="selectionner_tout_panier">
-		<input type="checkbox" id="selectAll">
-		<label for="selectAll">
-			Tout séléctionner
-		</label>
-	</div>
+
 	{% if panier is empty %}
 		<h2 class="panier_vide">Votre panier est vide...Pensez à
 			<a href="{{path('produits_par_categorie', {categoryId: 1})}}" class="panier_vide">continuer vos achats:
 			</a>
 		</h2>
 	{% else %}
+		<div class="selectionner_tout_panier">
+			<input type="checkbox" id="selectAll">
+			<label for="selectAll">
+				Tout séléctionner
+			</label>
+		</div>
 		<div class="structure_panier">
 			<ul class="ul_panier">
 				{% for item in panier %}
-					<li class="liste_panier">
+					<li
+						class="liste_panier">
 						<!-- Ajouter une case à cocher -->
 						<input type="checkbox" class="product-checkbox" name="selected_products[]" value="{{ item.id }}" data-taille="{{item.id}}{{item.taille}}" onchange="updateTotal()">
 

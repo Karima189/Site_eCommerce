@@ -530,10 +530,12 @@ table {
   text-align: center;
   font-size: 40px;
   color: black;
-  padding-bottom: 40px;
+  padding-bottom: 60px;
 
 }
-
+.panier_vide a:hover {
+  text-decoration: underline; /* Ajouter un soulignement lors du survol */
+}
 
 .structure_panier {
   display: flex;
@@ -706,9 +708,15 @@ table {
 
 
 }
+.prixTotalCommande{
+  color:rgb(199, 39, 149); ;
+  font-family: "Dancing Script", cursive; ;
+  font-weight: bold;
+}
 
 .info_recap h4 {
   padding: 30px;
+  width: 322px;
 }
 
 .info_recap img {
@@ -1559,6 +1567,27 @@ ul>li>.show {
   .livraison_label {
     margin-left: 47px;
   }
+  .section_makeup{
+    width: 80% !important;
+  }
+  .block_footer h2 {
+    width: 160px;
+    font-size: 22px;
+    text-align: center;
+}
+.coffre1 img {
+  width: 269px;
+  height: 268px;
+}
+.description_bijoux_index {
+  width: 256px;
+  word-spacing: normal;
+  text-align: center;
+  /* margin-right: -8px; */
+}
+.blockBijoux{
+  overflow-x: hidden;
+}
 }
 
 
