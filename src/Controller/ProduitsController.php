@@ -35,6 +35,7 @@ class ProduitsController extends AbstractController
         $currentPage = $request->query->get('page', 1);
 
         $produits->setCurrentPage($currentPage);// Définit la page actuelle
+       
 
         switch ($categoryId) {
             case '1':
@@ -53,7 +54,7 @@ class ProduitsController extends AbstractController
             default:
                 $phrase = null;
         }
-
+        // donc si on fait dd($produits) on obtient les proprietes de la classe pagerFanta et le tableau d'objets de produits se trouvent dans la variable adapter 
     
         // Afficher la liste des produits dans le template Twig
         return $this->render('produits/produits.html.twig', [
@@ -66,6 +67,7 @@ class ProduitsController extends AbstractController
     #[Route('/produit/{id}', name: 'afficher_produit')]
     public function afficherProduit(Produit $produit): Response
     {
+        
         $categorie = $produit->getCategory();
         $nomProduit = strtolower($produit->getDescription());
 

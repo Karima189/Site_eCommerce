@@ -15,27 +15,54 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse mb-4" id="navbarScroll">
+				<style>
+					.navbar-nav {
+						display: flex;
+						align-items: center; /* Cette propriété assure que les éléments enfants sont alignés au centre verticalement */
+					}
+					.nav-item {
+						margin-right: 10px; /* Ajoute un peu d'espace entre les éléments de la barre de navigation */
+					}
+					.nav-link {
+						display: flex;
+						align-items: center; /* Alignement vertical des icônes et du texte à l'intérieur du lien */
+					}
+					.dropdown-toggle::after {
+						display: inline-block;
+						margin-left: 0.255em;
+						vertical-align: 0.255em;
+						content: "";
+						border-top: 0.3em solid;
+						border-right: 0.3em solid transparent;
+						border-bottom: 0;
+						border-left: 0.3em solid transparent;
+					}
+				</style>
 				<ul
 					class="navbar-nav me-auto my-2 my-lg-0 ">
 					{# <li class="nav-item">
-											<a class="titre_site nav-link active " aria-current="page" href="{{ path('app_home') }}">
-												Chic Mademoiselle
-											</a>
-										</li> #}
+																															<a class="titre_site nav-link active " aria-current="page" href="{{ path('app_home') }}">
+																																Chic Mademoiselle
+																															</a>
+																														</li> #}
 
 
 					<li class="nav-item dropdown">
 						{% if app.user %}
 							<a class="nav-link nav-liens" href="{{ path('app_logout') }}" role="button" aria-expanded="false">
-								<div>Se Déonnecter <i class="fa-solid fa-user"></i> </div>
+								<div>Se Déonnecter
+									<i class="fa-solid fa-user"></i>
+								</div>
 							</a>
-							
+
 						{% else %}
-					
+
 							<a class="nav-link dropdown-toggle nav-liens" href="{{ path('app_login') }}" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								<div>Se Connecter <i class="fa-solid fa-user"></i> </div>
+								<div>Se Connecter
+									<i class="fa-solid fa-user"></i>
+								</div>
 							</a>
-							
+
 						{% endif %}
 						<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
 
@@ -48,11 +75,11 @@
 								<a class="dropdown-item active connexion" href="{{ path('app_login') }}">
 									Connexion
 								</a>
-								
+
 							</li>
 						</ul>
 					</li>
-					
+
 					<li class="nav-item panier_nav">
 						<a class="nav-link nav-liens " href="{{ path('afficher_panier') }}">
 
@@ -68,11 +95,12 @@
 					<span class="nombreArticlesPanier" id="nombre">{{app.session.get('nbArticles','')}}</span>
 					<li class="nav-item">
 						<a class="nav-link nav-liens " href="#footer" tabindex="-1" aria-disabled="true">
-							<div>Contact <i class="fa-solid fa-envelope"></i> </div>
+							<div>Contact
+								<i class="fa-solid fa-envelope"></i>
+							</div>
 						</a>
-						
+
 					</li>
-					
 
 
 					<div class="navbar-nav ml-auto user-info">
@@ -90,25 +118,25 @@
 
 
 					{# <li class="nav-item">
-																																																																		<a class="nav-link nav-liens" href="{{ path('afficher_panier') }}">
-																																																																			Panier
-																																																																			{% if currentPath == "/" %}
-																																																																				<div id="nombre"></div>
-																																																																			{% else %}
-																																																																				<div id="nombr"></div>
-																																																																			{% endif %}
-																																																																		</a>
-																																																																	</li>
-																																																																	<i class="fa-solid fa-cart-shopping"></i> #}
+																																																																																						<a class="nav-link nav-liens" href="{{ path('afficher_panier') }}">
+																																																																																							Panier
+																																																																																							{% if currentPath == "/" %}
+																																																																																								<div id="nombre"></div>
+																																																																																							{% else %}
+																																																																																								<div id="nombr"></div>
+																																																																																							{% endif %}
+																																																																																						</a>
+																																																																																					</li>
+																																																																																					<i class="fa-solid fa-cart-shopping"></i> #}
 				</ul>
 				{# <form class="d-flex">
-																																																	<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-																																																	<button class="btn btn-outline-success" type="submit">
-																																																		Search
-																																												
-																																												
-																																																	</button>
-																																																</form> #}
+																																																																	<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+																																																																	<button class="btn btn-outline-success" type="submit">
+																																																																		Search
+																																																												
+																																																												
+																																																																	</button>
+																																																																</form> #}
 			</div>
 		</div>
 	</nav>
@@ -138,19 +166,28 @@
 	<ul>
 		<li>
 			<a href="{{path('produits_par_categorie', {categoryId: 1})}}">Vêtements</a>
-			<div><img src="{{ asset('img/logo.png') }}" alt=""></div>
+			<div>
+				<img src="{{ asset('img/logo.png') }}" alt="">
+			</div>
 		</li>
 		<li>
 			<a href="{{path('produits_par_categorie', {categoryId: 2})}}">Maquillage</a>
-			<div><img src="{{ asset('img/logo_maquillage.png') }}" alt=""></div>
+			<div>
+				<img src="{{ asset('img/logo_maquillage.png') }}" alt="">
+			</div>
 		</li>
 		<li>
 			<a href="{{path('produits_par_categorie', {categoryId: 3})}}">Bijoux</a>
-			<div><img src="{{ asset('img/bijoux_logo.png') }}" alt=""></div>
+
+			<div>
+				<img src="{{ asset('img/bijoux_logo.png') }}" alt="">
+			</div>
 		</li>
 		<li>
 			<a href="{{path('produits_par_categorie', {categoryId: 4})}}">Montres</a>
-			<div><img src="{{ asset('img/montres_logo.png') }}" alt=""></div>
+			<div>
+				<img src="{{ asset('img/montres_logo.png') }}" alt="">
+			</div>
 		</li>
 	</ul>
 </nav>

@@ -91,14 +91,14 @@
 					<button class="bouton_commande" id="passer_commande">Passer Ma Commande</button>
 				{% else %}
 					<button class="bouton_commande">
-						<a href="{{path('app_login')}}">Passer Ma Commande</a>
+						<a href="{{path('app_login')}}" id="passer_commande">Passer Ma Commande</a>
 					</button>
 				{% endif %}
-				<script>
+				{# <script>
 					document.getElementById('passer_commande').addEventListener('click', function () { // Redirection vers l'URL de la route 'account_address'
 window.location.href = "{{ path('confirmation_commande') }}";
 });
-				</script>
+				</script> #}
 
 
 			</div>

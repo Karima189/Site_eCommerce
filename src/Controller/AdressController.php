@@ -85,8 +85,9 @@ class AdressController extends AbstractController
     #[Route('verification/adresse', name: 'adresse_verify')]
     public function verification(EntityManagerInterface $em): Response
     {
-        $user = $this->getUser();
-        $addresses = $em->getRepository(AdresseCommande::class)->findBy(['user' => $user]);
+        $user = $this->getUser();// La méthode getUser() est fournie par AbstractController
+        $addresses = $em->getRepository(AdresseCommande::class)->findBy(['user' => $user]); // c'est un tableau d'objets 
+
 
         if ($addresses) {
             return $this->redirectToRoute('account_addresses');

@@ -39,14 +39,14 @@ $(document).ready(function () {
         });
     });
 
-     var quantityInputs = document.querySelectorAll('.quantity-input');
-     quantityInputs.forEach(function (input) {
+    var quantityInputs = document.querySelectorAll('.quantity-input');
+    quantityInputs.forEach(function (input) {
         input.addEventListener('change', function () {
             var itemId = input.getAttribute('data-id');
             var itemPrice = parseFloat(document.querySelector('#total' + itemId).innerText);
             var prixUnitaire = parseFloat(document.querySelector('#prix' + itemId).innerText);
             var quantity = parseInt(input.value);
-            var total = prixUnitaire * quantity; 
+            var total = prixUnitaire * quantity;
 
             // Mettre à jour le total affiché
             document.querySelector('#total' + itemId).innerText = total;
@@ -60,16 +60,16 @@ $(document).ready(function () {
 
 
 
-
-
+var articlesEnvoyes = [];
 // Fonction pour mettre à jour le total lorsque les cases à cocher ou les quantités changent
 function updateTotal() {
+    console.log('updatetotal');
     var totalPrix = 0;
     var checkboxes = document.querySelectorAll('.product-checkbox:checked');
     var livraisonSelect = document.getElementById('livraison');
     var prixLivraison = parseFloat(livraisonSelect.options[livraisonSelect.selectedIndex].getAttribute('data-prix')); //recupère le prix de la livraison choisie 
 
-    articlesEnvoyes = [];
+  
 
     checkboxes.forEach(function (checkbox) {
         var id = checkbox.value;
@@ -89,8 +89,8 @@ function updateTotal() {
             prixTotalProduit: totalArticle,
             taille: taille
         });
-    });
 
+    });
     // Ajouter le prix de livraison au total
     totalPrix += prixLivraison;
 
@@ -113,19 +113,29 @@ $(document).ready(function () {
     $('#passer_commande').on('click', function () {
         // Envoyer les données des articles sélectionnés via une requête AJAX
         var articlesSelectionnes = getArticlesInfos();
-        console.log(articlesSelectionnes);
-        $.ajax({
-            url: '/commande/recap',
-            type: 'POST', // ou 'GET' selon votre besoin
-            contentType: 'application/json',
-            data: articlesSelectionnes,
-            success: function (response) {
-                window.location.href = response.url;
-            },
-            error: function (xhr, status, error) {
-                // Gérer les erreurs de la requête AJAX
-            }
-        });
+        if (articlesEnvoyes.length>0){
+            console.log(articlesSelectionnes);
+            $.ajax({
+                url: '/commande/recap',
+                type: 'POST', // ou 'GET' selon votre besoin
+                contentType: 'application/json',
+                data: articlesSelectionnes,
+                success: function (response) {
+    
+                    if (response.url == 'Veuillez séléctionner un produit') {
+                        alert(response.url);
+                    } else {
+                        window.location.href = response.url;
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // Gérer les erreurs de la requête AJAX
+                }
+            });
+        }else{
+           alert('Veuillez séléctionner un produit') ;
+        }
+       
     });
 
 })
@@ -169,7 +179,7 @@ $(document).ready(function () {
         }
     });
 
-    
+
     var confirmer = $('#continue_to_form');
 
     confirmer.on('click', function () {

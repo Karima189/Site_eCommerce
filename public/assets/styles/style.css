@@ -12,6 +12,8 @@ body {
   font-weight: bold;
   color: rgb(91, 10, 131) !important;
   font-size: 40px !important;
+  width: 350px;
+  margin-bottom: 20px
 }
 
 .inscription,
@@ -89,15 +91,10 @@ header {
 .liste_produits {
 
   justify-content: space-around !important;
-  width: 1030px !important;
-  height: 620px !important;
+  width: 100% !important;
+  height: 590px !important;
   margin: auto !important;
 
-
-}
-
-.produit-card {
-  height: 500px !important;
 
 }
 
@@ -186,14 +183,14 @@ header {
   margin-top: 30px;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out; /* transition: transform 0.3s ease-in-out; : Ajoute une transition de 0,3 secondes à la propriété transform avec une courbe de timing ease-in-out. */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .montresAcceuil:hover {
-  transform: scale(1.1);
+  transform: scale(1.1);/*   Lorsque l'élément est survolé, il est agrandi à 110% de sa taille d'origine. */
 }
 
 .montresAcceuil img {
@@ -213,6 +210,8 @@ header {
 
 .logos_footer {
   margin-left: 23px !important;
+  margin-top: 36px !important;
+
 }
 
 .block_footer img {
@@ -281,6 +280,11 @@ header {
   padding-bottom: 60px;
 
 }
+/* .test22{
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+} */
 
 .listeProduits img {
   display: block;
@@ -292,7 +296,7 @@ header {
 }
 
 .description_produits {
-  width: 380px;
+  width: 373px;
   font-size: 27px;
   margin-bottom: 20px;
   margin-top: 15px;
@@ -336,12 +340,13 @@ header {
 }
 
 
-.pagination {
+.pagination1 {
   position: absolute;
   bottom: 0;
   right: 10px;
 
 }
+
 
 /*   Page Details du Produit */
 
@@ -450,7 +455,7 @@ tr {
 }
 
 th {
-  color: darkred;
+  color: rgb(131, 8, 76);
 }
 
 table {
@@ -465,7 +470,7 @@ table {
 .expedition h4 {
   margin-left: 30px;
   font-size: 25px;
-  color: darkred;
+  color: rgb(131, 8, 76);
   text-align: center;
 }
 
@@ -1259,7 +1264,7 @@ hr {
 
 
 .container {
-  max-width: 1024px;
+  max-width: 1054px;
 }
 
 .message_paiement {
@@ -1457,12 +1462,12 @@ ul>li>.show {
   }
 
   .phrase_produits {
-    width: 50%;
+    width: 98%;
     margin-bottom: 20px;
   }
 
   .description_produits {
-    height: 70px;
+    height: 50px;
     margin-top: 20px;
     margin-bottom: 43px;
 
@@ -1514,7 +1519,7 @@ ul>li>.show {
   }
 
   .description_produits {
-    height: 110px;
+    height: 64px;
     width: 300px;
   }
 
@@ -1568,7 +1573,11 @@ ul>li>.show {
     margin-left: 47px;
   }
   .section_makeup{
+    /* width: 80% !important; */
+    display: flex !important;
+    flex-wrap: wrap !important;
     width: 80% !important;
+    height: 450px !important;
   }
   .block_footer h2 {
     width: 160px;
@@ -1580,14 +1589,48 @@ ul>li>.show {
   height: 268px;
 }
 .description_bijoux_index {
-  width: 256px;
+  width: 100%;
   word-spacing: normal;
   text-align: center;
   /* margin-right: -8px; */
 }
+.coffre1{
+  width: 25%;
+}
 .blockBijoux{
   overflow-x: hidden;
+  width: 100%;
+
 }
+.promo1{
+  visibility: hidden;
+}
+.promo2{
+  top: 0px;
+  width: 135px;
+}
+.carouselVetements img{
+  width: 75% !important;
+}
+.montresAcceuil{
+  width: 370px;
+
+}
+.block_watch{
+  flex-wrap: wrap;
+}
+.montresAcceuil img{
+  width: 332px;
+  height: 334px;
+}
+
+.nav2 li{
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+
 }
 
 
@@ -1599,9 +1642,12 @@ ul>li>.show {
   }
 
   .description_produits {
-    height: 70px;
+   text-align: center;
 
 
+  }
+  .ajouter_panier_div{
+    text-align: center;
   }
 
   .listeProduits img {
@@ -1663,27 +1709,40 @@ ul>li>.show {
   }
 
   .nav2 {
-    height: 340px;
+    /* height: 340px; */
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center !important;
   }
 
-  .nav2 ul {
+  /* .nav2 ul {
     width: 100%;
-    flex-wrap: wrap;
-  }
+   
+  } */
 
   .nav2 li {
     width: 50%;
   }
 
-  .nav2 a {
+  /* .nav2 a {
     margin-left: 44px;
-  }
+  } */
 
   .nav2 img {
-    width: 80%;
-    margin-left: 15px;
+    visibility: hidden;
   }
-
-
+ .block_footer{
+  width:33% !important;
+  
+ }
+  .logos_footer{
+  justify-content: center !important;
+   flex-wrap: wrap !important;
+  }
+  .blockBijoux{
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    
+  }
 
 }

@@ -60,6 +60,7 @@ class PanierController extends AbstractController
         // Vider le panier en supprimant la clé 'panier' de la session
         $session->remove('panier');
         $session->remove('nbArticles');
+        $session->remove('recapitulatif');
 
         // Rediriger vers la page du panier (ou une autre page)
         $response = new Response(json_encode(['success' => true]));

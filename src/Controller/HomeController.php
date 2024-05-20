@@ -21,6 +21,7 @@ class HomeController extends AbstractController
         // Récupérer les produits par leurs identifiants et la catégorie = 2
         $categoryId = 2;
         $produits = $produitRepository->findBy(['id' => $productIdsToDisplay, 'category' => $categoryId]);
+
         // Identifiants spécifiques des produits de la catégorie=1 que vous souhaitez afficher dans le carousel
         $vetementIds = [63,50,64];
         $categoryIdVetements=1;
