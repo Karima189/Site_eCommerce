@@ -29,18 +29,17 @@
 
 		<h3>Notre séléction Make Up</h3>
 
-		<section class=" position-relative d-block m-auto  " style="display: flex !important;
+		<section class=" position-relative d-block m-auto section_makeup  " style="display: flex !important;
 				    width: 100% !important;
 				    max-width: 100%;
 				    overflow-x: hidden;
 				    flex-wrap: wrap !important;
-					overflow-y: hidden;
-					text-align: -webkit-center;">
+					overflow-y: hidden;">
 			<div class="container ">
 				<div class="row">
 					<div class="col-12">
 						<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel" data-interval="false">
-							<div class="carousel-inner ">
+							<div class="carousel-inner liste_produits">
 								{% for produit_chunk in produits|batch(3) %}
 									<div class="carousel-item carousel-makeup {% if loop.first %}active{% endif %}">
 										<div class="row text-left produit-card">
