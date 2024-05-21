@@ -36,7 +36,7 @@
 						<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel" data-interval="false">
 							<div class="carousel-inner liste_produits">
 								{% for produit_chunk in produits|batch(3) %}
-								<div class="carousel-item {% if loop.first %}active{% endif %}">
+								<div class="carousel-item carousel-makeup {% if loop.first %}active{% endif %}">
 									<div class="row text-left produit-card">
 										{% for produit in produit_chunk %}
 										<div class="col-md-4 mb-3">

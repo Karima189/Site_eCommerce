@@ -1503,8 +1503,8 @@ ul>li>.show {
 @media (max-width: 958.98px) {
 
   .liste_produits {
-    width: 700px !important;
-    margin: 0px !important;
+    width: 1240px !important;
+    margin-left: -21% !important;
 
   }
 
@@ -1629,6 +1629,10 @@ ul>li>.show {
   flex-direction: column;
   align-items: baseline;
 }
+ .carousel-makeup{
+  width: 57% !important;
+  margin-left: 10% !important;
+}
 
 
 }
@@ -1743,6 +1747,10 @@ ul>li>.show {
     flex-wrap: wrap !important;
     width: 100% !important;
     
+  }
+  .carousel-makeup{
+    width: 57% !important;
+    margin-left: 10% !important;
   }
 
 }
