@@ -1263,9 +1263,9 @@ hr {
 
 
 
-.container {
+/* .container {
   max-width: 1054px;
-}
+} */
 
 .message_paiement {
   font-family: "Dancing Script", cursive;
@@ -1276,7 +1276,9 @@ hr {
 .fa-cart-shopping {
   color: black !important;
 }
-
+body{
+  overflow-x: hidden;
+}
 /* .block_nombreArticles{
   background-color: #a64a8e;
   border-radius: 50%;
@@ -1371,13 +1373,13 @@ ul>li>.show {
     left: -47px !important;
 
   }
-  .section_makeup{
+  /* .section_makeup{
     width: 90% !important;
- }
-  .liste_produits {
+ } */
+  /* .liste_produits {
     width: 100% !important;
     margin: auto !important;
-  }
+  } */
 
   .nav2 li {
     width: 25%;
@@ -1502,11 +1504,11 @@ ul>li>.show {
 
 @media (max-width: 958.98px) {
 
-  .liste_produits {
+  /* .liste_produits {
     width: 1240px !important;
     margin-left: -21% !important;
 
-  }
+  } */
 
   .listeProduits {
     flex-wrap: wrap;
@@ -1629,10 +1631,10 @@ ul>li>.show {
   flex-direction: column;
   align-items: baseline;
 }
- .carousel-makeup{
+ /* .carousel-makeup{
   width: 57% !important;
   margin-left: 10% !important;
-}
+} */
 
 
 }
@@ -1748,9 +1750,9 @@ ul>li>.show {
     width: 100% !important;
     
   }
-  .carousel-makeup{
+  /* .carousel-makeup{
     width: 57% !important;
     margin-left: 10% !important;
-  }
+  } */
 
 }
