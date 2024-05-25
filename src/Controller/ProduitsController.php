@@ -33,6 +33,7 @@ class ProduitsController extends AbstractController
 
         // Récupérer la page demandée depuis la requête
         $currentPage = $request->query->get('page', 1);
+        
 
         $produits->setCurrentPage($currentPage);// Définit la page actuelle
        
@@ -67,6 +68,7 @@ class ProduitsController extends AbstractController
     #[Route('/produit/{id}', name: 'afficher_produit')]
     public function afficherProduit(Produit $produit): Response
     {
+    
         
         $categorie = $produit->getCategory();
         $nomProduit = strtolower($produit->getDescription());

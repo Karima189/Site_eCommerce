@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
-{% block title %} Récapitulatif {% endblock %}
+{% block title %}
+	Récapitulatif
+{% endblock %}
 {% block body %}
-	<h1>Mon recapitulatif</h1>
+ 	<h1>Mon recapitulatif</h1>
 	<div class="confirmation_commande_body">
-		{% for i in infos %}
+		{# {% for i in infos %}
 			<div class="liste_panier">
 				<div class="info_recap_titres">
 
@@ -12,7 +14,7 @@
 					<h4>Description</h4>
 					<h4>Prix</h4>
 					<h4>Taille</h4>
-				    <h4>Quantité</h4>	
+					<h4>Quantité</h4>
 
 
 				</div>
@@ -20,7 +22,7 @@
 
 					<img src="{{ asset('img/' ~ i.produits.image) }}" alt="Image produit">
 
-					<h4 >{{ i.produits.description}}</h4>
+					<h4>{{ i.produits.description}}</h4>
 
 					<h4>{{ i.produits.prix}}
 						€</h4>
@@ -30,13 +32,49 @@
 					<h4>{{ i.data.quantity}}</h4>
 
 
-
 				</div>
 
 
 			</div>
+		{% endfor %} #}
+		<div class="container">
+            {% for i in infos %}
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">Image du produit</th>
+						<th scope="col">Description</th>
+						<th scope="col">Prix</th>
+						<th scope="col">Taille</th>
+						<th scope="col">Quantité</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><img src="{{ asset('img/' ~ i.produits.image) }}" alt="Image produit"></td>
+						<td>
+							<h4>{{ i.produits.description}}</h4>
+						</td>
+						<td>
+							<h4>{{ i.produits.prix}}€</h4>
+
+						</td>
+						<td>
+							<h4>{{ i.data.taille}}</h4>
+						</td>
+						<td>
+							<h4>{{ i.data.quantity}}</h4>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
 		{% endfor %}
-	<h2 class="d-flex justify-content-end prixTotalCommande">Total de la commande:<span class="me-5">{{totalPrix}} €</span></h2>
+		</div>
+		
+		<h2 class="d-flex justify-content-end prixTotalCommande">Total de la commande:<span class="me-5">{{totalPrix}}
+				€</span>
+		</h2>
 
 		<button class="continue_commande" id="continue_to_form">Continuer vers ma commande</button>
 	</div>

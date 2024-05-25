@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\CarouselFront;
 use App\Entity\TailleProduit;
 use App\Entity\User;
 use App\Entity\Produit;
@@ -46,6 +47,7 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToCrud('Carousel', 'fas fa-list', CarouselFront::class);
         yield MenuItem::linkToCrud('Categories', 'fas fa-list', Categories::class);
         yield MenuItem::linkToCrud('Produits', 'fas fa-list', Produit::class);
         yield MenuItem::linkToCrud('Users', 'fas fa-list', User::class);

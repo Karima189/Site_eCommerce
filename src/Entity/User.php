@@ -41,12 +41,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
     #[ORM\Column]
+    #[Assert\NotBlank (message:'le numéro de téléphone est obligatoire')]
     private ?int $numeroTelephone = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank (message:'adresse postale est obligatoire')]
     private ?string $adresse = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank (message:'le code Postal est obligatoire')]
     private ?int $codePostal = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commande::class)]

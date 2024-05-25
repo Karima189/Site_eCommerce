@@ -11,9 +11,20 @@ body {
   font-family: 'Lemon', serif;
   font-weight: bold;
   color: rgb(91, 10, 131) !important;
-  font-size: 40px !important;
-  width: 350px;
-  margin-bottom: 20px
+  font-size: 38px !important;
+  width: 366px;
+  margin-bottom: 20px;
+  margin-left: 25px;
+}
+
+i {
+  font-size: 20px;
+}
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: rgb(85, 0, 85);
+  
 }
 
 .inscription,
@@ -45,12 +56,31 @@ body {
   bottom: 19px;
   right: 8px;
 }
+ul {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
+li {
+  list-style-type: none;
+  padding: 20px;
+}
+
+ul img {
+  width: 150px;
+  height: 100px;
+}
+
+li a {
+  font-size: 25px;
+}
 
 .nav2 ul {
   display: flex;
   align-items: center;
   margin-top: 25px;
-  height: 115px;
+  height: 117px;
 }
 
 .nav2 li {
@@ -61,14 +91,16 @@ body {
 .nav-liens {
   color: purple !important;
   font-weight: bold;
-  font-size: 23px;
+  font-size: 22px;
 }
-
+.nav-liens i {
+  color: black !important;
+}
 header {
   display: flex;
   background-color: rgb(242, 214, 219);
   width: 100%;
-  /* height: 150px; */
+  min-height: 172px;
   justify-content: space-around;
 }
 
@@ -127,7 +159,7 @@ header {
   text-align: center;
   font-weight: bold;
   width: 500px;
-  font-size: 35px;
+  font-size: 33px;
 }
 
 .coffre1 {
@@ -205,6 +237,7 @@ header {
   text-align: justify;
   text-align: center;
   margin-top: 16px;
+  font-size: 28px;
 
 }
 
@@ -221,7 +254,7 @@ header {
 }
 
 .block_footer h2 {
-  font-size: 28px;
+  font-size: 23px;
   width: 260px;
 
 
@@ -274,7 +307,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 1400px;
+  width: 88%;
   margin: auto;
   position: relative;
   padding-bottom: 60px;
@@ -291,12 +324,12 @@ header {
   margin: auto;
   margin-top: 40px;
   border-radius: 10px;
-  width: 380px;
-  height: 380px;
+  width: 362px;
+  height: 362px;
 }
 
 .description_produits {
-  width: 373px;
+  width: 365px;
   font-size: 27px;
   margin-bottom: 20px;
   margin-top: 15px;
@@ -307,6 +340,7 @@ header {
 .ajouter_panier_div {
   margin-top: 20px;
   margin-bottom: 15px;
+  font-size: 19px;
 
 }
 
@@ -340,7 +374,7 @@ header {
 }
 
 
-.pagination1 {
+.pagination {
   position: absolute;
   bottom: 0;
   right: 10px;
@@ -427,13 +461,18 @@ header {
   color: white;
   cursor: pointer;
 }
-
+.checked {
+  background-color: black;
+  color: white;
+}
 #ajouterPanierDetail {
   margin-top: 15px;
   margin-bottom: 15px;
 text-align: left;
 }
-
+#ajouterPanierDetail a{
+  font-size: 19px;
+}
 
 .livraison {
   text-align: center;
@@ -557,6 +596,7 @@ table {
 
 
 }
+
 
 .liste_panier img {
   width: 300px;
@@ -700,6 +740,7 @@ table {
 
 .non_visible {
   visibility: hidden;
+  height: 0px;
 }
 
 .info_recap {
@@ -905,7 +946,7 @@ table {
 
 
 
-
+/* 
 .bouton_home {
   justify-content: center;
   display: flex;
@@ -915,21 +956,18 @@ table {
   margin-top: 20px;
 
 
-}
+} */
 
-.bouton_home:hover {
+/* .bouton_home:hover {
   background-color: black;
   color: white;
   cursor: pointer;
-}
+} */
 
 
 
 
-.checked {
-  background-color: black;
-  color: white;
-}
+
 
 
 
@@ -961,53 +999,15 @@ table {
 
 
 
-a>i {
-  position: absolute;
-  left: 15px;
-  top: 7px;
-}
 
 
 
-.icone i {
-  margin-top: 23px;
-  margin-left: 10px;
-}
-
-a {
-  text-decoration: none;
-  font-weight: bolder;
-  color: purple;
-  font-size: 20px;
-}
-
-.icone a {
+/* .icone a {
   margin-top: 20px;
-}
+} */
 
-i {
-  font-size: 20px;
-}
 
-ul {
-  display: flex;
-  align-items: center;
-  margin-top: 30px;
-}
 
-li {
-  list-style-type: none;
-  padding: 20px;
-}
-
-ul img {
-  width: 150px;
-  height: 100px;
-}
-
-li a {
-  font-size: 25px;
-}
 
 
 
@@ -1264,7 +1264,7 @@ hr {
 
 
 .container {
-  max-width: 1054px;
+  max-width: 65%;
 }
 
 .message_paiement {
@@ -1278,28 +1278,10 @@ hr {
 }
 body{
   overflow-x: hidden;
-}
-/* .block_nombreArticles{
-  background-color: #a64a8e;
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
-  position: relative;
- display: inline-flex;
-  justify-content: center;
-  align-items: center;
+
   
-
 }
-.nombreArticlesPanier{
-  color: white;
-  font-weight: bold;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 
-} */
 
 
 .child>li {
@@ -1321,7 +1303,7 @@ ul>li>.show {
 
 
 
-@media (min-width: 1023.98px) {
+ @media (min-width: 1023.98px) {
   .navbar-expand-custom-lg {
     flex-flow: row nowrap;
     justify-content: flex-start;
@@ -1351,12 +1333,15 @@ ul>li>.show {
     margin-bottom: 10px;
   }
 
-}
+} 
 
 
 @media (max-width: 1199.98px) {
   .block_footer {
     width: 20%;
+  }
+  .container {
+    max-width: 90%;
   }
 
   .block_footer h2 {
@@ -1398,7 +1383,9 @@ ul>li>.show {
     width: 25%;
   }
   .carouselVetements img{
-    width: 88% !important;
+    width: 76% !important;
+    display: block;
+    margin: auto;
   }
   
 
@@ -1504,10 +1491,8 @@ ul>li>.show {
 
 @media (max-width: 958.98px) {
 
-  .liste_produits {
-    width: 1240px !important;
-    margin-left: -21% !important;
-
+  #hiddenText{
+    width: 100%;
   }
 
   .listeProduits {
@@ -1562,7 +1547,14 @@ ul>li>.show {
     width: 310px;
     margin-left: 8px;
   }
+  .bouton-droite {
+    right: -2px !important;
+  }
 
+  .bouton-gauche {
+    left: -47px !important;
+
+  }
   .hr_panier {
     width: 320px;
   }
@@ -1570,7 +1562,9 @@ ul>li>.show {
   .livraison_panier_select {
     width: 250px;
   }
-
+  .boutonVet{
+    visibility: hidden;
+  }
   .livraison_label {
     margin-left: 47px;
   }
@@ -1587,8 +1581,8 @@ ul>li>.show {
     text-align: center;
 }
 .coffre1 img {
-  width: 269px;
-  height: 268px;
+  width:100%;
+  height: 280px;
 }
 .description_bijoux_index {
   width: 100%;
@@ -1596,9 +1590,7 @@ ul>li>.show {
   text-align: center;
   /* margin-right: -8px; */
 }
-.coffre1{
-  width: 25%;
-}
+
 .blockBijoux{
   overflow-x: hidden;
   width: 100%;
@@ -1611,9 +1603,9 @@ ul>li>.show {
   top: 0px;
   width: 135px;
 }
-.carouselVetements img{
+/* .carouselVetements img{
   width: 75% !important;
-}
+} */
 .montresAcceuil{
   width: 370px;
 
@@ -1632,8 +1624,8 @@ ul>li>.show {
   align-items: baseline;
 }
  .carousel-makeup{
-  width: 57% !important;
-  margin-left: 10% !important;
+  width: 100% !important;
+  /* margin-left: 10% !important; */
 }
 
 
@@ -1642,8 +1634,9 @@ ul>li>.show {
 
 @media (max-width: 720px) {
   .listeProduits {
+    display: flex;
     flex-wrap: wrap;
-    width: 45%;
+    width: 50%;
     margin: auto;
   }
 
@@ -1670,13 +1663,16 @@ ul>li>.show {
 
     font-size: 18px;
   }
-
+  .boutonVet{
+    visibility: hidden;
+  }
   /* .description_detaille {
     width: 350px;
   } */
 
   .block_footer1 {
     height: auto;
+  
   }
 
   .block_detail img {
@@ -1695,7 +1691,9 @@ ul>li>.show {
   .livraison{
     width: 100% !important;
   }
-
+  .details_body{
+    width: 80%;
+  }
 
   /* .Description_description_detaille {
     width: 170px;
@@ -1714,28 +1712,22 @@ ul>li>.show {
     margin-left: -37px;
   }
 
-  .nav2 {
+  .nav2 ul{
     /* height: 340px; */
+    display: flex;
     flex-wrap: wrap;
     width: 100%;
     align-items: center !important;
+  
   }
 
-  /* .nav2 ul {
-    width: 100%;
-   
-  } */
 
-  .nav2 li {
+  .nav2 ul li {
     width: 50%;
   }
 
-  /* .nav2 a {
-    margin-left: 44px;
-  } */
-
   .nav2 img {
-    visibility: hidden;
+   display: none;
   }
  .block_footer{
   width:33% !important;
@@ -1744,15 +1736,33 @@ ul>li>.show {
   .logos_footer{
   justify-content: center !important;
    flex-wrap: wrap !important;
+   display: flex !important;
   }
   .blockBijoux{
     flex-wrap: wrap !important;
     width: 100% !important;
+    justify-content: center !important;
+    flex-wrap: column !important;
     
+  }
+  .coffre1 img {
+    width:70%;
+    height: 280px;
+    display: block;
+    margin: auto;
   }
   .carousel-makeup{
     width: 57% !important;
     margin-left: 10% !important;
   }
-
+ .description_bijoux_index{
+  width: 100%;
+ }
+ .container {
+  width: 100%;
+}
+#hiddenText{
+  width: 100%;
+}
+ 
 }

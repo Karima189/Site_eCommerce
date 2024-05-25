@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Assert\NotBlank;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
 class Produit
@@ -17,25 +19,31 @@ class Produit
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank (message:'image est obligatoire')]
     private ?string $image = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank (message:'description est obligatoire')]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank (message:'description détaillé est obligatoire')]
     private ?string $descriptionDetaille = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank (message:'prix est obligatoire')]
     private ?int $prix = null;
 
     #[ORM\Column(length: 255)]
     private ?string $taille = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank (message:'couleur est obligatoire')]
     private ?string $couleur = null;
 
     #[ORM\ManyToOne(inversedBy: 'produits')]
     #[ORM\JoinColumn(nullable: false)]
+  
     private ?Categories $category = null;
 
     #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Detail::class)]

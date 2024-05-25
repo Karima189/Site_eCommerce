@@ -2,6 +2,7 @@
 $(document).ready(function () {
     $(".ajouter_au_panier").on("click", (evtClick) => {
         evtClick.preventDefault();
+        console.log('ajouter au panier');
         var id = $(evtClick.target).data('id');// pour récupérer l'id du produit stocké dans data-id
         var checkbox = $('.taille_solo  input[type="checkbox"]');
 
@@ -18,7 +19,7 @@ $(document).ready(function () {
         if (taillesCochées.length == 0) {
             taillesCochées = { taille: "" };// tailleCochés c'est un tableau JSON ou taille est la clé et "" est la valeur
         }
-        $.ajax({
+        $.ajax({ // configurer et envoyer la requete AJAX
             url: '/ajouter-au-panier/' + id,
             type: 'get',
             dataType: "json",
@@ -29,7 +30,7 @@ $(document).ready(function () {
                 console.log(data);
                 console.log(typeof data);
                 $("#nombre").html(data.nbArticles);
-                if (data.erreur_taille) {
+                if (data.erreur_taille) { // data ici contient la reponse du serveur
                     alert(data.erreur_taille);
                 }
             },
@@ -38,10 +39,11 @@ $(document).ready(function () {
             },
         });
     });
-
+  // 
     var quantityInputs = document.querySelectorAll('.quantity-input');
     quantityInputs.forEach(function (input) {
         input.addEventListener('change', function () {
+            // console.log(this);
             var itemId = input.getAttribute('data-id');
             var itemPrice = parseFloat(document.querySelector('#total' + itemId).innerText);
             var prixUnitaire = parseFloat(document.querySelector('#prix' + itemId).innerText);
@@ -63,7 +65,7 @@ $(document).ready(function () {
 var articlesEnvoyes = [];
 // Fonction pour mettre à jour le total lorsque les cases à cocher ou les quantités changent
 function updateTotal() {
-    console.log('updatetotal');
+    articlesEnvoyes = [];
     var totalPrix = 0;
     var checkboxes = document.querySelectorAll('.product-checkbox:checked');
     var livraisonSelect = document.getElementById('livraison');
@@ -105,7 +107,8 @@ function updateTotal() {
 
 
 function getArticlesInfos() {
-    return JSON.stringify(articlesEnvoyes);
+    console.log(articlesEnvoyes);
+    return JSON.stringify(articlesEnvoyes);// on transforme le tableau en une chaine JSON
 }
 $(document).ready(function () {
 
@@ -117,12 +120,12 @@ $(document).ready(function () {
             console.log(articlesSelectionnes);
             $.ajax({
                 url: '/commande/recap',
-                type: 'POST', // ou 'GET' selon votre besoin
+                type: 'POST',
                 contentType: 'application/json',
                 data: articlesSelectionnes,
                 success: function (response) {
     
-                    if (response.url == 'Veuillez séléctionner un produit') {
+                    if (response.url == 'Veuillez séléctionner un produit !') {
                         alert(response.url);
                     } else {
                         window.location.href = response.url;

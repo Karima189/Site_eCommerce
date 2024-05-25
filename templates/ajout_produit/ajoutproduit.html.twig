@@ -50,13 +50,13 @@
         </div>
     {% else %}
 
-    <div class="container">
+    <div class="container ">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card ">
                     <div class="card-body">
                         <h4 class="card-title">Formulaire d'Ajout d'un Produit ✅</h4>
-                        {{ form_start(produit) }}
+                        {{ form_start (produit, {attr: {'novalidate': 'novalidate'}})}}
                         <div class="form-group">
                             {{ form_row(produit.image, {'attr': {'class': 'form-control'}}) }}
                         </div>

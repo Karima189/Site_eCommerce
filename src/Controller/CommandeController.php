@@ -72,7 +72,7 @@ class CommandeController extends AbstractController
                     }
                 }
             }
-            
+        
             $session->set('recapitulatif', $produits);
             // Vérifier s'il y a un total du prix dans le tableau $produits
             if (isset($produits[count($produits) - 1]['totalPrix'])) {
