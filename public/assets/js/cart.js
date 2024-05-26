@@ -30,8 +30,8 @@ $(document).ready(function () {
                 console.log(data);
                 console.log(typeof data);
                 $("#nombre").html(data.nbArticles);
-                if (data.erreur_taille) { // data ici contient la reponse du serveur
-                    alert(data.erreur_taille);
+                if (data.erreur_message) { // data ici contient la reponse du serveur
+                    alert(data.erreur_message);
                 }
             },
             error: (jqXHR, status, error) => {
@@ -74,7 +74,7 @@ function updateTotal() {
   
 
     checkboxes.forEach(function (checkbox) {
-        var id = checkbox.value;
+        var id = checkbox.value;// recuperer id du produit
         var itemId = checkbox.getAttribute('data-taille'); // identifiant unique de l'article basé sur la taille du produit. Cette valeur est stockée dans la variable itemId.
         var prixUnitaire = parseFloat(document.querySelector('#prix' + itemId).innerText);
         var quantity = parseInt(document.querySelector('#quantity' + itemId).value);
@@ -93,6 +93,7 @@ function updateTotal() {
         });
 
     });
+
     // Ajouter le prix de livraison au total
     totalPrix += prixLivraison;
 
@@ -116,7 +117,7 @@ $(document).ready(function () {
     $('#passer_commande').on('click', function () {
         // Envoyer les données des articles sélectionnés via une requête AJAX
         var articlesSelectionnes = getArticlesInfos();
-        if (articlesEnvoyes.length>0){
+        if (articlesEnvoyes.length>1){
             console.log(articlesSelectionnes);
             $.ajax({
                 url: '/commande/recap',
@@ -125,7 +126,7 @@ $(document).ready(function () {
                 data: articlesSelectionnes,
                 success: function (response) {
     
-                    if (response.url == 'Veuillez séléctionner un produit !') {
+                    if (response.url == 'Veuillez séléctionner un produit ') {
                         alert(response.url);
                     } else {
                         window.location.href = response.url;

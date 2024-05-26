@@ -117,26 +117,38 @@ class ProduitsController extends AbstractController
         if (is_array($tailles)) {
             foreach ($tailles as $taille) {
                 if ($taille == "" && $produit->getCategory()->getId() !== 2) {
-                    return new JsonResponse(['erreur_taille' => "Veuillez choisir une taille pour ce produit, merci"]);
+                    return new JsonResponse(['erreur_message' => "Veuillez choisir une taille pour ce produit, merci"]);
                 } else {
-                    if ($taille !== "") {
-                        $panier[] = [
-                            'id' => $produit->getId(),
-                            'image' => $produit->getImage(),
-                            'description' => $produit->getDescription(),
-                            'prix' => $produit->getPrix(),
-                            'taille' => $taille
-                        ];
-                    } else {
-                        // Vérifier si le produit sans taille n'est pas déjà présent dans le panier
-                        $isAlreadyAdded = false;
+                    if ($taille !== "")  {
+                        $isAlreadyAddedTaille = false;
                         foreach ($panier as $item) {
-                            if ($item['id'] == $produit->getId() && $item['taille'] == "taille_unique") {
-                                $isAlreadyAdded = true;
-                                break;
+                            if ($item['id'] == $produit->getId() && $item['taille'] == $taille) {
+                                $isAlreadyAddedTaille = true;
+                                // break;
+                                return new JsonResponse(['erreur_message' => "Ce produit existe déjà dans le panier"]);
                             }
                         }
-                        if (!$isAlreadyAdded) {
+                        if($isAlreadyAddedTaille == false){
+                            $panier[] = [
+                                'id' => $produit->getId(),
+                                'image' => $produit->getImage(),
+                                'description' => $produit->getDescription(),
+                                'prix' => $produit->getPrix(),
+                                'taille' => $taille
+                            ];
+                        }
+                       
+                    } else {
+                        // Vérifier si le produit sans taille n'est pas déjà présent dans le panier
+                        $isAlreadyAddedMakeup = false;
+                        foreach ($panier as $item) {
+                            if ($item['id'] == $produit->getId() && $item['taille'] == "taille_unique") {
+                                $isAlreadyAddedMakeup = true;
+                                // break;
+                                return new JsonResponse(['erreur_message' => "Ce produit existe déjà dans le panier"]);
+                            }
+                        }
+                        if (!$isAlreadyAddedMakeup) {
                             $panier[] = [
                                 'id' => $produit->getId(),
                                 'image' => $produit->getImage(),

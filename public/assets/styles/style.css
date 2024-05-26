@@ -1,6 +1,7 @@
 body {
   /* background-image: linear-gradient(#c0acca, #cbb7c5) !important; */
   background-image: linear-gradient(#ccb7d5, #dec3d7) !important;
+  /* background-image: linear-gradient(#ebc9de, #dec3d7); */
 
  /* background-color: #e7d3ed !important; */
 }
@@ -723,8 +724,8 @@ table {
 }
 
 
-.info_recap_titres>h4:first-child {
-  margin: 0 60px;
+.info_recap_titres> h4 {
+  width: 20%;
 }
 
 .continue_commande {
@@ -760,14 +761,23 @@ table {
   font-weight: bold;
 }
 
-.info_recap h4 {
+.info_recap h2 {
   padding: 30px;
-  width: 322px;
+  width: 20%;
+  font-size: 23px;
+
+}
+.info_recap>h2:last-child {
+  padding-left: 7%;
+
+}
+.info_recap_titres>h4{
+  padding: 0px 4px 0px 56px; /* haut,droite,bas,gauche*/
 }
 
 .info_recap img {
-  width: 300px;
-  height: 300px;
+  width: 20%;
+  height: 20%;
   border-radius: 15px;
   margin: 0 20px;
 }
@@ -1263,9 +1273,9 @@ hr {
 
 
 
-.container {
+ .container {
   max-width: 65%;
-}
+} 
 
 .message_paiement {
   font-family: "Dancing Script", cursive;
@@ -1388,7 +1398,9 @@ ul>li>.show {
     margin: auto;
   }
   
-
+   .boutonVet{
+    visibility: hidden;
+   }
   .block_footer {
     width: 20%;
   }
@@ -1521,7 +1533,9 @@ ul>li>.show {
 
 
   }
-
+    .boutonVet{
+      visibility: hidden;
+    }
   /* .block_detail h4 {
     margin-left: -13px;
   } */
@@ -1627,7 +1641,14 @@ ul>li>.show {
   width: 100% !important;
   /* margin-left: 10% !important; */
 }
-
+.logos_footer{
+  display: flex !important;
+  flex-wrap: wrap !important;
+  
+}
+.block_footer{
+  width: 26%;
+}
 
 }
 
@@ -1737,6 +1758,7 @@ ul>li>.show {
   justify-content: center !important;
    flex-wrap: wrap !important;
    display: flex !important;
+   margin-left: 0px;
   }
   .blockBijoux{
     flex-wrap: wrap !important;
@@ -1764,5 +1786,7 @@ ul>li>.show {
 #hiddenText{
   width: 100%;
 }
- 
+ .info_recap_titres>h4{
+  padding: 0px 55px 0px 22px;
+ }
 }

@@ -72,13 +72,15 @@ class CommandeController extends AbstractController
                     }
                 }
             }
-        
+           
+       
             $session->set('recapitulatif', $produits);
+       
             // Vérifier s'il y a un total du prix dans le tableau $produits
             if (isset($produits[count($produits) - 1]['totalPrix'])) {
                 $totalProduits = $produits[count($produits) - 1]['totalPrix'];
             }
-            // dd($infos);
+           
             // Votre logique pour afficher la confirmation de la commande...
     
             return $this->render('commande/confirmation_commande.html.twig', ['infos' => $infos, 'totalPrix' => $totalProduits]);

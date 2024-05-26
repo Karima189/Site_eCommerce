@@ -1,0 +1,32 @@
+{# templates/admin/my_dashboard.html.twig #}
+{% extends '@EasyAdmin/layout.html.twig' %}
+
+{% block main %}
+    <h1>Dashboard ! </h1>
+    <canvas id="myChart" width="400" height="300"></canvas>
+
+    <script>
+        // Get the canvas element
+        const canvas = document.getElementById('myChart');
+        const ctx = canvas.getContext('2d');
+
+        // Data for the bar chart (you can customize this)
+        const data = [10, 20, 30, 15, 25];
+
+        // Bar properties
+        const barWidth = 40;
+        const barSpacing = 20;
+        const startX = 50;
+        const startY = canvas.height - 50;
+
+        // Draw the bars
+ctx.fillStyle = 'blue';
+        for (let i = 0; i < data.length; i++) {
+            const x = startX + i * (barWidth + barSpacing);
+            const height = data[i] * 2; // Scale the height for visualization
+            ctx.fillRect(x, startY - height, barWidth, height);
+        }
+    </script>
+
+
+{% endblock main %}
