@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Liste de Commandes
+{% endblock %}
+{% block body %}
+    <h1 class="titreListeCommande">Liste de Vos Commandes</h1>
+    {% if commandes is not empty %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Date de la commande</th>
+                    <th>Référence de la commande</th>
+                    <th>Prix Total de la commande</th>
+                    <th>Détails de la commande</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for commande in commandes %}
+                    <tr>
+                        <td>{{ commande.getCreatedAt()|date('d/m/Y') }}</td>
+                        <td>{{ commande.reference }}</td>
+                        <td>{{ commande.prixTotal }}</td>
+                        <td><a href="{{ path('details_commande', {'id': commande.id}) }}">Voir les détails de cette commande</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h4 style="text-align:center; font-weight:bold;margin-top:40px;margin-bottom:40px;">Aucune commande passée</h4>
+    {% endif %}
+{% endblock %}
+

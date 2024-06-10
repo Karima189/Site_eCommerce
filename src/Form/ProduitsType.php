@@ -38,29 +38,25 @@ class ProduitsType extends AbstractType
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description',
-                'required' => true, // Adapt based on your requirements
-            ])
-            ->add('taille', IntegerType::class, [
-                'label' => 'Taille',
-                'required' => false, // Adapt based on your requirements
+                'required' => true, 
             ])
             ->add('couleur', TextType::class, [
                 'label' => 'Couleur',
-                'required' => true, // Adapt based on your requirements
+                'required' => true, 
             ])
             ->add('descriptionDetaille', TextareaType::class, [
                 'label' => 'Description détaillée',
-                'required' => true, // Adapt based on your requirements
+                'required' => true, 
             ])
             ->add('prix', MoneyType::class, [
                 'label' => 'Prix',
-                'currency' => 'EUR', // Change the currency as needed
-                'required' => true, // Adapt based on your requirements
+                'currency' => 'EUR', 
+                'required' => true, 
             ])
             ->add('category', EntityType::class, [
                 'label' => 'Choix de la catégorie',
                 'class' => Categories::class,
-                'choice_label' => 'titre', // Utilisez la propriété 'titre' de l'entité Category
+                'choice_label' => 'titre', //  la propriété 'titre' de l'entité Category
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Enregistrer'

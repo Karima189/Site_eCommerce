@@ -45,4 +45,17 @@ class DetailRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+public function StatistiqueDetailProduit()
+{
+    //SELECT p.description, d.produit_id, COUNT(*) AS 'nombre de ventes' FROM `detail` AS d JOIN produit AS p ON p.id=d.produit_id GROUP BY d.produit_id ORDER BY COUNT(*) DESC;
+    return $this->createQueryBuilder('d') // Use the alias 'd' for the 'detail' table :SELECT * FROM Detail
+         ->join('d.produit', 'p') // Join the 'produit' table with alias 'p'
+         ->select('p.description, p.id, count(d) as venteCount')
+         ->groupBy('d.produit')
+         ->orderBy('venteCount', 'DESC')
+         ->getQuery()
+         ->getResult();
+
+}
 }

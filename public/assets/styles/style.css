@@ -1,12 +1,22 @@
 body {
   /* background-image: linear-gradient(#c0acca, #cbb7c5) !important; */
-  background-image: linear-gradient(#ccb7d5, #dec3d7) !important;
+  /* background-image: linear-gradient(#ccb7d5, #dec3d7) !important; */
   /* background-image: linear-gradient(#ebc9de, #dec3d7); */
-
  /* background-color: #e7d3ed !important; */
+ /* background-image: linear-gradient(#d7ccdc, #dec3d7); */
+ /* background-image: linear-gradient(#e1d4e6, #dec3d7); */ 
+ /* background: linear-gradient(to right, #FFE4E1, #E6E6FA); */
+
+ /* background-image: linear-gradient(to right, #e6cdca, #cacaeb) !important; */
+ /* background-image:  linear-gradient(to right, #dec5c2, #d3c8de) !important;; */
+ /* background-image: linear-gradient(#ddcee3, #dec3d7) !important; */
+background-image:  linear-gradient(#d9c7e1, #dec3d7) !important;
+;
 }
 
-/*      Partie NavBar          */
+
+
+/**********   Partie NavBar **********         */
 
 .titre_site {
   font-family: 'Lemon', serif;
@@ -21,6 +31,10 @@ body {
 i {
   font-size: 20px;
 }
+
+.fa-cart-shopping {
+  color: black !important;
+}
 a {
   text-decoration: none;
   font-weight: bold;
@@ -29,7 +43,7 @@ a {
 }
 
 .inscription,
-.connexion {
+.connexion,.listeCommandes {
   background-color: pink !important;
   color: black !important;
   border-radius: 15px !important;
@@ -42,14 +56,18 @@ a {
 }
 
 .welcome-message {
-  position: absolute;
+  /* position: absolute; */
   right: 90px;
   font-size: 25px;
   color: purple;
   font-weight: bold;
   cursor: pointer;
-  top: 58px;
+  /* top: 58px; */
+  margin-left: 38px;
 }
+/* .welcome-message:hover+.email-message {
+  display: block;
+} */
 
 .email-message {
   display: none;
@@ -66,6 +84,20 @@ ul {
 li {
   list-style-type: none;
   padding: 20px;
+}
+.child>li {
+  padding-right: 50px;
+  position: relative;
+}
+
+.navbar-nav .dropdown-menu {
+  position: absolute;
+  float: none;
+}
+
+ul>li>.show {
+  padding: 0px 0px 0px 0px;
+  margin: -17px 0px -24px 1px;
 }
 
 ul img {
@@ -105,7 +137,7 @@ header {
   justify-content: space-around;
 }
 
-/* Page Index */
+/* ****** Page Index ********* */
 .carousel_front {
   width: 100% !important;
   height: 800px;
@@ -121,6 +153,19 @@ header {
   overflow-y: hidden;
 }
 
+
+
+h3 {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 40px;
+  color: rgb(199, 39, 149);
+  font-family: "Dancing Script", cursive;
+  font-weight: bold;
+  font-size: 40px;
+
+}
+
 .liste_produits {
 
   justify-content: space-around !important;
@@ -128,6 +173,16 @@ header {
   height: 590px !important;
   margin: auto !important;
 
+
+}
+.card-maquillage {
+  background-color: #e5cdeb;
+  /* Couleur de fond rose pâle */
+  border-radius: 10px;
+  /* Bordures arrondies */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  /* Ombre douce */
+  transition: box-shadow 0.3s ease;
 
 }
 
@@ -281,7 +336,7 @@ header {
 }
 
 
-/*  Page Produits */
+/* ******  Page Produits ********* */
 .phrase_produits {
   font-family: "Dancing Script", cursive;
   font-weight: bolder;
@@ -314,11 +369,6 @@ header {
   padding-bottom: 60px;
 
 }
-/* .test22{
- display: flex;
- flex-direction: column;
- align-items: center;
-} */
 
 .listeProduits img {
   display: block;
@@ -328,7 +378,14 @@ header {
   width: 362px;
   height: 362px;
 }
-
+.prix-produit{
+  background-color: rgb(157, 81, 130);
+  color: white;
+  font-family:"Dancing Script", cursive;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
 .description_produits {
   width: 365px;
   font-size: 27px;
@@ -336,6 +393,10 @@ header {
   margin-top: 15px;
   /* height: 70px !important; */
 
+}
+.prix-produit{
+  font-family:"Dancing Script", cursive;
+  font-weight: bold;
 }
 
 .ajouter_panier_div {
@@ -379,11 +440,13 @@ header {
   position: absolute;
   bottom: 0;
   right: 10px;
+  color: rgb(167, 27, 139) ;
+  font-size: 20px;
 
 }
 
 
-/*   Page Details du Produit */
+/* ******  Page Details du Produit  ***** */
 
 .details_body {
   
@@ -392,17 +455,13 @@ header {
   text-align: center; /* cela centre le contenu à l'intérieur du conteneur */
 }
 
- /* .block_detail {
-  width: 61%;
-  margin: auto;
-} */
 
 .block_detail h4 {
  text-align: left;
 }
 
 .block_detail span {
-  color: rgba(98, 43, 72, 0.745);
+  color: rgb(167, 27, 139) ;
   font-weight: bold;
   font-size: 28px;
 
@@ -424,7 +483,7 @@ header {
   /* margin-left: -76px; */
   border: 2px solid palevioletred;
   width: 200px;
-  color: rgba(98, 43, 72, 0.745);
+  color: rgb(167, 27, 139) ;
   border-radius: 15px;
   padding: 8px;
 }
@@ -527,6 +586,10 @@ table {
   color: rgb(167, 27, 139) !important;
   font-size: 35px;
 } 
+.titre_livraison i{
+  font-size: 29px;
+  margin-right: 5px;
+}
 
 .texteCaché p {
   font-size: 26px;
@@ -536,7 +599,7 @@ table {
   cursor: pointer;
 }
 
-/* Page Panier   */
+/* ****** Page Panier *******  */
 .debut_panier {
   display: flex;
   justify-content: space-between;
@@ -617,7 +680,10 @@ table {
 .liste_panier span {
   color: black;
 }
-
+.descriptionArticle {
+  margin-left: 8px;
+  margin-top: 13px;
+}
 .liste_panier h4 {
   width: 300px;
 }
@@ -633,7 +699,9 @@ table {
 
 .quantity-input {
   height: 35px;
-  width: 20px;
+  border-radius: 15px;
+  width: 250px;
+  background-color:#eecde9;;
   border-radius: 15px;
 }
 
@@ -693,7 +761,7 @@ table {
 }
 
 
-/*  Page Récapitulatif   */
+/* ***** Page Récapitulatif ******  */
 
 .confirmation_commande_body {
   position: relative;
@@ -756,7 +824,7 @@ table {
 
 }
 .prixTotalCommande{
-  color:rgb(199, 39, 149); ;
+  color:rgb(199, 39, 149); 
   font-family: "Dancing Script", cursive; ;
   font-weight: bold;
 }
@@ -777,11 +845,44 @@ table {
 
 .info_recap img {
   width: 20%;
-  height: 20%;
+
   border-radius: 15px;
   margin: 0 20px;
 }
+/*  ****Page Adresse de Livraison         */
 
+#registration_form_register,
+.bouton_adresse_commande {
+  margin-top: 20px;
+  background-color: rgb(207, 166, 200);
+  color: black;
+  padding: 8px;
+  width: 194px;
+  font-weight: bold;
+  margin-bottom: 35px;
+  border: 1px solid black;
+}
+
+/* pour la partie de la corbeille dans l'adresse          */
+
+.btn-success {
+  background-color: purple;
+  width: 40%;
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+.btn-violet {
+  background-color: purple;
+
+}
+
+.btn-violet:hover,
+.btn-violet:focus {
+  background-color: purple;
+  /* Garde la couleur violette au survol */
+  border-color: violet;
+}
 .purple-footer {
   background-color: violet;
   color: white;
@@ -789,7 +890,7 @@ table {
   padding: 10px;
   text-align: center;
   
-  /* pour centrer le texte dans le pied de carte */
+
 }
 .purple-footer a{
   color: white;
@@ -813,7 +914,6 @@ table {
   top: 15px;
 }
 
-/* CSS */
 #corbeille_adresse:hover+.delete-message {
   display: block;
 }
@@ -831,8 +931,23 @@ table {
   font-size: 15px;
 
 }
+/********* Page de la liste des commandes et details de la commande       *********/
 
-/*  Footer      */
+.titreListeCommande{
+  text-align: center;
+  color:rgb(199, 39, 149); 
+  font-family: "Dancing Script", cursive; ;
+
+}
+.facturePdf {
+  text-align: center;
+  
+
+}
+.facturePdf a{
+  color: rgb(199, 39, 149);
+}
+/* ***** Footer  ******    */
 
 
 .block_footer1 {
@@ -896,6 +1011,7 @@ table {
 
 }
 
+
 .partie_finale a {
   color: white;
 }
@@ -914,6 +1030,8 @@ table {
   padding: 15px;
 
   font-size: 25px;
+  color: white !important;
+  margin-bottom: 10px;
 }
 
 .partie_finale img {
@@ -932,280 +1050,30 @@ table {
   padding: 0px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-.bouton_home {
-  justify-content: center;
-  display: flex;
-  font-size: 28px;
-  color: rgb(126, 6, 96);
-  border: 1px solid black;
-  margin-top: 20px;
-
-
-} */
-
-/* .bouton_home:hover {
-  background-color: black;
-  color: white;
-  cursor: pointer;
-} */
-
-
-
-
-
-
-
-
-
-
-.ajout_panier_details {
-  margin-left: -30px;
-  /* border: 1px solid palevioletred; */
-  width: 280px;
-  border-radius: 15px;
-  padding: 6px;
-  margin-bottom: 35px;
-  text-align: center;
-}
-
-.ajout_panier_details:hover {
-  background-color: black;
-  color: white;
-  cursor: pointer;
-  color: white;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .icone a {
-  margin-top: 20px;
-} */
-
-
-
-
-
-
-
-
-h3 {
-  margin-top: 20px;
-  margin-bottom: 30px;
-  margin-left: 40px;
-  color: rgb(199, 39, 149);
-  font-family: "Dancing Script", cursive;
-  font-weight: bold;
-  font-size: 40px;
+/* **** Boostrap   ****** */
+.form-label {
+  color: rgb(198, 7, 150);
+  font-size: 20px;
+  /* font-weight: bold; */
 
 }
 
-
-
-
-.ajouter_au_panier_details {
-  font-size: 25px;
-  color: rgb(109, 7, 84);
-  margin-left: 20px;
+.form-check-label {
+  color: rgb(198, 7, 150);
+  font-size: 20px;
+  /* font-weight: bold; */
+  margin-top: 15px;
 }
 
-.ajouter_au_panier_details:hover {
-  color: white;
+.form-check-input {
+  margin-top: 23px;
+  font-size: 18px;
+  margin-left: 10px;
 }
 
-.card-maquillage {
-  background-color: #e5cdeb;
-  /* Couleur de fond rose pâle */
-  border-radius: 10px;
-  /* Bordures arrondies */
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  /* Ombre douce */
-  transition: box-shadow 0.3s ease;
-
-}
-
-.makeup_liste {
-  border: 2px solid purple;
-  padding: 10px;
-  border-radius: 15px;
-  transition: transform 0.2s ease;
-
-
-
-
-  /* Effet de transition au survol */
-}
-
-
-.makeup_liste:hover {
-  transform: scale(1.1);
-  /* Échelle augmentée au survol */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.descriptionArticle {
-  margin-left: 8px;
-  margin-top: 13px;
-}
-
-
-
-
-
-
-/* .block_footer1 hr{
-  width: 1550px;
-} */
-.description_site {
-  text-align: justify;
-  max-width: 1400px;
-  /* Largeur maximale du conteneur pour limiter la largeur du paragraphe */
-  margin: 0 auto;
-  /* Centre le conteneur horizontalement */
-  padding: 0 20px;
-  font-size: 28px;
-  padding-bottom: 40px;
-
-}
-
-/* 
-hr {
-  width: 1100px;
-  font-size: 15px;
-
-} */
-
-
-
-
-
-
-
-
-
-
-
-
-/* pour la partie de la corbeille dans l'adresse          */
-
-.btn-success {
-  background-color: purple;
-  width: 40%;
-  margin-top: 35px;
-  margin-bottom: 35px;
-}
-
-.btn-violet {
-  background-color: purple;
-
-}
-
-.btn-violet:hover,
-.btn-violet:focus {
-  background-color: purple;
-  /* Garde la couleur violette au survol */
-  border-color: violet;
-}
-
-/* .card-body{
-  background-color: rgba(232, 160, 214, 0.748);
-} */
-
-/* .maquillage img {
-  width: 254px;
-  height: 170px;
-  border-radius: 15px;
-  margin-left: 15px;
-}
-.maquillage {
-  width: 300px;
-  height: 280px;
-  border: 2px solid rgb(103, 68, 107);
-  margin-left: 20px;
-  border-radius: 15px;
-    position: relative;
-    
-
-} */
-
-/* .liste_images {
-  width: 100%;
-  height: 100%;
-}
-.description_boucle {
-  font-weight: bold;
-}
-.liste_clothes {
-  display: flex;
-  width: 1300px;
-  margin: auto;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.liste_clothes p {
-  width: 250px;
-}
-
-.liste_images_div {
-  width: 300px;
-  height: 300px;
-}
-
-.liste_vetements {
-  display: flex;
-  margin: 20px 0;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 500px;
-} */
-
+ .container {
+  max-width: 65%;
+} 
 
 /* caroussel */
 
@@ -1229,63 +1097,15 @@ hr {
 }
 
 
-.welcome-message:hover+.email-message {
-  display: block;
-}
-
-.titre_formulaire {
-  text-align: center;
-  font-family: "Dancing Script", cursive;
-  font-size: 45px;
-}
-
-.form-label {
-  color: rgb(198, 7, 150);
-  font-size: 20px;
-  /* font-weight: bold; */
-
-}
-
-.form-check-label {
-  color: rgb(198, 7, 150);
-  font-size: 20px;
-  /* font-weight: bold; */
-  margin-top: 15px;
-}
-
-.form-check-input {
-  margin-top: 23px;
-  font-size: 18px;
-  margin-left: 10px;
-}
-
-#registration_form_register,
-.bouton_adresse_commande {
-  margin-top: 20px;
-  background-color: rgb(207, 166, 200);
-  color: black;
-  padding: 8px;
-  width: 150px;
-  font-weight: bold;
-  margin-bottom: 35px;
-  border: 1px solid black;
-}
-
-
-
- .container {
-  max-width: 65%;
-} 
-
+/*  Page de Paiement    */
 .message_paiement {
   font-family: "Dancing Script", cursive;
   text-align: center;
+  margin-bottom: 47px;
 
 }
 
-.fa-cart-shopping {
-  color: black !important;
-}
+
 body{
   overflow-x: hidden;
 
@@ -1294,24 +1114,124 @@ body{
 
 
 
-.child>li {
-  padding-right: 50px;
-  position: relative;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+.ajout_panier_details {
+  margin-left: -30px;
+ 
+  width: 280px;
+  border-radius: 15px;
+  padding: 6px;
+  margin-bottom: 35px;
+  text-align: center;
 }
 
-.navbar-nav .dropdown-menu {
-  position: absolute;
-  float: none;
+.ajout_panier_details:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  color: white;
+} */
+
+
+/* 
+
+.ajouter_au_panier_details {
+  font-size: 25px;
+  color: rgb(109, 7, 84);
+  margin-left: 20px;
 }
 
-ul>li>.show {
-  padding: 0px 0px 0px 0px;
-  margin: -17px 0px -24px 1px;
+.ajouter_au_panier_details:hover {
+  color: white;
+} */
+
+
+
+/* .makeup_liste {
+  border: 2px solid purple;
+  padding: 10px;
+  border-radius: 15px;
+  transition: transform 0.2s ease;
+
+
+
+
 }
 
 
+.makeup_liste:hover {
+  transform: scale(1.1);
+  
+} */
 
 
+
+/* 
+
+
+ */
+
+
+
+/* 
+.description_site {
+  text-align: justify;
+
+  margin: 0 auto;
+ 
+  padding: 0 20px;
+  font-size: 28px;
+  padding-bottom: 40px;
+
+} */
+.titre_recap{
+  color: rgb(199, 39, 149);
+    font-family: "Dancing Script", cursive;
+  margin-left: 20px;
+    font-weight: bold;
+    
+}
+
+.titre_formulaire {
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+  font-size: 45px;
+} 
+
+
+
+
+
+
+
+
+
+
+
+ /* **** ***  MEDIA QUERY       **********/
 
  @media (min-width: 1023.98px) {
   .navbar-expand-custom-lg {
@@ -1320,7 +1240,7 @@ ul>li>.show {
   }
 
   .navbar-expand-custom-lg .navbar-nav {
-    flex-direction: row;
+    flex-direction: row; /*aligne horizentalement*/
   }
 
   .navbar-expand-custom-lg .navbar-nav .nav-link {
@@ -1329,7 +1249,7 @@ ul>li>.show {
   }
 
   .navbar-expand-custom-lg .navbar-collapse {
-    display: flex !important;
+    display: flex !important; 
   }
 
   .navbar-expand-custom-lg .navbar-toggler {
@@ -1342,6 +1262,7 @@ ul>li>.show {
     align-items: center;
     margin-bottom: 10px;
   }
+ 
 
 } 
 
@@ -1480,24 +1401,20 @@ ul>li>.show {
 
   }
 
-  /* .block_detail h4 {
-    margin-left: 18px;
-  } */
 
   .taille_utilisateur {
     /* margin-left: -28px; */
     width: 700px;
   }
 
-  /* .Description_description_detaille {
-    margin-left: 2px;
-  } */
-
   .ul_panier {
     width: 424px;
   }
   .livraison{
     width: 100%;
+  }
+  .welcome-message{
+    margin-top: -10px;
   }
 }
 
@@ -1536,13 +1453,7 @@ ul>li>.show {
     .boutonVet{
       visibility: hidden;
     }
-  /* .block_detail h4 {
-    margin-left: -13px;
-  } */
-
-  /* .Description_description_detaille {
-    margin-left: -31px;
-  } */
+  
 
   .taille_utilisateur {
     width: 100%;
@@ -1651,6 +1562,15 @@ ul>li>.show {
 }
 
 }
+/* pour le problème de maquillage           */
+@media (min-width:721px) and (max-width:768px){
+  .img-maquillage{
+    width: 40% !important;
+    height: 40% !important;
+    align-self: center;
+
+  }
+}
 
 
 @media (max-width: 720px) {
@@ -1687,9 +1607,7 @@ ul>li>.show {
   .boutonVet{
     visibility: hidden;
   }
-  /* .description_detaille {
-    width: 350px;
-  } */
+
 
   .block_footer1 {
     height: auto;
@@ -1715,10 +1633,11 @@ ul>li>.show {
   .details_body{
     width: 80%;
   }
-
-  /* .Description_description_detaille {
-    width: 170px;
-  } */
+  .Description_description_detaille{
+    width: 160px;
+    padding: 8px;
+    text-align: left;
+  }
 
   .espace_livraison {
     height: 0px;
@@ -1786,7 +1705,28 @@ ul>li>.show {
 #hiddenText{
   width: 100%;
 }
+.info_recap img{
+  width: 20%;
+  height: 20%;
+}
  .info_recap_titres>h4{
   padding: 0px 55px 0px 22px;
+ }
+ .description_bijoux_index{
+  width: 80%;
+ }
+ .titre_site{
+  margin-left: -23px;
+  width: 249px;
+  font-size: 30px;
+ }
+ header img{
+  width: 118px;
+  height: 109px;
+ }
+ .carouselVetements{
+  height: 375px !important;
+  width: 302px !important;
+  margin-top: 76px;
  }
 }

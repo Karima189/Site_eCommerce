@@ -8,7 +8,9 @@
 	<div class="debut_panier">
 		<h1 style="margin:40px;color:fushia;">Votre Panier</h1>
 		<div class="invisible_panier"></div>
-		<button onclick="viderPanier()" class="vider_panier">Vider le Panier</button>
+		{# <button onclick="viderPanier()" class="vider_panier">Vider le Panier</button> #}
+		<a href="{{path('vider_panier')}}"
+		 ><button  class="vider_panier">Vider le Panier</button> </a>
 	</div>
 
 	{% if panier is empty %}
@@ -47,7 +49,7 @@
 						<!-- Ajout du champ de quantité -->
 						<label for="quantity{{ item.id }}" class="sousTitres-panier">Quantité:</label>
 						<input
-						style="width:250px; background-color:pink;" type="number" id="quantity{{ item.id }}{{item.taille}}" name="quantity{{ item.id }}" min="1" value="1" data-id="{{ item.id }}{{item.taille}}" class="quantity-input">
+						 type="number" id="quantity{{ item.id }}{{item.taille}}" name="quantity{{ item.id }}" min="1" value="1" data-id="{{ item.id }}{{item.taille}}" class="quantity-input">
 
 						<!-- Mise à jour du prix en fonction de la quantité -->
 						<h4 class="sousTitres-panier">Total:
@@ -81,9 +83,9 @@
 
 
 				<!-- Bouton pour calculer le total des produits sélectionnés -->
-				<div style="visibility: hidden;">
+				{# <div style="visibility: hidden;">
 					<button type="button" onclick="calculerTotal()">Total:</button>
-				</div>
+				</div> #}
 				<hr class="hr_panier">
 				<h2 id="total-prix"></h2>
 

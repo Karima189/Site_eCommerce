@@ -62,7 +62,7 @@ class PaiementController extends AbstractController
                 ],
                 'unit_amount' => round($prixLivraison * 100),
             ],
-            'quantity' => 1, // Vous pouvez ajuster la quantité selon votre besoin
+            'quantity' => 1, 
         ];
 
         $checkout_session = \Stripe\Checkout\Session::create([

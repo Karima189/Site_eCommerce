@@ -3,33 +3,29 @@
 	Récapitulatif
 {% endblock %}
 {% block body %}
-	<h1 class="titre_recap">Mon recapitulatif</h1>
+	<h1 class="titre_recap">Détails de la commande</h1>
 	<div class="confirmation_commande_body">
-		{% for i in infos %}
+		{% for detail in details %}
 			<div class="liste_panier">
 				<div class="info_recap_titres">
 
-					<h4>Image du Produit:</h4>
-
-					<h4>Description</h4>
+					<h4>Image du Produit</h4>
+					<h4>Quantité</h4>
 					<h4>Prix</h4>
 					<h4>Taille</h4>
-					<h4>Quantité</h4>
 
 
 				</div>
 				<div class="info_recap">
 
-					<img src="{{ asset('img/' ~ i.produits.image) }}" alt="Image produit">
+					<img src="{{ asset('img/' ~ detail.getProduit().getImage()) }}" alt="Image produit">
 
-					<h2>{{ i.produits.description}}</h2>
+					<h2>{{ detail.getQuantité}}</h2>
 
-					<h2>{{ i.data.prixTotalProduit}}€</h2>
+					<h2>{{ detail.prix}}€</h2>
 
 
-					<h2>{{ i.data.taille |replace({'_': '-' })}}</h2>
-
-					<h2>{{ i.data.quantity}}</h2>
+					<h2>{{ detail.taille |replace({'_': '-' })}}</h2>
 
 
 				</div>
@@ -37,6 +33,7 @@
 
 			</div>
 		{% endfor %}
+		<h4  class="facturePdf"><a href="{{path('extrait_pdf' , {'id':idC})}}">Télécharger votre Facture En PDF</a></h4>
 		{# <div class="container-fluid">
 					<div class="table-responsive" id="tableConfirm">
 						{% for i in infos %}
@@ -75,11 +72,7 @@
 					</div>
 				</div> #}
 
-		<h2 class="d-flex justify-content-end prixTotalCommande">Total de la commande:<span class="me-5">{{totalPrix}}
-				€</span>
-		</h2>
 
-		<button class="continue_commande" id="continue_to_form">Continuer vers ma commande</button>
 	</div>
 
 {% endblock %}

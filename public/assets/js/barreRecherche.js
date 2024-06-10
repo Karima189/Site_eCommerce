@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var articles = document.querySelectorAll(".listeProduits div");
     
     recherche.addEventListener("input", function () {
-    var searchTerm = recherche.value.trim().toLowerCase(); // Assurez-vous de supprimer les espaces blancs
+    var searchTerm = recherche.value.trim().toLowerCase(); //  .trim() supprime les espaces blancs au début et à la fin
     
     articles.forEach(function (article) {
     var articleNameElement = article.querySelector("h2");

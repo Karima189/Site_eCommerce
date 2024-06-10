@@ -35,7 +35,7 @@
 					<div class="taille_utilisateur">
 						{% for taille in tabTaille %}
 							<div class="taille_solo" onclick="toggleCheckbox(this)">
-								<input type="checkbox" name="tailles[]" value="{{ taille }}" style="display: none" ;>
+								<input type="checkbox" name="tailles[]" value="{{ taille }}{{nomTaille}}" style="display: none" ;>
 								{{ taille }}
 								{{nomTaille}}
 							</div>
@@ -66,7 +66,7 @@
 			<div class="expedition">
 				<h4>
 					<i class="fa-solid fa-truck"></i>
-					Livraison standard gratuite dès 75 € d'achat
+					Livraison fiable et sécurisée  directement à votre porte!
 				</h4>
 			</div>
 			<h2 class="titre_livraison">
@@ -121,7 +121,8 @@
 				</table>
 			</div>
 			<h2 class="custom-title titre_livraison" onclick="toggleText()">
-				Politique de Retour
+			 <i class="fa-solid fa-hand-point-right"></i>
+				 Politique de Retour :
 			</h2>
 			<div id="hiddenText" class="texteCaché">
 				<p>
@@ -142,7 +143,7 @@
 	</div>
 
 
-	<script>
+	{# <script>
 		function toggleText() {
 var hiddenText = document.getElementById("hiddenText");
 
@@ -177,5 +178,10 @@ element.classList.add('checked');
 element.classList.remove('checked');
 }
 }
-	</script>
+	</script> #}
 </div></div>{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+	<script src="{{asset('assets/js/detailsProduit.js')}}"></script>
+{% endblock %}
+

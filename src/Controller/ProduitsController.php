@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Produit;
+use App\Repository\DetailRepository;
 use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use App\Repository\ProduitRepository;
@@ -20,9 +21,9 @@ class ProduitsController extends AbstractController
     #[Route('/produits/categorie/{categoryId}', name: 'produits_par_categorie')]
     public function produitsParCategorie(ProduitRepository $produitRepository, Request $request, int $categoryId): Response
     {
-        // Récupérer les produits avec category_id = 1
+        // Récupérer les produits avec category_id 
         $produitsQuery = $produitRepository->findBy(['category' => $categoryId]);
-
+ 
 
         $adapter = new ArrayAdapter($produitsQuery);// il fournit les données des produits à paginer
         $produits = new Pagerfanta($adapter);// gère la logique de pagination elle meme
@@ -108,7 +109,7 @@ class ProduitsController extends AbstractController
         //  récupère tous les paramètres de la requête GET actuelle.
         $params = $request->query->all();
 
-        $tailles = $params['taille'] ?? [];// si  $params['taille'] existe et il est non null alos $tailles = $params['taille']
+        $tailles = $params['taille'] ??[] ;// si  $params['taille'] existe et il est non null alos $tailles = $params['taille']
         // sinon  $tailles= []
         // dd($tailles);
 
@@ -171,10 +172,18 @@ class ProduitsController extends AbstractController
 
         $session->set('nbArticles', $nbArticles);
 
-        // Rediriger vers la page précédente ou une autre page
-        $response = new JsonResponse(['nbArticles' => $nbArticles]);
+
+        $response = new JsonResponse(['nbArticles' => $nbArticles]);// c'est un objet JSON 
 
         return $response;
     }
 
+
+    // #[Route('/test', name: 'test')]
+    // public function bonjour (DetailRepository $detailRepository): Response{
+
+    //     $s=$detailRepository->Statistique();
+    //     dd($s);
+    // }
+   
 }

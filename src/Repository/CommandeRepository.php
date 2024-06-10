@@ -45,4 +45,15 @@ class CommandeRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+public function StatistiqueNombreCommande()
+{
+    $qb = $this->createQueryBuilder('c'); // 'c' is the alias for Commande entity
+
+    $qb->select('DATE_FORMAT(c.created_at, \'%Y-%m-%d\') AS Date, COUNT(c.id) AS TotalCommandes')
+        ->groupBy('Date');
+
+    return $qb->getQuery()->getResult();
+
+}
 }

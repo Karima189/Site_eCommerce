@@ -29,7 +29,6 @@ class ProduitCrudController extends AbstractCrudController
             TextEditorField::new('description'),
             TextEditorField::new('descriptionDetaille'),
             NumberField::new('prix'),
-            TextField::new('taille'),
             TextField::new('couleur')
         ];
     }

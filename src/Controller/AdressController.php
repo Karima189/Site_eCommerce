@@ -49,10 +49,11 @@ class AdressController extends AbstractController
     
     
         // cette partie c'est si on a 2 adresses identiques on veut afficher cette adresse une seule fois 
-        // On converti le tableau d'objets $addresses en tableau associatif pour pouvoir comparer grâce à la methode array_unique();
+        // On converti le tableau d'objets $addresses en tableau associatif qui contient les adressesPosstales en chaine de caractère pour pouvoir comparer grâce à la methode array_unique();
         $addressData = array_map(function ($address) {
             return $address->getAdressePostale();
         }, $addresses);
+        
       
         // On supprime les doublons grâce à array_unique();
         $uniqueAddressesData = array_unique($addressData);
@@ -62,7 +63,7 @@ class AdressController extends AbstractController
 
         foreach ($uniqueAddressesData as $address) {
             $uniqueAddress = $em->getRepository(AdresseCommande::class)->findOneBy(['adressePostale' => $address]);
-            // Assurez-vous que $uniqueAddress n'est pas NULL avant de l'ajouter au tableau
+            // $uniqueAddress n'est pas NULL avant de l'ajouter au tableau
             if ($uniqueAddress !== null) {
                 $uniqueAddresses[] = $uniqueAddress;
             }

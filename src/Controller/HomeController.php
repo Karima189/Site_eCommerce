@@ -49,7 +49,6 @@ class HomeController extends AbstractController
        
         // Afficher la liste des produits dans le template Twig
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
             'produits' => $produits,
             'vetements' => $vetements,
             'bijoux' => $bijoux,

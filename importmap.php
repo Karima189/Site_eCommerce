@@ -27,4 +27,7 @@ return [
     '@hotwired/turbo' => [
         'url' => 'https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.3.0/+esm',
     ],
+    'chart.js/auto' => [
+        'url' => 'https://cdn.jsdelivr.net/npm/chart.js@3.9.1/auto/+esm',
+    ],
 ];

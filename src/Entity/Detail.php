@@ -14,11 +14,11 @@ class Detail
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'details')]
+    #[ORM\ManyToOne(inversedBy: 'details',fetch:'EAGER')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Commande $commande = null;
 
-    #[ORM\ManyToOne(inversedBy: 'details')]
+    #[ORM\ManyToOne(inversedBy: 'details', fetch:'EAGER')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Produit $produit = null;
 

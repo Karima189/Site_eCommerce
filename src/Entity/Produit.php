@@ -19,7 +19,7 @@ class Produit
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank (message:'image est obligatoire')]
+    
     private ?string $image = null;
 
     #[ORM\Column(length: 255)]
@@ -34,8 +34,7 @@ class Produit
     #[Assert\NotBlank (message:'prix est obligatoire')]
     private ?int $prix = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $taille = null;
+   
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank (message:'couleur est obligatoire')]
@@ -116,17 +115,9 @@ class Produit
         return $this;
     }
 
-    public function getTaille(): ?string
-    {
-        return $this->taille;
-    }
+   
 
-    public function setTaille(string $taille): static
-    {
-        $this->taille = $taille;
-
-        return $this;
-    }
+  
 
     public function getCouleur(): ?string
     {

@@ -24,22 +24,26 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('prenom', TextType::class)
             ->add('nom', TextType::class)
-            ->add('numeroTelephone', TextType::class)
+            ->add('numeroTelephone', NumberType::class)
             ->add('adresse', TextType::class)
             ->add('codePostal', NumberType::class)
-            ->add('email', EmailType::class)
+            ->add('email', EmailType::class , [
+                'required' => true,
+                'invalid_message' => 'email invalid'
+            ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options' => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Confirmer le mot de passe'],'mapped' => false,
+                'second_options' => ['label' => 'Confirmer le mot de passe' ],'mapped' => false,
+                'invalid_message' => 'les valeurs ne sont pas identiques',
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password ',
+                        'message' => 'Veuillez entrer un mot de passe ',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'Votre mot de passe doit contenir minimum {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 30,
                     ]),
@@ -51,7 +55,7 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'Vous devez accepter nos termes',
                     ]),
                 ],
             ])

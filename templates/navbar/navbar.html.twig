@@ -17,35 +17,16 @@
 			<div class="collapse navbar-collapse mb-4" id="navbarScroll">
 				<style>
 					.navbar-nav {
-						display: flex;
+						display: flex !important;
 						align-items: center; /* Cette propriété assure que les éléments enfants sont alignés au centre verticalement */
 					}
-					.nav-item {
-						margin-right: 10px; /* Ajoute un peu d'espace entre les éléments de la barre de navigation */
-					}
+
 					.nav-link {
 						display: flex;
 						align-items: center; /* Alignement vertical des icônes et du texte à l'intérieur du lien */
 					}
-					.dropdown-toggle::after {
-						display: inline-block;
-						margin-left: 0.255em;
-						vertical-align: 0.255em;
-						content: "";
-						border-top: 0.3em solid;
-						border-right: 0.3em solid transparent;
-						border-bottom: 0;
-						border-left: 0.3em solid transparent;
-					}
 				</style>
-				<ul
-					class="navbar-nav me-auto my-2 my-lg-0 ">
-					{# <li class="nav-item">
-																															<a class="titre_site nav-link active " aria-current="page" href="{{ path('app_home') }}">
-																																Chic Mademoiselle
-																															</a>
-																														</li> #}
-
+				<ul class="navbar-nav me-auto my-2 my-lg-0 ">
 
 					<li class="nav-item dropdown">
 						{% if app.user %}
@@ -80,13 +61,13 @@
 						</ul>
 					</li>
 
-					<li class="nav-item panier_nav" >
+					<li class="nav-item panier_nav">
 						<a class="nav-link nav-liens " href="{{ path('afficher_panier') }}">
 
 							<div>Panier
 								<i class="fa-solid fa-cart-shopping"></i>
 							</div>
-						<span  class="nombreArticlesPanier m-1" id="nombre">{{app.session.get('nbArticles','')}}</span>
+							<span class="nombreArticlesPanier m-1" id="nombre">{{app.session.get('nbArticles','')}}</span>
 
 						</a>
 
@@ -101,64 +82,69 @@
 					</li>
 
 
-					<div class="navbar-nav ml-auto user-info">
-						{% if app.user %}
-							<span class="navbar-text">
-								<h6 class="welcome-message" id="hello">Bienvenue
-									{{ app.user.prenom }}!</h6>
-								<h6 class="email-message">Votre adresse email est
-									{{ app.user.email }}</h6>
+					{# <div class="navbar-nav ml-auto user-info">
+															{% if  app.user %}
+										
+																{% if  'ROLE_ADMIN' in app.user.roles %}
+																	<span class="navbar-text">
+																		<h6 class="welcome-message" id="hello">Bienvenue ADMIN</h6>
+																		<h6 class="email-message">Votre adresse email est
+																			{{ app.user.email }}</h6>
+										
+																	</span>
+										                         {% else %}
+																  <span class="navbar-text">
+																		<h6 class="welcome-message" id="hello">Bienvenue 
+																			{{ app.user.prenom }}!</h6>
+																		<h6 class="email-message">Votre adresse email est
+																			{{ app.user.email }}</h6>
+										
+																	</span>
+																{% endif %}
+															{% endif %}
+															</div> #}
 
-							</span>
+                    {% if  app.user %}
+					<li class="nav-item dropdown navbar-nav">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<div class=" ml-auto user-info">
+								
 
-						{% endif %}
-					</div>
+									{% if  'ROLE_ADMIN' in app.user.roles %}
+										<span class="navbar-text">
+											<h6 class="welcome-message" id="hello">Bienvenue ADMIN</h6>
 
 
-					{# <li class="nav-item">
-																																																																																						<a class="nav-link nav-liens" href="{{ path('afficher_panier') }}">
-																																																																																							Panier
-																																																																																							{% if currentPath == "/" %}
-																																																																																								<div id="nombre"></div>
-																																																																																							{% else %}
-																																																																																								<div id="nombr"></div>
-																																																																																							{% endif %}
-																																																																																						</a>
-																																																																																					</li>
-																																																																																					<i class="fa-solid fa-cart-shopping"></i> #}
+										</span>
+									{% else %}
+										<span class="navbar-text">
+											<h6 class="welcome-message" id="hello">Bienvenue
+												{{ app.user.prenom }}!</h6>
+
+										</span>
+									{% endif %}
+								
+							</div>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a class="dropdown-item listeCommandes" href="{{ path('liste_commande') }}">Voir la liste de mes achats</a>
+							</li>
+
+						</ul>
+					</li>
+
+					{% endif %}
+
+
 				</ul>
-				{# <form class="d-flex">
-																																																																	<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-																																																																	<button class="btn btn-outline-success" type="submit">
-																																																																		Search
-																																																												
-																																																												
-																																																																	</button>
-																																																																</form> #}
+
+
 			</div>
 		</div>
 	</nav>
 </header>
-{# <nav class="nav2">
-	<ul>
-		<li>
-			<a href="{{path('produits_par_categorie', {categoryId: 1})}}">Vetements</a>
-		</li>
-		<div><img src="{{ asset('img/logo.png') }}" alt=""></div>
-		<li>
-			<a href="{{path('produits_par_categorie', {categoryId: 2})}}">Maquillage</a>
-		</li>
-		<div><img src="{{ asset('img/logo_maquillage.png') }}" alt=""></div>
-		<li>
-			<a href="{{path('produits_par_categorie', {categoryId: 3})}}">Bijoux</a>
-		</li>
-		<div><img src="{{ asset('img/bijoux_logo.png') }}" alt=""></div>
-		<li>
-			<a href="{{path('produits_par_categorie', {categoryId: 4})}}">Montres</a>
-		</li>
-		<div><img src="{{ asset('img/montres_logo.png') }}" alt=""></div>
-	</ul>
-</nav> #}
+
 
 <nav class="nav2">
 	<ul>
@@ -189,35 +175,6 @@
 		</li>
 	</ul>
 </nav>
-<script>
-
-window.addEventListener('resize', function() {
-    // Your code to handle window size changes goes here
-    console.log('Window size changed!');
-	function elementsOverlap(el1, el2) {
-    const domRect1 = el1.getBoundingClientRect();
-    const domRect2 = el2.getBoundingClientRect();
-    return !(
-        domRect1.top > domRect2.bottom ||
-        domRect1.right < domRect2.left ||
-        domRect1.bottom < domRect2.top ||
-        domRect1.left > domRect2.right
-    );
-}
-
-// Example usage:
-const element1 = document.getElementById('pan'); // Replace with your actual element IDs
-const element2 = document.getElementById('hello');
-console.log(elementsOverlap(element1, element2)); // Returns true if they overlap
-if(elementsOverlap(element1, element2)){
-	const computedStyles = window.getComputedStyle(element2);
-	const topValue = computedStyles.getPropertyValue('top');
-	console.log(topValue);
-	if(topValue!=="20px")
-	element2.style.marginTop= "-3%"
-	
-}else{
-		element2.style.marginTop= "0"
-}
-});
-</script>
+{% block javascripts %}
+	<script src="{{asset('assets/js/navbar.js')}}"></script>
+{% endblock %}

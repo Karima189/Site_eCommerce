@@ -3,9 +3,6 @@
 {% block title %} Liste de Produits {% endblock %}
 {% block body %}
 	{% set showNav = true %}
-	{# {% include "home/index.html.twig" %} #}
-	{# <script src="{{asset('assets/js/cart.js')}}"></script> #}
-
 	<h2 class="phrase_produits">
 		{{phrase}}
 	</h2>
@@ -15,11 +12,15 @@
 	</div>
 	<div class="listeProduits">
 		{% for produit in produits %}
-			<div >
+			<div>
 				<div>
-					<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}"></div>
+					<img src="{{ asset('img/' ~ produit.image) }}" alt="{{ produit.description }}">
+				</div>
 				<h2 class="description_produits">
 					{{ produit.description}}
+				</h2>
+					<h2 class="prix-produit">
+					Prix : {{ produit.prix}} €
 				</h2>
 				{% if produit.category.id == 2 %}
 					<div class="ajouter_panier_div">
@@ -32,6 +33,7 @@
 				<a href="{{ path('afficher_produit', {'id': produit.id}) }}" class="voir_detail">
 					Voir Plus de détails sur ce produit
 				</a>
+				
 			</div>
 
 		{% endfor %}
