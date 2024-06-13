@@ -1,15 +1,4 @@
 body {
-  /* background-image: linear-gradient(#c0acca, #cbb7c5) !important; */
-  /* background-image: linear-gradient(#ccb7d5, #dec3d7) !important; */
-  /* background-image: linear-gradient(#ebc9de, #dec3d7); */
- /* background-color: #e7d3ed !important; */
- /* background-image: linear-gradient(#d7ccdc, #dec3d7); */
- /* background-image: linear-gradient(#e1d4e6, #dec3d7); */ 
- /* background: linear-gradient(to right, #FFE4E1, #E6E6FA); */
-
- /* background-image: linear-gradient(to right, #e6cdca, #cacaeb) !important; */
- /* background-image:  linear-gradient(to right, #dec5c2, #d3c8de) !important;; */
- /* background-image: linear-gradient(#ddcee3, #dec3d7) !important; */
 background-image:  linear-gradient(#d9c7e1, #dec3d7) !important;
 ;
 }
@@ -41,6 +30,15 @@ a {
   color: rgb(85, 0, 85);
   
 }
+.navbar-nav {
+  display: flex !important;
+  align-items: center; /* Cette propriété assure que les éléments enfants sont alignés au centre verticalement */
+}
+
+.nav-link {
+  display: flex;
+  align-items: center; /* Alignement vertical des icônes et du texte à l'intérieur du lien */
+}
 
 .inscription,
 .connexion,.listeCommandes {
@@ -48,7 +46,11 @@ a {
   color: black !important;
   border-radius: 15px !important;
 }
-
+.titre_formulaire {
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+  font-size: 45px;
+} 
 .nombreArticlesPanier {
   color: fuchsia;
   font-weight: bold;
@@ -638,7 +640,7 @@ table {
   text-align: center;
   font-size: 40px;
   color: black;
-  padding-bottom: 60px;
+  padding-bottom: 100px;
 
 }
 .panier_vide a:hover {
@@ -807,6 +809,13 @@ table {
   font-weight: bold;
 }
 
+.titre_recap{
+  color: rgb(199, 39, 149);
+    font-family: "Dancing Script", cursive;
+  margin-left: 20px;
+    font-weight: bold;
+    
+}
 .non_visible {
   visibility: hidden;
   height: 0px;
@@ -1137,89 +1146,8 @@ body{
 
 
 
-/* 
-.ajout_panier_details {
-  margin-left: -30px;
- 
-  width: 280px;
-  border-radius: 15px;
-  padding: 6px;
-  margin-bottom: 35px;
-  text-align: center;
-}
-
-.ajout_panier_details:hover {
-  background-color: black;
-  color: white;
-  cursor: pointer;
-  color: white;
-} */
 
 
-/* 
-
-.ajouter_au_panier_details {
-  font-size: 25px;
-  color: rgb(109, 7, 84);
-  margin-left: 20px;
-}
-
-.ajouter_au_panier_details:hover {
-  color: white;
-} */
-
-
-
-/* .makeup_liste {
-  border: 2px solid purple;
-  padding: 10px;
-  border-radius: 15px;
-  transition: transform 0.2s ease;
-
-
-
-
-}
-
-
-.makeup_liste:hover {
-  transform: scale(1.1);
-  
-} */
-
-
-
-/* 
-
-
- */
-
-
-
-/* 
-.description_site {
-  text-align: justify;
-
-  margin: 0 auto;
- 
-  padding: 0 20px;
-  font-size: 28px;
-  padding-bottom: 40px;
-
-} */
-.titre_recap{
-  color: rgb(199, 39, 149);
-    font-family: "Dancing Script", cursive;
-  margin-left: 20px;
-    font-weight: bold;
-    
-}
-
-.titre_formulaire {
-  text-align: center;
-  font-family: "Dancing Script", cursive;
-  font-size: 45px;
-} 
 
 
 
@@ -1580,6 +1508,9 @@ body{
     width: 50%;
     margin: auto;
   }
+  .card-maquillage{
+    margin-bottom: 22px;
+  }
 
   .description_produits {
    text-align: center;
@@ -1663,7 +1594,8 @@ body{
 
 
   .nav2 ul li {
-    width: 50%;
+    width: 30%;
+    margin-left: 11%;
   }
 
   .nav2 img {
@@ -1685,6 +1617,9 @@ body{
     justify-content: center !important;
     flex-wrap: column !important;
     
+  }
+  .carouselVetements img{
+    width: 100% !important;
   }
   .coffre1 img {
     width:70%;
@@ -1728,5 +1663,17 @@ body{
   height: 375px !important;
   width: 302px !important;
   margin-top: 76px;
+ }
+ #carouselVetements{
+  margin-top: 45px;
+ }
+ .bouton-gauche{
+  margin-left: 20px;
+ }
+ .bouton-droite{
+  margin-right: 10px;
+ }
+ .ecritureCarousel{
+  visibility: hidden;
  }
 }

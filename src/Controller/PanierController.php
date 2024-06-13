@@ -20,8 +20,6 @@ class PanierController extends AbstractController
     {
         // Récupérer le panier depuis la session
         $panier = $session->get('panier', []);
-        // // Récupérer la valeur du cookie 'panier'
-        // $panier = json_decode($request->cookies->get('panier'), true) ?? [];
         return $this->render('panier/afficher_panier.html.twig', [
             'panier' => $panier,
         ]);
@@ -33,8 +31,7 @@ class PanierController extends AbstractController
     {
         // Récupérer le panier depuis la session
         $panier = $session->get('panier', []);
-        // Récupérer la valeur du cookie 'panier'
-        // $panier = json_decode($request->cookies->get('panier'), true) ?? [];
+        
         
        
         // Rechercher l'index du produit dans le panier
@@ -50,15 +47,10 @@ class PanierController extends AbstractController
                 $session->set('nbArticles', $nbArticles);
                 // Rediriger vers la page du panier
                 return $this->redirectToRoute('afficher_panier');
-                // break;
+               
             }
         }
-       // Mettre à jour le cookie 'panier'
-    //    $response = new Response();
-    //    $response->headers->setCookie(new Cookie('panier', json_encode($panier)));
-    //    $response->headers->setCookie(new Cookie('nbArticles', count($panier)));
-    //    $response->send();
-        // Si le produit n'est pas trouvé, rediriger vers la page du panier
+   
         return $this->redirectToRoute('afficher_panier');
         
     }

@@ -29,7 +29,7 @@ class RegistrationFormType extends AbstractType
             ->add('codePostal', NumberType::class)
             ->add('email', EmailType::class , [
                 'required' => true,
-                'invalid_message' => 'email invalid'
+               
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,

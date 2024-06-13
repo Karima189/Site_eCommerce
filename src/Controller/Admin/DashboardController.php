@@ -103,12 +103,7 @@ class DashboardController extends AbstractDashboardController
         // $chart2->tooltip->headerFormat('<span style="font-size:11px">{series.name}</span><br>');
         // $chart2->tooltip->pointFormat('<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>');
 
-        $data = [
-            ['Chrome', 18.7 ],
-            [  'Microsoft Internet Explorer', 53.61],
-            ['Firefox', 45.0],
-            ['Opera', 1.5]
-        ];
+   
         $chart2->series(
             [
                 [
@@ -119,30 +114,7 @@ class DashboardController extends AbstractDashboardController
             ]
         );
 
-        $drilldown = [
-            [
-                'name' => 'Microsoft Internet Explorer',
-                'id' => 'Microsoft Internet Explorer',
-                'data' => [
-                    ["v8.0", 26.61],
-                    ["v9.0", 16.96],
-                    ["v6.0", 6.4],
-                    ["v7.0", 3.55],
-                    ["v8.0", 0.09]
-                ]
-            ],
-            [
-                'name' => 'Chrome',
-                'id' => 'Chrome',
-                'data' => [
-                    ["v19.0", 7.73],
-                    ["v17.0", 1.13],
-                    ["v16.0", 0.45],
-                    ["v18.0", 0.26]
-                ]
-            ],
-        ];
-        $chart2->drilldown->series($drilldown);
+      
         return $this->render('admin/my-dashboard.html.twig', ['chart' => $chart, 'chart2'=>$chart2]);
     }
 
