@@ -7,15 +7,7 @@ function toggleText() {
     hiddenText.style.display = "none";
     }
     }
-    
-    document.addEventListener("click", function (event) {
-    var isClickInside = document.getElementById("hiddenText").contains(event.target);
-    var isTitleClick = event.target.classList.contains("custom-title");
-    
-    if (! isClickInside && ! isTitleClick) {
-    document.getElementById("hiddenText").style.display = "none";
-    }
-    });
+
     
     
     // pour la taille : quand on clique

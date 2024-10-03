@@ -1,3 +1,19 @@
+Les commandes:
+pour creer une base de données: php bin/console doctrine:database:create
+pour creer la table: php bin/console make:entity
+php bin/console make:migration , php bin/console doctrine:migrations:migrate
+pour l'administrateur: composer require easycorp/easyadmin-bundle
+php bin/console make:admin:dashboard
+pour le CRUD: php bin/console make:admin:crud
+pour les statistiques : composer require ob/highcharts-bundle
+
+
+
+
+
+
+
+
 // pour s'inscrire:
 RegistrationController:
 class RegistrationController extends AbstractController

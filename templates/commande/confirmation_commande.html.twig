@@ -37,43 +37,7 @@
 
 			</div>
 		{% endfor %}
-		{# <div class="container-fluid">
-					<div class="table-responsive" id="tableConfirm">
-						{% for i in infos %}
-							<table class="table table-borderless">
-								<thead>
-									<tr>
-										<th scope="col">Image du produit</th>
-										<th scope="col">Description</th>
-										<th scope="col">Prix</th>
-										<th scope="col">Taille</th>
-										<th scope="col">Quantité</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><img src="{{ asset('img/' ~ i.produits.image) }}" alt="Image produit" width="100%"></td>
-										<td>
-											<h4>{{ i.produits.description}}</h4>
-										</td>
-										<td>
-											<h4>{{ i.produits.prix}}€</h4>
 		
-										</td>
-										<td>
-											<h4>{{ i.data.taille}}</h4>
-										</td>
-										<td>
-											<h4>{{ i.data.quantity}}</h4>
-										</td>
-									</tr>
-		
-								</tbody>
-							</table>
-						{% endfor %}
-		
-					</div>
-				</div> #}
 
 		<h2 class="d-flex justify-content-end prixTotalCommande">Total de la commande:<span class="me-5">{{totalPrix}}
 				€</span>

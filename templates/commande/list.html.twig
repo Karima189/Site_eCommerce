@@ -19,7 +19,7 @@
                     <tr>
                         <td>{{ commande.getCreatedAt()|date('d/m/Y') }}</td>
                         <td>{{ commande.reference }}</td>
-                        <td>{{ commande.prixTotal }}</td>
+                        <td>{{ commande.prixTotal }} €</td>
                         <td><a href="{{ path('details_commande', {'id': commande.id}) }}">Voir les détails de cette commande</a></td>
                     </tr>
                 {% endfor %}

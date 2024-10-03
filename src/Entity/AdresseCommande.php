@@ -26,21 +26,27 @@ class AdresseCommande
     private ?string $prenom = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank (message:'le nom est obligatoire')]
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank (message:'adresse postale obligatoire')]
     private ?string $adressePostale = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank (message:'le code postal est obligatoire')]
     private ?int $codePostal = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank (message:'ville est obligatoire')]
     private ?string $ville = null;
 
     #[ORM\Column(length: 255)]
+   
     private ?string $pays = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank (message:'numero de  téléphone est obligatoire')]
     private ?int $numeroTelephone = null;
 
     #[ORM\ManyToOne(inversedBy: 'adresseCommandes')]
